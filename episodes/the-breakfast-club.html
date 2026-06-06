@@ -76,6 +76,18 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 .wtf-film-detail:last-child{border-bottom:none}
 .wtf-film-detail .label{color:#8a8070}
 .wtf-film-detail .value{color:#1a1a1a;font-weight:500;text-align:right}
+.wtf-film-detail .value a{color:inherit;text-decoration:none}
+.wtf-film-detail .value a:hover{color:#C9A84C;text-decoration:underline}
+.wtf-cast-toggle{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:none;padding:6px 0;border-bottom:.5px solid #e8e0d0;font-size:13px;font-family:inherit;cursor:pointer;text-align:left}
+.wtf-cast-toggle .label{color:#8a8070}
+.wtf-cast-toggle .value{color:#1a1a1a;font-weight:500;text-align:right;display:flex;align-items:center;gap:6px}
+.wtf-cast-toggle .wtf-cast-arrow{display:inline-block;transition:transform .2s ease;font-size:10px;color:#C9A84C}
+.wtf-cast-toggle.open .wtf-cast-arrow{transform:rotate(180deg)}
+.wtf-cast-list{max-height:0;overflow:hidden;transition:max-height .25s ease}
+.wtf-cast-list.open{max-height:600px}
+.wtf-cast-list-inner{padding:8px 0 6px;border-bottom:.5px solid #e8e0d0;display:flex;flex-direction:column;gap:6px}
+.wtf-cast-list a{font-size:13px;color:#1a1a1a;text-decoration:none;transition:color .15s}
+.wtf-cast-list a:hover{color:#C9A84C;text-decoration:underline}
 .wtf-criterion-btn{display:block;text-align:center;background:#1a1a1a;color:#C9A84C;text-decoration:none;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:10px;border-radius:4px;margin-top:.75rem;transition:background .15s}
 .wtf-criterion-btn:hover{background:#2e2e2e}
 .wtf-episodes-list{display:flex;flex-direction:column}
@@ -162,7 +174,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
       <div class="wtf-guest-card">
         <div class="wtf-guest-avatar">CM</div>
         <div class="wtf-guest-info">
-          <h3>Ciara Moloney</h3>
+          <h3><a href="https://ciaramoloney.net/" target="_blank" style="color:inherit;text-decoration:none;">Ciara Moloney</a></h3>
           <div class="role">Film Critic</div>
           <p>A film critic and writer specializing in American cinema of the 1980s, Ciara Moloney brings a sharp analytical lens to Hughes's teen classic and its place in the Criterion canon.</p>
           <div class="wtf-guest-links">
@@ -229,12 +241,27 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
     <div class="wtf-sidebar-card">
       <div class="wtf-sidebar-header">Film Details</div>
       <div class="wtf-sidebar-body">
-        <div class="wtf-film-detail"><span class="label">Director</span><span class="value">John Hughes</span></div>
+        <div class="wtf-film-detail"><span class="label">Director</span><span class="value"><a href="https://www.imdb.com/name/nm0000455/" target="_blank">John Hughes</a></span></div>
         <div class="wtf-film-detail"><span class="label">Year</span><span class="value">1985</span></div>
         <div class="wtf-film-detail"><span class="label">Runtime</span><span class="value">1h 37m</span></div>
         <div class="wtf-film-detail"><span class="label">Country</span><span class="value">USA</span></div>
         <div class="wtf-film-detail"><span class="label">Criterion Spine</span><span class="value">#905</span></div>
-        <div class="wtf-film-detail"><span class="label">Score</span><span class="value">Keith Forsey</span></div>
+        <button type="button" class="wtf-cast-toggle" id="wtf-cast-toggle" aria-expanded="false">
+          <span class="label">Starring</span>
+          <span class="value"><strong>Click to Expand</strong> <span class="wtf-cast-arrow">&#9662;</span></span>
+        </button>
+        <div class="wtf-cast-list" id="wtf-cast-list">
+          <div class="wtf-cast-list-inner">
+            <a href="https://www.imdb.com/name/nm0000389/" target="_blank">Emilio Estevez</a>
+            <a href="https://www.imdb.com/name/nm0000208/" target="_blank">Molly Ringwald</a>
+            <a href="https://www.imdb.com/name/nm0000555/" target="_blank">Judd Nelson</a>
+            <a href="https://www.imdb.com/name/nm0322339/" target="_blank">Paul Gleason</a>
+            <a href="https://www.imdb.com/name/nm0001309/" target="_blank">Anthony Michael Hall</a>
+            <a href="https://www.imdb.com/name/nm0000639/" target="_blank">Ally Sheedy</a>
+            <a href="https://www.imdb.com/name/nm0438127/" target="_blank">John Kapelos</a>
+            <a href="https://www.imdb.com/name/nm0212939/" target="_blank">Ron Dean</a>
+          </div>
+        </div>
         <a href="https://www.criterion.com/films/29228-the-breakfast-club" class="wtf-criterion-btn" target="_blank">Buy on Criterion.com &rarr;</a>
       </div>
     </div>
@@ -297,6 +324,16 @@ function setTab(tab) {
     else el.textContent = target;
   }
   requestAnimationFrame(step);
+})();
+(function castToggle() {
+  const btn = document.getElementById('wtf-cast-toggle');
+  const list = document.getElementById('wtf-cast-list');
+  if (!btn || !list) return;
+  btn.addEventListener('click', () => {
+    const open = list.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
 })();
 </script>
 </body>
