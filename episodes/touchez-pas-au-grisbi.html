@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Touchez pas au grisbi — Why This Film?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
+.wtf-nav{background:#1a1a1a;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:56px;position:sticky;top:0;z-index:10}
+.wtf-nav-logo{display:flex;align-items:center;gap:10px;color:#F5F0E8;font-family:'Playfair Display',serif;font-size:15px;letter-spacing:.03em;text-decoration:none}
+.wtf-nav-logo img{width:32px;height:32px;object-fit:contain}
+.wtf-nav-links{display:flex;gap:1.5rem;list-style:none}
+.wtf-nav-links a{color:#b8b0a0;text-decoration:none;font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;transition:color .2s}
+.wtf-nav-links a:hover{color:#C9A84C}
+.wtf-hero{background:#1a1a1a;padding:3rem 2rem 4rem;position:relative;overflow:hidden}
+.grain-overlay{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px}
+.wtf-hero-inner{max-width:880px;margin:0 auto;display:grid;grid-template-columns:1fr 288px;gap:3rem;align-items:start}
+.spine-counter{font-family:'Playfair Display',serif;font-size:80px;font-weight:700;line-height:1;letter-spacing:-.02em;margin-bottom:.5rem}
+.spine-counter .hash{color:rgba(201,168,76,.2)}
+.spine-counter .num{color:#C9A84C}
+.wtf-spine-badge{display:inline-flex;align-items:center;background:#C9A84C;color:#1a1a1a;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:2px;margin-bottom:1rem}
+.wtf-hero h1{font-family:'Playfair Display',serif;font-size:44px;font-weight:700;color:#F5F0E8;line-height:1.12;margin-bottom:.4rem}
+.wtf-hero-sub{font-family:'Playfair Display',serif;font-size:17px;font-style:italic;color:#8a8070;margin-bottom:1.5rem}
+.wtf-pull-quote{border-left:2px solid #C9A84C;padding-left:1rem;margin:1.5rem 0;font-family:'Playfair Display',serif;font-style:italic;font-size:17px;color:#c0b8a8;line-height:1.6}
+.wtf-hero-meta{display:flex;gap:1.75rem;margin-top:1.5rem}
+.wtf-meta-pill{font-size:12px;color:#8a8070;letter-spacing:.05em}
+.wtf-meta-pill span{color:#F5F0E8;font-weight:500}
+.wtf-player-card{background:#242424;border:.5px solid #3a3a3a;border-radius:8px;overflow:hidden}
+.wtf-player-top{background:#C9A84C;padding:1rem;text-align:center}
+.wtf-player-top p{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#1a1a1a;margin-bottom:.4rem}
+.wtf-player-top strong{font-family:'Playfair Display',serif;font-size:15px;color:#1a1a1a}
+.wtf-player-body{padding:1rem}
+.wtf-play-btn{width:100%;background:#C9A84C;border:none;border-radius:4px;color:#1a1a1a;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:10px;letter-spacing:.04em;text-decoration:none}
+.wtf-play-icon{width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:8px solid #1a1a1a}
+.wtf-player-links{display:flex;flex-direction:column;gap:6px}
+.wtf-player-link{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:#2e2e2e;border-radius:4px;text-decoration:none;font-size:12px;color:#c0b8a8;transition:background .15s}
+.wtf-player-link:hover{background:#383838}
+.wtf-player-link .arrow{color:#C9A84C}
+.wtf-body{max-width:880px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 288px;gap:3rem;align-items:start}
+.wtf-section-label{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#C9A84C;margin-bottom:.75rem}
+.wtf-section{margin-bottom:2.75rem}
+.wtf-section p{font-size:15px;line-height:1.8;color:#4a4540}
+.wtf-guest-card{background:#1a1a1a;border-radius:8px;padding:1.5rem;margin-bottom:2.75rem;display:flex;gap:1rem;align-items:flex-start}
+.wtf-guest-avatar{width:52px;height:52px;border-radius:50%;background:#C9A84C;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#1a1a1a;flex-shrink:0}
+.wtf-guest-info h3{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#F5F0E8;margin-bottom:2px}
+.wtf-guest-info .role{font-size:12px;color:#8a8070;letter-spacing:.05em;margin-bottom:.6rem}
+.wtf-guest-info p{font-size:13px;line-height:1.65;color:#a0988a}
+.wtf-guest-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:.75rem}
+.wtf-guest-link{font-size:11px;color:#C9A84C;text-decoration:none;border:.5px solid #C9A84C;border-radius:2px;padding:3px 8px;letter-spacing:.06em;text-transform:uppercase;transition:background .15s}
+.wtf-guest-link:hover{background:rgba(201,168,76,.1)}
+.wtf-toggle-wrap{display:flex;border:.5px solid #d8d0c0;border-radius:4px;overflow:hidden;width:fit-content;margin-bottom:1rem}
+.wtf-toggle-btn{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:7px 18px;border:none;cursor:pointer;background:white;color:#8a8070;transition:all .15s}
+.wtf-toggle-btn.active{background:#1a1a1a;color:#C9A84C}
+.wtf-toggle-note{font-size:12px;color:#a0988a;font-style:italic;margin-bottom:.75rem;line-height:1.5}
+.wtf-resources-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.wtf-resource-item{background:white;border:.5px solid #d8d0c0;border-radius:6px;padding:.9rem 1rem;text-decoration:none;display:block;transition:border-color .15s}
+.wtf-resource-item:hover{border-color:#C9A84C}
+.wtf-resource-item.hidden{display:none}
+.wtf-resource-type{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#C9A84C;font-weight:500;margin-bottom:4px}
+.wtf-resource-title{font-size:13px;color:#1a1a1a;line-height:1.4;font-weight:500}
+.wtf-resource-source{font-size:11px;color:#8a8070;margin-top:3px}
+.wtf-ts-intro{font-size:13px;color:#8a8070;margin-bottom:1rem;line-height:1.5}
+.wtf-timestamps{display:flex;flex-direction:column}
+.wtf-ts-item{display:flex;align-items:baseline;gap:10px;padding:9px 10px;border-radius:4px;text-decoration:none;transition:background .15s;cursor:pointer;border-bottom:.5px solid rgba(201,168,76,.1)}
+.wtf-ts-item:last-child{border-bottom:none}
+.wtf-ts-item:hover{background:rgba(201,168,76,.07)}
+.wtf-ts-time{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;color:#C9A84C;min-width:42px;letter-spacing:.04em;flex-shrink:0}
+.wtf-ts-label{font-size:13px;color:#4a4540;line-height:1.4;flex:1}
+.wtf-sidebar-card{background:white;border:.5px solid #d8d0c0;border-radius:8px;overflow:hidden;margin-bottom:1.25rem}
+.wtf-sidebar-header{background:#1a1a1a;padding:.75rem 1rem;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#C9A84C;font-weight:500}
+.wtf-sidebar-body{padding:1rem}
+.wtf-film-detail{display:flex;justify-content:space-between;padding:6px 0;border-bottom:.5px solid #e8e0d0;font-size:13px}
+.wtf-film-detail:last-child{border-bottom:none}
+.wtf-film-detail .label{color:#8a8070}
+.wtf-film-detail .value{color:#1a1a1a;font-weight:500;text-align:right}
+.wtf-criterion-btn{display:block;text-align:center;background:#1a1a1a;color:#C9A84C;text-decoration:none;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:10px;border-radius:4px;margin-top:.75rem;transition:background .15s}
+.wtf-criterion-btn:hover{background:#2e2e2e}
+.wtf-episodes-list{display:flex;flex-direction:column}
+.wtf-ep-item{display:flex;align-items:center;gap:8px;text-decoration:none;padding:8px 0;border-bottom:.5px solid #e8e0d0}
+.wtf-ep-item:last-child{border-bottom:none}
+.wtf-ep-num{font-size:10px;color:#C9A84C;font-weight:500;min-width:22px}
+.wtf-ep-title{font-size:12px;color:#1a1a1a;line-height:1.35;flex:1}
+.wtf-ep-arrow{color:#c0b8a8;font-size:12px}
+.wtf-footer{background:#1a1a1a;padding:2rem;text-align:center;margin-top:2rem}
+.wtf-footer p{font-size:12px;color:#5a5248;letter-spacing:.04em}
+.wtf-footer a{color:#C9A84C;text-decoration:none}
+.wtf-footer a:hover{text-decoration:underline}
+.wtf-trailer{margin-top:1.75rem}
+.wtf-trailer-label{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#C9A84C;margin-bottom:.6rem}
+.wtf-trailer-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:6px}
+.wtf-trailer-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+</style>
+</head>
+<body>
+
+<nav class="wtf-nav">
+  <a class="wtf-nav-logo" href="../index.html">
+    <img src="https://www.buzzsprout.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTUyNDk1MzI1LCJwdXIiOiJibG9iX2lkIn19--86e5f21fbc3e628cef3721928333b70df501eb3e/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZmlsbCI6WzI1MCwyNTAseyJjcm9wIjoiY2VudHJlIn1dLCJzYXZlciI6eyJxdWFsaXR5Ijo2MH0sImNvbG91cnNwYWNlIjoic3JnYiJ9LCJwdXIiOiJ2YXJpYXRpb24ifX0=--21f3793904e6ce1806a5a794a691217fceef82c7/Logo.png" alt="Why This Film?"/>
+    Why This Film?
+  </a>
+  <ul class="wtf-nav-links">
+    <li><a href="../index.html#all-episodes">Episodes</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="https://www.buzzsprout.com/2528877/support" target="_blank">Support</a></li>
+  </ul>
+</nav>
+
+<div class="wtf-hero">
+  <div class="grain-overlay"></div>
+  <div class="wtf-hero-inner">
+    <div>
+      <div class="spine-counter"><span class="hash">#</span><span class="num" id="spineNum">0</span></div>
+      <div class="wtf-spine-badge">Criterion Spine #271 &nbsp;·&nbsp; Episode 2</div>
+      <h1>Touchez pas au grisbi</h1>
+      <div class="wtf-hero-sub">Jacques Becker, 1954 &nbsp;·&nbsp; with Ginette Vincendeau</div>
+      <div class="wtf-pull-quote">"Getting old is the only real crime in this business."</div>
+      <div class="wtf-hero-meta">
+        <div class="wtf-meta-pill">Runtime <span>1h 34m</span></div>
+        <div class="wtf-meta-pill">Country <span>France</span></div>
+        <div class="wtf-meta-pill">Language <span>French</span></div>
+      </div>
+      <div class="wtf-trailer">
+        <div class="wtf-trailer-label">Watch the Trailer</div>
+        <div class="wtf-trailer-wrap">
+          <iframe src="https://www.youtube.com/embed/-TVtSLzG4D8" allowfullscreen title="Touchez Pas au Grisbi Trailer"></iframe>
+        </div>
+      </div>
+    </div>
+    <div>
+      <img src="../images/touchez-pas-au-grisbi.jpg" style="width:100%;border-radius:6px;display:block;margin-bottom:.75rem;box-shadow:0 4px 20px rgba(0,0,0,.5)" alt="Touchez pas au grisbi Criterion cover">
+      <div class="wtf-player-card">
+        <div class="wtf-player-top">
+          <p>Now Playing</p>
+          <strong>Episode 2</strong>
+        </div>
+        <div class="wtf-player-body">
+          <a href="https://www.buzzsprout.com/2528877/episodes/18240710" target="_blank" class="wtf-play-btn"><span class="wtf-play-icon"></span>Listen on Buzzsprout</a>
+          <div class="wtf-player-links">
+            <a href="https://podcasts.apple.com/us/podcast/why-this-film/id1844415792" target="_blank" class="wtf-player-link">Apple Podcasts <span class="arrow">→</span></a>
+            <a href="https://open.spotify.com/show/0Msymsg2epFz0yDmyIIM7E" target="_blank" class="wtf-player-link">Spotify <span class="arrow">→</span></a>
+            <a href="https://www.youtube.com/channel/UC6oxH7_2XeRCvZGlg2UhThQ" target="_blank" class="wtf-player-link">YouTube <span class="arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wtf-body">
+  <div>
+
+    <div class="wtf-section">
+      <div class="wtf-section-label">About the Film</div>
+      <p>Max, a veteran Parisian gangster, has pulled off his last job — a gold heist at Orly — and wants nothing more than a quiet retirement. When his best friend is kidnapped by a rival gang, Max is pulled back into the underworld one final time. Jacques Becker's masterpiece of French noir is less about crime than about loyalty, aging, and the price of a life lived outside the law. Jean Gabin's performance set the template for the cinematic gangster who has outlasted his time.</p>
+    </div>
+
+    <div class="wtf-section">
+      <div class="wtf-section-label">Your Guest</div>
+      <div class="wtf-guest-card">
+        <div class="wtf-guest-avatar">GV</div>
+        <div class="wtf-guest-info">
+          <h3>Ginette Vincendeau</h3>
+          <div class="role">French Cinema Scholar</div>
+          <p>One of the foremost authorities on French cinema, Ginette Vincendeau has written extensively on the French New Wave, film noir, and stardom in French film. Her expertise on Gabin and the gangster tradition is unparalleled.</p>
+          <div class="wtf-guest-links">
+            <a href="https://www.kcl.ac.uk/people/professor-ginette-vincendeau" target="_blank" class="wtf-guest-link">King's College London</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wtf-section">
+      <div class="wtf-section-label">Curated Resources</div>
+      <div class="wtf-toggle-wrap">
+        <button class="wtf-toggle-btn active" id="btn-before" onclick="setTab('before')">Before You Watch</button>
+        <button class="wtf-toggle-btn" id="btn-after" onclick="setTab('after')">After You Watch</button>
+      </div>
+      <p class="wtf-toggle-note" id="toggle-note">Spoiler-free context and starting points.</p>
+      <div class="wtf-resources-grid">
+        <a href="#" class="wtf-resource-item" data-tab="before">
+          <div class="wtf-resource-type">Context</div>
+          <div class="wtf-resource-title">Jean Gabin: The Definitive French Movie Star</div>
+          <div class="wtf-resource-source">Criterion Collection</div>
+        </a>
+        <a href="#" class="wtf-resource-item" data-tab="before">
+          <div class="wtf-resource-type">Essay</div>
+          <div class="wtf-resource-title">French Noir and the Postwar Criminal Imagination</div>
+          <div class="wtf-resource-source">Sight &amp; Sound</div>
+        </a>
+        <a href="#" class="wtf-resource-item" data-tab="before">
+          <div class="wtf-resource-type">Film</div>
+          <div class="wtf-resource-title">Pépé le Moko — Gabin's Defining Prewar Role</div>
+          <div class="wtf-resource-source">1937</div>
+        </a>
+        <a href="#" class="wtf-resource-item" data-tab="before">
+          <div class="wtf-resource-type">Context</div>
+          <div class="wtf-resource-title">The Golden Age of French Crime Cinema</div>
+          <div class="wtf-resource-source">Film Comment</div>
+        </a>
+        <a href="#" class="wtf-resource-item hidden" data-tab="after">
+          <div class="wtf-resource-type">Essay</div>
+          <div class="wtf-resource-title">Becker's World: Intimacy in the Crime Film</div>
+          <div class="wtf-resource-source">Cahiers du Cinéma</div>
+        </a>
+        <a href="#" class="wtf-resource-item hidden" data-tab="after">
+          <div class="wtf-resource-type">Film</div>
+          <div class="wtf-resource-title">Le Samouraï — Melville's Tribute and Evolution</div>
+          <div class="wtf-resource-source">1967 · Jean-Pierre Melville</div>
+        </a>
+        <a href="#" class="wtf-resource-item hidden" data-tab="after">
+          <div class="wtf-resource-type">Essay</div>
+          <div class="wtf-resource-title">The Male Bond: Friendship in French Noir</div>
+          <div class="wtf-resource-source">Screen</div>
+        </a>
+        <a href="#" class="wtf-resource-item hidden" data-tab="after">
+          <div class="wtf-resource-type">Book</div>
+          <div class="wtf-resource-title">Jean Gabin: The Actor Who Was France</div>
+          <div class="wtf-resource-source">Ginette Vincendeau</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="wtf-section">
+      <div class="wtf-section-label">Episode Index</div>
+      <p class="wtf-ts-intro">Jump to any moment in the conversation. Times link directly to the Buzzsprout player.</p>
+      <div class="wtf-timestamps">
+        <a href="https://www.buzzsprout.com/2528877/episodes/18240710?t=0" class="wtf-ts-item" target="_blank">
+          <span class="wtf-ts-time">00:00</span>
+          <span class="wtf-ts-label">Introduction &amp; episode overview</span>
+        </a>
+        <a href="https://www.buzzsprout.com/2528877/episodes/18240710?t=60" class="wtf-ts-item" target="_blank">
+          <span class="wtf-ts-time">01:00</span>
+          <span class="wtf-ts-label">Full timestamps coming soon</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div>
+    <div class="wtf-sidebar-card">
+      <div class="wtf-sidebar-header">Film Details</div>
+      <div class="wtf-sidebar-body">
+        <div class="wtf-film-detail"><span class="label">Director</span><span class="value">Jacques Becker</span></div>
+        <div class="wtf-film-detail"><span class="label">Year</span><span class="value">1954</span></div>
+        <div class="wtf-film-detail"><span class="label">Runtime</span><span class="value">1h 34m</span></div>
+        <div class="wtf-film-detail"><span class="label">Country</span><span class="value">France</span></div>
+        <div class="wtf-film-detail"><span class="label">Criterion Spine</span><span class="value">#271</span></div>
+        <div class="wtf-film-detail"><span class="label">Starring</span><span class="value">Jean Gabin</span></div>
+        <a href="https://www.criterion.com/films/27744-touchez-pas-au-grisbi" class="wtf-criterion-btn" target="_blank">Buy on Criterion.com →</a>
+      </div>
+    </div>
+
+    <div class="wtf-sidebar-card">
+      <div class="wtf-sidebar-header">More Episodes</div>
+      <div class="wtf-sidebar-body">
+        <div class="wtf-episodes-list">
+          <a href="la-ceremonie.html" class="wtf-ep-item">
+            <span class="wtf-ep-num">Ep 12</span>
+            <span class="wtf-ep-title">La cérémonie with Girish Shambu</span>
+            <span class="wtf-ep-arrow">→</span>
+          </a>
+          <a href="guillermo-del-toro-pinocchio.html" class="wtf-ep-item">
+            <span class="wtf-ep-num">Ep 11</span>
+            <span class="wtf-ep-title">Guillermo del Toro's Pinocchio with Caleb Tyson</span>
+            <span class="wtf-ep-arrow">→</span>
+          </a>
+          <a href="kagemusha.html" class="wtf-ep-item">
+            <span class="wtf-ep-num">Ep 10</span>
+            <span class="wtf-ep-title">Kagemusha with Michael Repsch</span>
+            <span class="wtf-ep-arrow">→</span>
+          </a>
+          <a href="royal-tenenbaums.html" class="wtf-ep-item">
+            <span class="wtf-ep-num">Ep 9</span>
+            <span class="wtf-ep-title">The Royal Tenenbaums with Chris Cook</span>
+            <span class="wtf-ep-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wtf-footer">
+  <p>© 2026 Why This Film? &nbsp;·&nbsp; <a href="#">Instagram</a> &nbsp;·&nbsp; <a href="#">YouTube</a> &nbsp;·&nbsp; <a href="https://www.buzzsprout.com/2528877/support" target="_blank">Support the Show</a></p>
+</div>
+
+<script>
+function setTab(tab) {
+  document.getElementById('btn-before').classList.toggle('active', tab === 'before');
+  document.getElementById('btn-after').classList.toggle('active', tab === 'after');
+  document.getElementById('toggle-note').textContent = tab === 'before'
+    ? 'Spoiler-free context and starting points.'
+    : 'Essays, deeper reads, and where to go next — best after seeing the film.';
+  document.querySelectorAll('.wtf-resource-item').forEach(el => {
+    el.classList.toggle('hidden', el.dataset.tab !== tab);
+  });
+}
+(function animateSpine() {
+  const el = document.getElementById('spineNum');
+  const target = 271;
+  const duration = 700;
+  const start = performance.now();
+  function step(now) {
+    const t = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - t, 3);
+    el.textContent = Math.round(ease * target);
+    if (t < 1) requestAnimationFrame(step);
+    else el.textContent = target;
+  }
+  requestAnimationFrame(step);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why This Film? — Exploring the Criterion Collection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
+
+/* NAV */
+.wtf-nav{background:#1a1a1a;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:56px;position:sticky;top:0;z-index:10}
+.wtf-nav-logo{display:flex;align-items:center;gap:10px;color:#F5F0E8;font-family:'Playfair Display',serif;font-size:15px;letter-spacing:.03em;text-decoration:none}
+.wtf-nav-logo img{width:32px;height:32px;object-fit:contain;border-radius:4px}
+.wtf-nav-links{display:flex;gap:1.5rem;list-style:none}
+.wtf-nav-links a{color:#b8b0a0;text-decoration:none;font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;transition:color .2s}
+.wtf-nav-links a:hover{color:#C9A84C}
+
+/* HERO */
+.wtf-home-hero{background:#1a1a1a;padding:5rem 2rem 6rem;position:relative;overflow:hidden;text-align:center}
+.grain-overlay{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px}
+.wtf-hero-inner{max-width:680px;margin:0 auto;position:relative;z-index:1}
+.wtf-show-art{width:140px;height:140px;border-radius:16px;object-fit:cover;margin:0 auto 2rem;display:block;box-shadow:0 8px 40px rgba(0,0,0,.6)}
+.wtf-home-hero h1{font-family:'Playfair Display',serif;font-size:58px;font-weight:700;color:#F5F0E8;line-height:1.1;margin-bottom:.75rem;letter-spacing:-.01em}
+.wtf-home-tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:20px;color:#C9A84C;margin-bottom:2rem;line-height:1.5}
+.wtf-home-about{font-size:15px;line-height:1.9;color:#a0988a;max-width:560px;margin:0 auto 2.5rem}
+.wtf-cta-group{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.wtf-cta-primary{background:#C9A84C;color:#1a1a1a;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:13px 28px;border-radius:4px;transition:opacity .15s}
+.wtf-cta-primary:hover{opacity:.85}
+.wtf-cta-secondary{background:transparent;color:#C9A84C;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:13px 28px;border-radius:4px;border:.5px solid #C9A84C;transition:background .15s}
+.wtf-cta-secondary:hover{background:rgba(201,168,76,.1)}
+
+/* DIVIDER */
+.wtf-divider{height:.5px;background:#d8d0c0;max-width:880px;margin:0 auto}
+
+/* EPISODES SECTION */
+.wtf-episodes-section{max-width:880px;margin:0 auto;padding:3.5rem 2rem 4rem}
+.wtf-section-heading{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#1a1a1a;margin-bottom:.4rem}
+.wtf-section-sub{font-size:13px;color:#8a8070;margin-bottom:2.25rem;letter-spacing:.02em}
+
+/* LATEST BADGE */
+.wtf-latest-flag{display:inline-flex;align-items:center;background:#C9A84C;color:#1a1a1a;font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px;border-radius:2px;margin-left:8px;vertical-align:middle;position:relative;top:-2px}
+
+/* EPISODE CARDS GRID */
+.wtf-ep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media(max-width:680px){.wtf-ep-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.wtf-ep-grid{grid-template-columns:1fr}}
+.wtf-ep-card{background:#1a1a1a;border:.5px solid #2e2e2e;border-radius:8px;padding:1.25rem;text-decoration:none;display:flex;flex-direction:column;gap:.5rem;transition:border-color .2s;position:relative;overflow:hidden;min-height:220px}
+.wtf-ep-card:hover{border-color:#C9A84C}
+.wtf-ep-card-bg{position:absolute;inset:0;background-size:cover;background-position:center top;transition:transform .5s ease;z-index:0}
+.wtf-ep-card:hover .wtf-ep-card-bg{transform:scale(1.06)}
+.wtf-ep-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,13,10,.97) 35%,rgba(15,13,10,.7) 65%,rgba(15,13,10,.35) 100%);z-index:1}
+.wtf-ep-card-content{position:relative;z-index:2;display:flex;flex-direction:column;gap:.5rem;height:100%}
+.wtf-ep-card-spine{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;line-height:1;color:#C9A84C;letter-spacing:-.02em;margin-bottom:.15rem}
+.wtf-ep-card-spine .hash{opacity:.25}
+.wtf-ep-card-num{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#F5F0E8}
+.wtf-ep-card-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#F5F0E8;line-height:1.25;margin-top:.25rem}
+.wtf-ep-card-dir{font-size:12px;color:#d8d0c0;margin-top:.1rem}
+.wtf-ep-card-guest{font-size:11px;color:#C9A84C;margin-top:auto;padding-top:.75rem;letter-spacing:.03em}
+
+/* FOOTER */
+.wtf-footer{background:#1a1a1a;padding:2rem;text-align:center;margin-top:2rem}
+.wtf-footer p{font-size:12px;color:#5a5248;letter-spacing:.04em}
+.wtf-footer a{color:#C9A84C;text-decoration:none}
+.wtf-footer a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<nav class="wtf-nav">
+  <a class="wtf-nav-logo" href="index.html">
+    <img src="https://www.buzzsprout.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTUyNDk1MzI1LCJwdXIiOiJibG9iX2lkIn19--86e5f21fbc3e628cef3721928333b70df501eb3e/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZmlsbCI6WzI1MCwyNTAseyJjcm9wIjoiY2VudHJlIn1dLCJzYXZlciI6eyJxdWFsaXR5Ijo2MH0sImNvbG91cnNwYWNlIjoic3JnYiJ9LCJwdXIiOiJ2YXJpYXRpb24ifX0=--21f3793904e6ce1806a5a794a691217fceef82c7/Logo.png" alt="Why This Film?"/>
+    Why This Film?
+  </a>
+  <ul class="wtf-nav-links">
+    <li><a href="#all-episodes">Episodes</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="https://www.buzzsprout.com/2528877/support" target="_blank">Support</a></li>
+  </ul>
+</nav>
+
+<div class="wtf-home-hero">
+  <div class="grain-overlay"></div>
+  <div class="wtf-hero-inner">
+    <img class="wtf-show-art"
+      src="https://www.buzzsprout.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTUyNDk1MzI1LCJwdXIiOiJibG9iX2lkIn19--86e5f21fbc3e628cef3721928333b70df501eb3e/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZmlsbCI6WzI1MCwyNTAseyJjcm9wIjoiY2VudHJlIn1dLCJzYXZlciI6eyJxdWFsaXR5Ijo2MH0sImNvbG91cnNwYWNlIjoic3JnYiJ9LCJwdXIiOiJ2YXJpYXRpb24ifX0=--21f3793904e6ce1806a5a794a691217fceef82c7/Logo.png"
+      alt="Why This Film? podcast artwork"/>
+    <h1>Why This Film?</h1>
+    <div class="wtf-home-tagline">Exploring the Criterion Collection, one spine at a time.</div>
+    <p class="wtf-home-about">In each episode, I sit down with film historians, critics, filmmakers, and scholars for in-depth conversations about a single film from the Criterion Collection. From French New Wave masterpieces to American westerns, from experimental shorts to beloved classics, we unpack what makes these films essential viewing.</p>
+    <div class="wtf-cta-group">
+      <a href="episodes/la-ceremonie.html" class="wtf-cta-primary">Latest Episode →</a>
+      <a href="#all-episodes" class="wtf-cta-secondary">All Episodes ↓</a>
+    </div>
+  </div>
+</div>
+
+<div class="wtf-divider"></div>
+
+<div class="wtf-episodes-section" id="all-episodes">
+  <div class="wtf-section-heading">All Episodes</div>
+  <div class="wtf-section-sub">12 episodes &nbsp;·&nbsp; New episodes release 1–2 times monthly</div>
+
+  <div class="wtf-ep-grid">
+
+    <a href="episodes/la-ceremonie.html" class="wtf-ep-card">
+      <div class="wtf-ep-card-bg" style="background-image:url('images/la ceremonie.jpg')"></div>
+      <div class="wtf-ep-card-overlay"></div>
+      <div class="wtf-ep-card-content">
+        <div class="wtf-ep-card-num">Episode 12 <span class="wtf-latest-flag">Latest</span></div>
+        <div class="wtf-ep-card-spine"><span class="hash">#</span>1199</div>
+        <div class="wtf-ep-card-title">La cérémonie</div>
+        <div class="wtf-ep-card-dir">Claude Chabrol · 1995</div>
+        <div class="wtf-ep-card-guest">with Girish Shambu</div>
+      </div>
+    </a>
+
+    <a href="episodes/guillermo-del-toro-pinocchio.html" class="wtf-ep-card">
+      <div class="wtf-ep-card-bg" style="background-image:url('images/guillermo-del-toros-pinocchio.jpg')"></div>
+      <div class="wtf-ep-card-overlay"></div>
+      <div class="wtf-ep-card-content">
+        <div class="wtf-ep-card-num">Episode 11</div>
+        <div class="wtf-ep-card-spine"><span class="hash">#</span>1201</div>
+        <div class="wtf-ep-card-title">Guillermo del Toro's Pinocchio</div>
+        <div class="wtf-ep-card-dir">del Toro &amp; Gustafson · 2022</div>
+        <div class="wtf-ep-card-guest">with Caleb Tyson</div>
+      </div>
+    </a>
+
+    <a href="episodes/kagemusha.html" class="wtf-ep-card">
+      <div class="wtf-ep-card-bg" style="background-image:url('images/Kagemusha.jpg')"></div>
+      <div class="wtf-ep-card-overlay"></div>
+      <div class="wtf-ep-card-content">
+        <div class="wtf-ep-card-num">Episode 10</div>
+        <div class="wtf-ep-card-spine"><span class="hash">#</span>267</div>
+        <div class="wtf-ep-card-title">Kagemusha</div>
+        <div class="wtf-ep-card-dir">Akira Kurosawa · 1980</div>
+        <div class="wtf-ep-card-guest">with Michael Repsch</div>
+      </div>
+    </a>
+
+    <a href="episodes/royal-tenenbaums.html" class="wtf-ep-card">
+      <div class="wtf-ep-card-bg" style="background-image:url('images/the-royal-tenenbaums.jpg')"></div>
+      <div class="wtf-ep-card-overlay"></div>
+      <div class="wtf-ep-card-content">
+        <div class="wtf-ep-card-num">Episode 9</div>
+        <div class="wtf-ep-card-spine"><span class="hash">#</span>157</div>
+        <div class="wtf-ep-card-title">The Royal Tenenbaums</div>
+        <div class="wtf-ep-card-dir">Wes Anderson · 2001</div>
+        <div class="wtf-ep-card-guest">with Chris Cook</div>
+      </div>
+    </a>
+
+    <a href="episodes/thin-red-line.html" class="wtf-ep-card">
+      <div class="wtf-ep-card-bg" style="background-image:url('images/the-thin-red-line.jpg')"></div>
+      <div class="wtf-ep-card-overlay"></div>
+      <div class="wtf-ep-card-content">
+        <div class="wtf-ep-card-num">Episode 8</div>
+        <div class="wtf-ep-card-spine"><span class="hash">#</span>536</div>
+        <div class="wtf-ep-card-title">The Thin Red Line</div>
+        <div class="wtf-ep-card-dir">Terrence Malick · 1998</div>
+        <div class="wtf-ep-card-guest">with Jared Frederick</div>
+      </div>
+    </a>
+
+    <a href="episodes/pee-wees-big-adventure.html" class="wtf-ep-card">
+      <div class="wtf-ep-card-bg" style="background-image:url('images/pee-wees-big-adventure.jpg')"></div>
+      <div class="wtf-ep-card-overlay"></div>
+      <div class="wtf-ep-card-content">
+        <div class="wtf-ep-card-num">Episode 7</div>
+        <div class="wtf-ep-card-spine"><span class="hash">#</span>1293</div>
+        <div class="wtf-ep-card-title">Pee-wee's Big Adventure</div>
+        <div class="wtf-ep-card-dir">Tim Burton · 1985</div>
+        <div class="wtf-ep-card-guest">with Jesse Thorn</div>
+      </div>
+    </a>
+
+    <a href="episodes/repo-man.html" class="wtf-ep-card">
+      <div class="wtf-ep-card-bg" style="background-image:url('images/repo-man.jpg')"></div>
+      <div class="wtf-ep-card-overlay"></div>
+      <div class="wtf-ep-card-content">
+        <div class="wtf-ep-card-num">Episode 6</div>
+        <div class="wtf-ep-card-spine"><span class="hash">#</span>654</div>
+        <div class="wtf-ep-card-title">Repo Man</div>
+        <div class="wtf-ep-card-dir">Alex Cox · 1984</div>
+        <div class="wtf-ep-card-guest">with James Chestnut</div>
+      </div>
+    </a>
+
+    <a href="episodes/winchester-73.html" class="wtf-ep-card">
+      <div class="wtf-ep-card-bg" style="background-image:url('images/winchester-73.jpg')"></div>
+      <div class="wtf-ep-card-overlay"></div>
+      <div class="wtf-ep-card-content">
+        <div class="wtf-ep-card-num">Episode 5</div>
+        <div class="wtf-ep-card-spine"><span class="hash">#</span>1248</div>
+        <div class="wtf-ep-card-title">Winchester '73</div>
+        <div class="wtf-ep-card-dir">Anthony Mann · 1950</div>
+        <div class="wtf-ep-card-guest">with Brady Crytzer</div>
+      </div>
+    </a>
+
+    <a href="episodes/after-hours.html" class="wtf-ep-card">
+      <div class="wtf-ep-card-bg" style="background-image:url('images/after-hours.jpg')"></div>
+      <div class="wtf-ep-card-overlay"></div>
+      <div class="wtf-ep-card-content">
+        <div class="wtf-ep-card-num">Episode 4</div>
+        <div class="wtf-ep-card-spine"><span class="hash">#</span>1185</div>
+        <div class="wtf-ep-card-title">After Hours</div>
+        <div class="wtf-ep-card-dir">Martin Scorsese · 1985</div>
+        <div class="wtf-ep-card-guest">with Sheila O'Malley</div>
+      </div>
+    </a>
+
+    <a href="episodes/the-breakfast-club.html" class="wtf-ep-card">
+      <div class="wtf-ep-card-bg" style="background-image:url('images/the-breakfast-club.jpg')"></div>
+      <div class="wtf-ep-card-overlay"></div>
+      <div class="wtf-ep-card-content">
+        <div class="wtf-ep-card-num">Episode 3</div>
+        <div class="wtf-ep-card-spine"><span class="hash">#</span>905</div>
+        <div class="wtf-ep-card-title">The Breakfast Club</div>
+        <div class="wtf-ep-card-dir">John Hughes · 1985</div>
+        <div class="wtf-ep-card-guest">with Ciara Moloney</div>
+      </div>
+    </a>
+
+    <a href="episodes/touchez-pas-au-grisbi.html" class="wtf-ep-card">
+      <div class="wtf-ep-card-bg" style="background-image:url('images/touchez-pas-au-grisbi.jpg')"></div>
+      <div class="wtf-ep-card-overlay"></div>
+      <div class="wtf-ep-card-content">
+        <div class="wtf-ep-card-num">Episode 2</div>
+        <div class="wtf-ep-card-spine"><span class="hash">#</span>271</div>
+        <div class="wtf-ep-card-title">Touchez pas au grisbi</div>
+        <div class="wtf-ep-card-dir">Jacques Becker · 1954</div>
+        <div class="wtf-ep-card-guest">with Ginette Vincendeau</div>
+      </div>
+    </a>
+
+    <a href="episodes/la-jetee.html" class="wtf-ep-card">
+      <div class="wtf-ep-card-bg" style="background-image:url('images/la-jetee.jpg')"></div>
+      <div class="wtf-ep-card-overlay"></div>
+      <div class="wtf-ep-card-content">
+        <div class="wtf-ep-card-num">Episode 1</div>
+        <div class="wtf-ep-card-spine"><span class="hash">#</span>387</div>
+        <div class="wtf-ep-card-title">La Jetée</div>
+        <div class="wtf-ep-card-dir">Chris Marker · 1962</div>
+        <div class="wtf-ep-card-guest">with Dr. Dennis Weiss</div>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<div class="wtf-footer">
+  <p>© 2026 Why This Film? &nbsp;·&nbsp; <a href="#">Instagram</a> &nbsp;·&nbsp; <a href="#">YouTube</a> &nbsp;·&nbsp; <a href="https://www.buzzsprout.com/2528877/support" target="_blank">Support the Show</a></p>
+</div>
+
+</body>
+</html>

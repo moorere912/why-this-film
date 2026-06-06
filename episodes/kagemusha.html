@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kagemusha — Why This Film?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
+
+/* NAV */
+.wtf-nav{background:#1a1a1a;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:56px;position:sticky;top:0;z-index:10}
+.wtf-nav-logo{display:flex;align-items:center;gap:10px;color:#F5F0E8;font-family:'Playfair Display',serif;font-size:15px;letter-spacing:.03em;text-decoration:none}
+.wtf-nav-logo img{width:32px;height:32px;object-fit:contain}
+.wtf-nav-links{display:flex;gap:1.5rem;list-style:none}
+.wtf-nav-links a{color:#b8b0a0;text-decoration:none;font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;transition:color .2s}
+.wtf-nav-links a:hover{color:#C9A84C}
+
+/* HERO */
+.wtf-hero{background:#1a1a1a;padding:3rem 2rem 4rem;position:relative;overflow:hidden}
+.grain-overlay{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px}
+.wtf-hero-inner{max-width:880px;margin:0 auto;display:grid;grid-template-columns:1fr 288px;gap:3rem;align-items:start}
+.spine-counter{font-family:'Playfair Display',serif;font-size:80px;font-weight:700;line-height:1;letter-spacing:-.02em;margin-bottom:.5rem}
+.spine-counter .hash{color:rgba(201,168,76,.2)}
+.spine-counter .num{color:#C9A84C}
+.wtf-spine-badge{display:inline-flex;align-items:center;background:#C9A84C;color:#1a1a1a;font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:2px;margin-bottom:1rem}
+.wtf-hero h1{font-family:'Playfair Display',serif;font-size:44px;font-weight:700;color:#F5F0E8;line-height:1.12;margin-bottom:.4rem}
+.wtf-hero-sub{font-family:'Playfair Display',serif;font-size:17px;font-style:italic;color:#8a8070;margin-bottom:1.5rem}
+.wtf-pull-quote{border-left:2px solid #C9A84C;padding-left:1rem;margin:1.5rem 0;font-family:'Playfair Display',serif;font-style:italic;font-size:17px;color:#c0b8a8;line-height:1.6}
+.wtf-hero-meta{display:flex;gap:1.75rem;margin-top:1.5rem}
+.wtf-meta-pill{font-size:12px;color:#8a8070;letter-spacing:.05em}
+.wtf-meta-pill span{color:#F5F0E8;font-weight:500}
+
+/* PLAYER */
+.wtf-player-card{background:#242424;border:.5px solid #3a3a3a;border-radius:8px;overflow:hidden}
+.wtf-player-top{background:#C9A84C;padding:1rem;text-align:center}
+.wtf-player-top p{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#1a1a1a;margin-bottom:.4rem}
+.wtf-player-top strong{font-family:'Playfair Display',serif;font-size:15px;color:#1a1a1a}
+.wtf-player-body{padding:1rem}
+.wtf-play-btn{width:100%;background:#C9A84C;border:none;border-radius:4px;color:#1a1a1a;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:10px;letter-spacing:.04em}
+.wtf-play-icon{width:0;height:0;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:8px solid #1a1a1a}
+.wtf-player-links{display:flex;flex-direction:column;gap:6px}
+.wtf-player-link{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;background:#2e2e2e;border-radius:4px;text-decoration:none;font-size:12px;color:#c0b8a8;transition:background .15s}
+.wtf-player-link:hover{background:#383838}
+.wtf-player-link .arrow{color:#C9A84C}
+
+/* BODY LAYOUT */
+.wtf-body{max-width:880px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 288px;gap:3rem;align-items:start}
+.wtf-section-label{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#C9A84C;margin-bottom:.75rem}
+.wtf-section{margin-bottom:2.75rem}
+.wtf-section p{font-size:15px;line-height:1.8;color:#4a4540}
+
+/* GUEST */
+.wtf-guest-card{background:#1a1a1a;border-radius:8px;padding:1.5rem;margin-bottom:2.75rem;display:flex;gap:1rem;align-items:flex-start}
+.wtf-guest-avatar{width:52px;height:52px;border-radius:50%;background:#C9A84C;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#1a1a1a;flex-shrink:0}
+.wtf-guest-info h3{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#F5F0E8;margin-bottom:2px}
+.wtf-guest-info .role{font-size:12px;color:#8a8070;letter-spacing:.05em;margin-bottom:.6rem}
+.wtf-guest-info p{font-size:13px;line-height:1.65;color:#a0988a}
+.wtf-guest-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:.75rem}
+.wtf-guest-link{font-size:11px;color:#C9A84C;text-decoration:none;border:.5px solid #C9A84C;border-radius:2px;padding:3px 8px;letter-spacing:.06em;text-transform:uppercase;transition:background .15s}
+.wtf-guest-link:hover{background:rgba(201,168,76,.1)}
+
+/* BEFORE/AFTER TOGGLE */
+.wtf-toggle-wrap{display:flex;border:.5px solid #d8d0c0;border-radius:4px;overflow:hidden;width:fit-content;margin-bottom:1rem}
+.wtf-toggle-btn{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:7px 18px;border:none;cursor:pointer;background:white;color:#8a8070;transition:all .15s}
+.wtf-toggle-btn.active{background:#1a1a1a;color:#C9A84C}
+.wtf-toggle-note{font-size:12px;color:#a0988a;font-style:italic;margin-bottom:.75rem;line-height:1.5}
+.wtf-resources-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.wtf-resource-item{background:white;border:.5px solid #d8d0c0;border-radius:6px;padding:.9rem 1rem;text-decoration:none;display:block;transition:border-color .15s}
+.wtf-resource-item:hover{border-color:#C9A84C}
+.wtf-resource-item.hidden{display:none}
+.wtf-resource-type{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#C9A84C;font-weight:500;margin-bottom:4px}
+.wtf-resource-title{font-size:13px;color:#1a1a1a;line-height:1.4;font-weight:500}
+.wtf-resource-source{font-size:11px;color:#8a8070;margin-top:3px}
+
+/* TIMESTAMP INDEX */
+.wtf-ts-intro{font-size:13px;color:#8a8070;margin-bottom:1rem;line-height:1.5}
+.wtf-timestamps{display:flex;flex-direction:column}
+.wtf-ts-item{display:flex;align-items:baseline;gap:10px;padding:9px 10px;border-radius:4px;text-decoration:none;transition:background .15s;cursor:pointer;border-bottom:.5px solid rgba(201,168,76,.1)}
+.wtf-ts-item:last-child{border-bottom:none}
+.wtf-ts-item:hover{background:rgba(201,168,76,.07)}
+.wtf-ts-time{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;color:#C9A84C;min-width:42px;letter-spacing:.04em;flex-shrink:0}
+.wtf-ts-label{font-size:13px;color:#4a4540;line-height:1.4;flex:1}
+
+/* SIDEBAR */
+.wtf-sidebar-card{background:white;border:.5px solid #d8d0c0;border-radius:8px;overflow:hidden;margin-bottom:1.25rem}
+.wtf-sidebar-header{background:#1a1a1a;padding:.75rem 1rem;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#C9A84C;font-weight:500}
+.wtf-sidebar-body{padding:1rem}
+.wtf-film-detail{display:flex;justify-content:space-between;padding:6px 0;border-bottom:.5px solid #e8e0d0;font-size:13px}
+.wtf-film-detail:last-child{border-bottom:none}
+.wtf-film-detail .label{color:#8a8070}
+.wtf-film-detail .value{color:#1a1a1a;font-weight:500;text-align:right}
+.wtf-criterion-btn{display:block;text-align:center;background:#1a1a1a;color:#C9A84C;text-decoration:none;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:10px;border-radius:4px;margin-top:.75rem;transition:background .15s}
+.wtf-criterion-btn:hover{background:#2e2e2e}
+.wtf-episodes-list{display:flex;flex-direction:column}
+.wtf-ep-item{display:flex;align-items:center;gap:8px;text-decoration:none;padding:8px 0;border-bottom:.5px solid #e8e0d0}
+.wtf-ep-item:last-child{border-bottom:none}
+.wtf-ep-num{font-size:10px;color:#C9A84C;font-weight:500;min-width:22px}
+.wtf-ep-title{font-size:12px;color:#1a1a1a;line-height:1.35;flex:1}
+.wtf-ep-arrow{color:#c0b8a8;font-size:12px}
+
+/* FOOTER */
+.wtf-footer{background:#1a1a1a;padding:2rem;text-align:center;margin-top:2rem}
+.wtf-footer p{font-size:12px;color:#5a5248;letter-spacing:.04em}
+.wtf-footer a{color:#C9A84C;text-decoration:none}
+.wtf-footer a:hover{text-decoration:underline}
+.wtf-trailer{margin-top:1.75rem}
+.wtf-trailer-label{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#C9A84C;margin-bottom:.6rem}
+.wtf-trailer-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:6px}
+.wtf-trailer-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+</style>
+</head>
+<body>
+
+<nav class="wtf-nav">
+  <a class="wtf-nav-logo" href="../index.html">
+    <img src="https://www.buzzsprout.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTUyNDk1MzI1LCJwdXIiOiJibG9iX2lkIn19--86e5f21fbc3e628cef3721928333b70df501eb3e/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZmlsbCI6WzI1MCwyNTAseyJjcm9wIjoiY2VudHJlIn1dLCJzYXZlciI6eyJxdWFsaXR5Ijo2MH0sImNvbG91cnNwYWNlIjoic3JnYiJ9LCJwdXIiOiJ2YXJpYXRpb24ifX0=--21f3793904e6ce1806a5a794a691217fceef82c7/Logo.png" alt="Why This Film?"/>
+    Why This Film?
+  </a>
+  <ul class="wtf-nav-links">
+    <li><a href="../index.html">Episodes</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="https://www.buzzsprout.com/2528877/support" target="_blank">Support</a></li>
+  </ul>
+</nav>
+
+<div class="wtf-hero">
+  <div class="grain-overlay"></div>
+  <div class="wtf-hero-inner">
+    <div>
+      <div class="spine-counter"><span class="hash">#</span><span class="num" id="spineNum">0</span></div>
+      <div class="wtf-spine-badge">Criterion Spine #267 &nbsp;·&nbsp; Episode 10</div>
+      <h1>Kagemusha</h1>
+      <div class="wtf-hero-sub">Akira Kurosawa, 1980 &nbsp;·&nbsp; with Michael Repsch</div>
+      <div class="wtf-pull-quote">"Is our identity predetermined, or something we can create?"</div>
+      <div class="wtf-hero-meta">
+        <div class="wtf-meta-pill">Runtime <span>2h 42m</span></div>
+        <div class="wtf-meta-pill">Country <span>Japan</span></div>
+        <div class="wtf-meta-pill">Language <span>Japanese</span></div>
+      </div>
+      <div class="wtf-trailer">
+        <div class="wtf-trailer-label">Watch the Trailer</div>
+        <div class="wtf-trailer-wrap">
+          <iframe src="https://www.youtube.com/embed/pH2hyv53OR8" allowfullscreen title="Kagemusha Trailer"></iframe>
+        </div>
+      </div>
+    </div>
+    <div>
+      <img src="../images/Kagemusha.jpg" style="width:100%;border-radius:6px;display:block;margin-bottom:.75rem;box-shadow:0 4px 20px rgba(0,0,0,.5)" alt="Kagemusha Criterion cover">
+      <div class="wtf-player-card">
+        <div class="wtf-player-top">
+          <p>Now Playing</p>
+          <strong>Episode 10 · 1:15:57</strong>
+        </div>
+        <div class="wtf-player-body">
+          <a href="https://www.buzzsprout.com/2528877/episodes/18925113" target="_blank" class="wtf-play-btn"><span class="wtf-play-icon"></span>Listen on Buzzsprout</a>
+          <div class="wtf-player-links">
+            <a href="https://podcasts.apple.com/us/podcast/why-this-film/id1844415792" target="_blank" class="wtf-player-link">Apple Podcasts <span class="arrow">→</span></a>
+            <a href="https://open.spotify.com/show/0Msymsg2epFz0yDmyIIM7E" target="_blank" class="wtf-player-link">Spotify <span class="arrow">→</span></a>
+            <a href="https://www.youtube.com/channel/UC6oxH7_2XeRCvZGlg2UhThQ" target="_blank" class="wtf-player-link">YouTube <span class="arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wtf-body">
+  <div>
+
+    <div class="wtf-section">
+      <div class="wtf-section-label">About the Film</div>
+      <p>A thief is spared execution to serve as a body double for a dying warlord. Drawn deeper into the role, the line between illusion and reality begins to dissolve — and the fate of an entire clan comes to depend on whether the performance can be sustained. Rendered through Kurosawa's extraordinary use of color, composition, and scale, <em>Kagemusha</em> is a meditation on power, identity, and the cost of belief.</p>
+    </div>
+
+    <div class="wtf-section">
+      <div class="wtf-section-label">Your Guest</div>
+      <div class="wtf-guest-card">
+        <div class="wtf-guest-avatar">MR</div>
+        <div class="wtf-guest-info">
+          <h3>Michael Repsch</h3>
+          <div class="role">President, Dark Star Pictures</div>
+          <p>A film distributor with 200+ titles to his name, Mike brings a unique lens to Kagemusha — one shaped by the question of how films find their audience and endure over time.</p>
+          <div class="wtf-guest-links">
+            <a href="https://www.darkstarpictures.com" class="wtf-guest-link">Dark Star Pictures</a>
+            <a href="https://www.imdb.com/name/nm5317181/" target="_blank" class="wtf-guest-link">IMDb</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wtf-section">
+      <div class="wtf-section-label">Curated Resources</div>
+      <div class="wtf-toggle-wrap">
+        <button class="wtf-toggle-btn active" id="btn-before" onclick="setTab('before')">Before You Watch</button>
+        <button class="wtf-toggle-btn" id="btn-after" onclick="setTab('after')">After You Watch</button>
+      </div>
+      <p class="wtf-toggle-note" id="toggle-note">Spoiler-free context and starting points.</p>
+      <div class="wtf-resources-grid">
+        <a href="#" class="wtf-resource-item" data-tab="before">
+          <div class="wtf-resource-type">Context</div>
+          <div class="wtf-resource-title">The Sengoku Period: History Behind the Film</div>
+          <div class="wtf-resource-source">Encyclopedia Britannica</div>
+        </a>
+        <a href="#" class="wtf-resource-item" data-tab="before">
+          <div class="wtf-resource-type">Film</div>
+          <div class="wtf-resource-title">Where to Start with Kurosawa — Seven Samurai</div>
+          <div class="wtf-resource-source">Criterion Spine #2</div>
+        </a>
+        <a href="#" class="wtf-resource-item" data-tab="before">
+          <div class="wtf-resource-type">Video</div>
+          <div class="wtf-resource-title">The Storyboard Paintings Kurosawa Made Before Filming</div>
+          <div class="wtf-resource-source">YouTube</div>
+        </a>
+        <a href="#" class="wtf-resource-item" data-tab="before">
+          <div class="wtf-resource-type">Book</div>
+          <div class="wtf-resource-title">Something Like an Autobiography</div>
+          <div class="wtf-resource-source">Akira Kurosawa · Vintage Books</div>
+        </a>
+        <a href="#" class="wtf-resource-item hidden" data-tab="after">
+          <div class="wtf-resource-type">Essay</div>
+          <div class="wtf-resource-title">Kurosawa's Late Style: Color as Emotional Language</div>
+          <div class="wtf-resource-source">Criterion Collection</div>
+        </a>
+        <a href="#" class="wtf-resource-item hidden" data-tab="after">
+          <div class="wtf-resource-type">Interview</div>
+          <div class="wtf-resource-title">Kurosawa on the Five-Year Battle to Get Kagemusha Made</div>
+          <div class="wtf-resource-source">Sight &amp; Sound</div>
+        </a>
+        <a href="#" class="wtf-resource-item hidden" data-tab="after">
+          <div class="wtf-resource-type">Film</div>
+          <div class="wtf-resource-title">Ran — Kurosawa's Next Epic, Two Years Later</div>
+          <div class="wtf-resource-source">Criterion Spine #52</div>
+        </a>
+        <a href="#" class="wtf-resource-item hidden" data-tab="after">
+          <div class="wtf-resource-type">Essay</div>
+          <div class="wtf-resource-title">On the Shadow That Outlasts the Man</div>
+          <div class="wtf-resource-source">Film Comment</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="wtf-section">
+      <div class="wtf-section-label">Episode Index</div>
+      <p class="wtf-ts-intro">Jump to any moment in the conversation. Times link directly to the Buzzsprout player.</p>
+      <div class="wtf-timestamps">
+        <a href="https://www.buzzsprout.com/2528877/episodes/18925113?t=0" class="wtf-ts-item" target="_blank">
+          <span class="wtf-ts-time">00:00</span>
+          <span class="wtf-ts-label">Introduction &amp; film description</span>
+        </a>
+        <a href="https://www.buzzsprout.com/2528877/episodes/18925113?t=108" class="wtf-ts-item" target="_blank">
+          <span class="wtf-ts-time">01:48</span>
+          <span class="wtf-ts-label">Mike's first exposure to Kurosawa — Seven Samurai at a sticky Philadelphia theater</span>
+        </a>
+        <a href="https://www.buzzsprout.com/2528877/episodes/18925113?t=298" class="wtf-ts-item" target="_blank">
+          <span class="wtf-ts-time">04:58</span>
+          <span class="wtf-ts-label">Where does Kagemusha rank in the Kurosawa catalog?</span>
+        </a>
+        <a href="https://www.buzzsprout.com/2528877/episodes/18925113?t=493" class="wtf-ts-item" target="_blank">
+          <span class="wtf-ts-time">08:13</span>
+          <span class="wtf-ts-label">The challenge of distributing foreign films — why subtitles scare audiences</span>
+        </a>
+        <a href="https://www.buzzsprout.com/2528877/episodes/18925113?t=864" class="wtf-ts-item" target="_blank">
+          <span class="wtf-ts-time">14:24</span>
+          <span class="wtf-ts-label">How Coppola and Lucas saved the film from being shelved</span>
+        </a>
+        <a href="https://www.buzzsprout.com/2528877/episodes/18925113?t=1203" class="wtf-ts-item" target="_blank">
+          <span class="wtf-ts-time">20:03</span>
+          <span class="wtf-ts-label">Kurosawa's pre-production paintings — storyboarding as a form of art</span>
+        </a>
+        <a href="https://www.buzzsprout.com/2528877/episodes/18925113?t=1570" class="wtf-ts-item" target="_blank">
+          <span class="wtf-ts-time">26:10</span>
+          <span class="wtf-ts-label">Scene-by-scene: The double's first test before the warlord's sons</span>
+        </a>
+        <a href="https://www.buzzsprout.com/2528877/episodes/18925113?t=3219" class="wtf-ts-item" target="_blank">
+          <span class="wtf-ts-time">53:39</span>
+          <span class="wtf-ts-label">The nightmare sequence — color as psychological language</span>
+        </a>
+        <a href="https://www.buzzsprout.com/2528877/episodes/18925113?t=3723" class="wtf-ts-item" target="_blank">
+          <span class="wtf-ts-time">1:02:03</span>
+          <span class="wtf-ts-label">The battle of Nagashino — illusion collapses, the clan falls</span>
+        </a>
+        <a href="https://www.buzzsprout.com/2528877/episodes/18925113?t=4265" class="wtf-ts-item" target="_blank">
+          <span class="wtf-ts-time">1:11:05</span>
+          <span class="wtf-ts-label">Why does this film belong in the Criterion Collection?</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div>
+    <div class="wtf-sidebar-card">
+      <div class="wtf-sidebar-header">Film Details</div>
+      <div class="wtf-sidebar-body">
+        <div class="wtf-film-detail"><span class="label">Director</span><span class="value">Akira Kurosawa</span></div>
+        <div class="wtf-film-detail"><span class="label">Year</span><span class="value">1980</span></div>
+        <div class="wtf-film-detail"><span class="label">Runtime</span><span class="value">2h 42m</span></div>
+        <div class="wtf-film-detail"><span class="label">Country</span><span class="value">Japan</span></div>
+        <div class="wtf-film-detail"><span class="label">Criterion Spine</span><span class="value">#267</span></div>
+        <div class="wtf-film-detail"><span class="label">Cannes</span><span class="value">Palme d'Or, 1980</span></div>
+        <a href="https://www.criterion.com/films/28614-kagemusha" class="wtf-criterion-btn" target="_blank">Buy on Criterion.com →</a>
+      </div>
+    </div>
+
+    <div class="wtf-sidebar-card">
+      <div class="wtf-sidebar-header">More Episodes</div>
+      <div class="wtf-sidebar-body">
+        <div class="wtf-episodes-list">
+          <a href="la-ceremonie.html" class="wtf-ep-item">
+            <span class="wtf-ep-num">Ep 12</span>
+            <span class="wtf-ep-title">La cérémonie with Girish Shambu</span>
+            <span class="wtf-ep-arrow">→</span>
+          </a>
+          <a href="guillermo-del-toro-pinocchio.html" class="wtf-ep-item">
+            <span class="wtf-ep-num">Ep 11</span>
+            <span class="wtf-ep-title">Guillermo del Toro's Pinocchio with Caleb Tyson</span>
+            <span class="wtf-ep-arrow">→</span>
+          </a>
+          <a href="royal-tenenbaums.html" class="wtf-ep-item">
+            <span class="wtf-ep-num">Ep 9</span>
+            <span class="wtf-ep-title">The Royal Tenenbaums with Chris Cook</span>
+            <span class="wtf-ep-arrow">→</span>
+          </a>
+          <a href="thin-red-line.html" class="wtf-ep-item">
+            <span class="wtf-ep-num">Ep 8</span>
+            <span class="wtf-ep-title">The Thin Red Line with Jared Frederick</span>
+            <span class="wtf-ep-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wtf-footer">
+  <p>© 2026 Why This Film? &nbsp;·&nbsp; <a href="#">Instagram</a> &nbsp;·&nbsp; <a href="#">YouTube</a> &nbsp;·&nbsp; <a href="https://www.buzzsprout.com/2528877/support" target="_blank">Support the Show</a></p>
+</div>
+
+<script>
+function setTab(tab) {
+  document.getElementById('btn-before').classList.toggle('active', tab === 'before');
+  document.getElementById('btn-after').classList.toggle('active', tab === 'after');
+  document.getElementById('toggle-note').textContent = tab === 'before'
+    ? 'Spoiler-free context and starting points.'
+    : 'Essays, deeper reads, and where to go next — best after seeing the film.';
+  document.querySelectorAll('.wtf-resource-item').forEach(el => {
+    el.classList.toggle('hidden', el.dataset.tab !== tab);
+  });
+}
+
+(function animateSpine() {
+  const el = document.getElementById('spineNum');
+  const target = 267;
+  const duration = 700;
+  const start = performance.now();
+  function step(now) {
+    const t = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - t, 3);
+    el.textContent = Math.round(ease * target);
+    if (t < 1) requestAnimationFrame(step);
+    else el.textContent = target;
+  }
+  requestAnimationFrame(step);
+})();
+</script>
+</body>
+</html>
