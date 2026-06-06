@@ -78,6 +78,16 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 .wtf-film-detail .value{color:#1a1a1a;font-weight:500;text-align:right}
 .wtf-film-detail .value a{color:inherit;text-decoration:none}
 .wtf-film-detail .value a:hover{color:#C9A84C;text-decoration:underline}
+.wtf-cast-toggle{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:none;padding:6px 0;border-bottom:.5px solid #e8e0d0;font-size:13px;font-family:inherit;cursor:pointer;text-align:left}
+.wtf-cast-toggle .label{color:#8a8070}
+.wtf-cast-toggle .value{color:#1a1a1a;font-weight:500;text-align:right;display:flex;align-items:center;gap:6px}
+.wtf-cast-toggle .wtf-cast-arrow{display:inline-block;transition:transform .2s ease;font-size:10px;color:#C9A84C}
+.wtf-cast-toggle.open .wtf-cast-arrow{transform:rotate(180deg)}
+.wtf-cast-list{max-height:0;overflow:hidden;transition:max-height .25s ease}
+.wtf-cast-list.open{max-height:700px}
+.wtf-cast-list-inner{padding:8px 0 6px;border-bottom:.5px solid #e8e0d0;display:flex;flex-direction:column;gap:6px}
+.wtf-cast-list a{font-size:13px;color:#1a1a1a;text-decoration:none;transition:color .15s}
+.wtf-cast-list a:hover{color:#C9A84C;text-decoration:underline}
 .wtf-criterion-btn{display:block;text-align:center;background:#1a1a1a;color:#C9A84C;text-decoration:none;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:10px;border-radius:4px;margin-top:.75rem;transition:background .15s}
 .wtf-criterion-btn:hover{background:#2e2e2e}
 .wtf-episodes-list{display:flex;flex-direction:column}
@@ -164,11 +174,12 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
       <div class="wtf-guest-card">
         <div class="wtf-guest-avatar">SO</div>
         <div class="wtf-guest-info">
-          <h3>Sheila O'Malley</h3>
+          <h3><a href="https://www.sheilaomalley.com/" target="_blank" style="color:inherit;text-decoration:none;">Sheila O'Malley</a></h3>
           <div class="role">Film Critic, RogerEbert.com</div>
           <p>A staff critic at RogerEbert.com and one of the most insightful voices writing about cinema today, Sheila O'Malley brings deep knowledge of Scorsese's career and a sharp eye for performance and mise-en-sc&egrave;ne.</p>
           <div class="wtf-guest-links">
             <a href="https://www.rogerebert.com/contributors/sheila-omalley" class="wtf-guest-link" target="_blank">RogerEbert.com</a>
+            <a href="https://www.sheilaomalley.com/" class="wtf-guest-link" target="_blank">The Sheila Variations</a>
           </div>
         </div>
       </div>
@@ -197,10 +208,10 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
           <div class="wtf-resource-title">Where to Begin with Martin Scorsese</div>
           <div class="wtf-resource-source">BFI</div>
         </a>
-        <a href="https://www.6sqft.com/the-history-of-soho-manhattan/" target="_blank" class="wtf-resource-item" data-tab="before">
-          <div class="wtf-resource-type">Context</div>
-          <div class="wtf-resource-title">The History of SoHo, NYC</div>
-          <div class="wtf-resource-source">6sqft</div>
+        <a href="https://www.rogerebert.com/cast-and-crew/griffin-dunne" target="_blank" class="wtf-resource-item" data-tab="before">
+          <div class="wtf-resource-type">Profile</div>
+          <div class="wtf-resource-title">Griffin Dunne &mdash; Career Overview</div>
+          <div class="wtf-resource-source">Roger Ebert</div>
         </a>
         <a href="https://www.criterion.com/current/posts/8197-after-hours-no-exit" target="_blank" class="wtf-resource-item hidden" data-tab="after">
           <div class="wtf-resource-type">Essay</div>
@@ -211,16 +222,6 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
           <div class="wtf-resource-type">Essay</div>
           <div class="wtf-resource-title">The Time Is Three A.M. &mdash; Ebert Revisited</div>
           <div class="wtf-resource-source">Roger Ebert</div>
-        </a>
-        <a href="https://www.rogerebert.com/cast-and-crew/griffin-dunne" target="_blank" class="wtf-resource-item hidden" data-tab="after">
-          <div class="wtf-resource-type">Profile</div>
-          <div class="wtf-resource-title">Griffin Dunne &mdash; Career Overview</div>
-          <div class="wtf-resource-source">Roger Ebert</div>
-        </a>
-        <a href="https://www.britannica.com/topic/No-Exit" target="_blank" class="wtf-resource-item hidden" data-tab="after">
-          <div class="wtf-resource-type">Context</div>
-          <div class="wtf-resource-title">No Exit &mdash; Jean-Paul Sartre</div>
-          <div class="wtf-resource-source">Britannica</div>
         </a>
       </div>
     </div>
@@ -237,6 +238,27 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
         <div class="wtf-film-detail"><span class="label">Country</span><span class="value">USA</span></div>
         <div class="wtf-film-detail"><span class="label">Criterion Spine</span><span class="value">#1185</span></div>
         <div class="wtf-film-detail"><span class="label">Cannes</span><span class="value">Best Director, 1986</span></div>
+        <button type="button" class="wtf-cast-toggle" id="wtf-cast-toggle" aria-expanded="false">
+          <span class="label">Starring</span>
+          <span class="value"><strong>Click to Expand</strong> <span class="wtf-cast-arrow">&#9662;</span></span>
+        </button>
+        <div class="wtf-cast-list" id="wtf-cast-list">
+          <div class="wtf-cast-list-inner">
+            <a href="https://www.imdb.com/name/nm0001162/" target="_blank">Griffin Dunne</a>
+            <a href="https://www.imdb.com/name/nm0000275/" target="_blank">Rosanna Arquette</a>
+            <a href="https://www.imdb.com/name/nm0000400/" target="_blank">Linda Fiorentino</a>
+            <a href="https://www.imdb.com/name/nm0000414/" target="_blank">Teri Garr</a>
+            <a href="https://www.imdb.com/name/nm0001334/" target="_blank">John Heard</a>
+            <a href="https://www.imdb.com/name/nm0001573/" target="_blank">Catherine O'Hara</a>
+            <a href="https://www.imdb.com/name/nm0001045/" target="_blank">Tommy Chong</a>
+            <a href="https://www.imdb.com/name/nm0001507/" target="_blank">Cheech Marin</a>
+            <a href="https://www.imdb.com/name/nm0588241/" target="_blank">Dick Miller</a>
+            <a href="https://www.imdb.com/name/nm0001599/" target="_blank">Will Patton</a>
+            <a href="https://www.imdb.com/name/nm0001621/" target="_blank">Bronson Pinchot</a>
+            <a href="https://www.imdb.com/name/nm0609231/" target="_blank">Murray Moston</a>
+            <a href="https://www.imdb.com/name/nm0089244/" target="_blank">Verna Bloom</a>
+          </div>
+        </div>
         <a href="https://www.criterion.com/films/29632-after-hours" class="wtf-criterion-btn" target="_blank">Buy on Criterion.com &rarr;</a>
       </div>
     </div>
@@ -299,6 +321,16 @@ function setTab(tab) {
     else el.textContent = target;
   }
   requestAnimationFrame(step);
+})();
+(function castToggle() {
+  const btn = document.getElementById('wtf-cast-toggle');
+  const list = document.getElementById('wtf-cast-list');
+  if (!btn || !list) return;
+  btn.addEventListener('click', () => {
+    const open = list.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
 })();
 </script>
 </body>
