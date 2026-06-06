@@ -49,8 +49,10 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 @media(max-width:420px){.wtf-ep-grid{grid-template-columns:1fr}}
 .wtf-ep-card{background:#1a1a1a;border:.5px solid #2e2e2e;border-radius:8px;padding:1.25rem;text-decoration:none;display:flex;flex-direction:column;gap:.5rem;transition:border-color .2s, z-index 0s;position:relative;overflow:hidden;min-height:220px}
 .wtf-ep-card:hover{border-color:#C9A84C;overflow:visible;z-index:30}
-.wtf-ep-card-bg{position:absolute;inset:0;background-size:cover;background-position:center top;background-repeat:no-repeat;transition:transform .45s cubic-bezier(.22,1,.36,1), background-size .45s ease, background-color .45s ease, box-shadow .45s ease;transform-origin:center center;z-index:0}
-.wtf-ep-card:hover .wtf-ep-card-bg{transform:scale(1.7);background-size:contain;background-position:center center;background-color:#0c0a08;box-shadow:0 25px 60px rgba(0,0,0,.6);border-radius:6px}
+.wtf-ep-card-bg{position:absolute;inset:0;background-size:cover;background-position:center top;background-repeat:no-repeat;transition:opacity .4s ease;z-index:0}
+.wtf-ep-card:hover .wtf-ep-card-bg{opacity:0}
+.wtf-ep-cover-img{position:absolute;top:50%;left:50%;max-width:74%;max-height:74%;width:auto;height:auto;opacity:0;transform:translate(-50%,-50%) scale(.92);transition:opacity .4s ease, transform .45s cubic-bezier(.22,1,.36,1);box-shadow:0 25px 60px rgba(0,0,0,.6);border-radius:6px;z-index:6;pointer-events:none}
+.wtf-ep-card:hover .wtf-ep-cover-img{opacity:1;transform:translate(-50%,-50%) scale(1.4)}
 .wtf-ep-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,13,10,.97) 35%,rgba(15,13,10,.7) 65%,rgba(15,13,10,.35) 100%);z-index:1}
 .wtf-ep-card-content{position:relative;z-index:2;display:flex;flex-direction:column;gap:.5rem;height:100%}
 .wtf-ep-card-spine{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;line-height:1;color:#C9A84C;letter-spacing:-.02em;margin-bottom:.15rem}
@@ -110,6 +112,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 
     <a href="episodes/la-ceremonie.html" class="wtf-ep-card">
       <div class="wtf-ep-card-bg" style="background-image:url('images/la ceremonie.jpg')"></div>
+      <img class="wtf-ep-cover-img" src="images/la ceremonie.jpg" alt="">
       <div class="wtf-ep-card-overlay"></div>
       <div class="wtf-ep-card-content">
         <div class="wtf-ep-card-num">Episode 12 <span class="wtf-latest-flag">Latest</span></div>
@@ -122,6 +125,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 
     <a href="episodes/guillermo-del-toro-pinocchio.html" class="wtf-ep-card">
       <div class="wtf-ep-card-bg" style="background-image:url('images/guillermo-del-toros-pinocchio.jpg')"></div>
+      <img class="wtf-ep-cover-img" src="images/guillermo-del-toros-pinocchio.jpg" alt="">
       <div class="wtf-ep-card-overlay"></div>
       <div class="wtf-ep-card-content">
         <div class="wtf-ep-card-num">Episode 11</div>
@@ -134,6 +138,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 
     <a href="episodes/kagemusha.html" class="wtf-ep-card">
       <div class="wtf-ep-card-bg" style="background-image:url('images/Kagemusha.jpg')"></div>
+      <img class="wtf-ep-cover-img" src="images/Kagemusha.jpg" alt="">
       <div class="wtf-ep-card-overlay"></div>
       <div class="wtf-ep-card-content">
         <div class="wtf-ep-card-num">Episode 10</div>
@@ -146,6 +151,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 
     <a href="episodes/royal-tenenbaums.html" class="wtf-ep-card">
       <div class="wtf-ep-card-bg" style="background-image:url('images/the-royal-tenenbaums.jpg')"></div>
+      <img class="wtf-ep-cover-img" src="images/the-royal-tenenbaums.jpg" alt="">
       <div class="wtf-ep-card-overlay"></div>
       <div class="wtf-ep-card-content">
         <div class="wtf-ep-card-num">Episode 9</div>
@@ -158,6 +164,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 
     <a href="episodes/thin-red-line.html" class="wtf-ep-card">
       <div class="wtf-ep-card-bg" style="background-image:url('images/the-thin-red-line.jpg')"></div>
+      <img class="wtf-ep-cover-img" src="images/the-thin-red-line.jpg" alt="">
       <div class="wtf-ep-card-overlay"></div>
       <div class="wtf-ep-card-content">
         <div class="wtf-ep-card-num">Episode 8</div>
@@ -170,6 +177,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 
     <a href="episodes/pee-wees-big-adventure.html" class="wtf-ep-card">
       <div class="wtf-ep-card-bg" style="background-image:url('images/pee-wees-big-adventure.jpg')"></div>
+      <img class="wtf-ep-cover-img" src="images/pee-wees-big-adventure.jpg" alt="">
       <div class="wtf-ep-card-overlay"></div>
       <div class="wtf-ep-card-content">
         <div class="wtf-ep-card-num">Episode 7</div>
@@ -182,6 +190,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 
     <a href="episodes/repo-man.html" class="wtf-ep-card">
       <div class="wtf-ep-card-bg" style="background-image:url('images/repo-man.jpg')"></div>
+      <img class="wtf-ep-cover-img" src="images/repo-man.jpg" alt="">
       <div class="wtf-ep-card-overlay"></div>
       <div class="wtf-ep-card-content">
         <div class="wtf-ep-card-num">Episode 6</div>
@@ -194,6 +203,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 
     <a href="episodes/winchester-73.html" class="wtf-ep-card">
       <div class="wtf-ep-card-bg" style="background-image:url('images/winchester-73.jpg')"></div>
+      <img class="wtf-ep-cover-img" src="images/winchester-73.jpg" alt="">
       <div class="wtf-ep-card-overlay"></div>
       <div class="wtf-ep-card-content">
         <div class="wtf-ep-card-num">Episode 5</div>
@@ -206,6 +216,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 
     <a href="episodes/after-hours.html" class="wtf-ep-card">
       <div class="wtf-ep-card-bg" style="background-image:url('images/after-hours.jpg')"></div>
+      <img class="wtf-ep-cover-img" src="images/after-hours.jpg" alt="">
       <div class="wtf-ep-card-overlay"></div>
       <div class="wtf-ep-card-content">
         <div class="wtf-ep-card-num">Episode 4</div>
@@ -218,6 +229,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 
     <a href="episodes/the-breakfast-club.html" class="wtf-ep-card">
       <div class="wtf-ep-card-bg" style="background-image:url('images/the-breakfast-club.jpg')"></div>
+      <img class="wtf-ep-cover-img" src="images/the-breakfast-club.jpg" alt="">
       <div class="wtf-ep-card-overlay"></div>
       <div class="wtf-ep-card-content">
         <div class="wtf-ep-card-num">Episode 3</div>
@@ -230,6 +242,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 
     <a href="episodes/touchez-pas-au-grisbi.html" class="wtf-ep-card">
       <div class="wtf-ep-card-bg" style="background-image:url('images/touchez-pas-au-grisbi.jpg')"></div>
+      <img class="wtf-ep-cover-img" src="images/touchez-pas-au-grisbi.jpg" alt="">
       <div class="wtf-ep-card-overlay"></div>
       <div class="wtf-ep-card-content">
         <div class="wtf-ep-card-num">Episode 2</div>
@@ -242,6 +255,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 
     <a href="episodes/la-jetee.html" class="wtf-ep-card">
       <div class="wtf-ep-card-bg" style="background-image:url('images/la-jetee.jpg')"></div>
+      <img class="wtf-ep-cover-img" src="images/la-jetee.jpg" alt="">
       <div class="wtf-ep-card-overlay"></div>
       <div class="wtf-ep-card-content">
         <div class="wtf-ep-card-num">Episode 1</div>
