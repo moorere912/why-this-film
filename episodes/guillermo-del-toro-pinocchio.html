@@ -78,6 +78,16 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 .wtf-film-detail .value{color:#1a1a1a;font-weight:500;text-align:right}
 .wtf-film-detail .value a{color:inherit;text-decoration:none}
 .wtf-film-detail .value a:hover{color:#C9A84C;text-decoration:underline}
+.wtf-cast-toggle{display:flex;justify-content:space-between;align-items:center;width:100%;background:none;border:none;padding:6px 0;border-bottom:.5px solid #e8e0d0;font-size:13px;font-family:inherit;cursor:pointer;text-align:left}
+.wtf-cast-toggle .label{color:#8a8070}
+.wtf-cast-toggle .value{color:#1a1a1a;font-weight:500;text-align:right;display:flex;align-items:center;gap:6px}
+.wtf-cast-toggle .wtf-cast-arrow{display:inline-block;transition:transform .2s ease;font-size:10px;color:#C9A84C}
+.wtf-cast-toggle.open .wtf-cast-arrow{transform:rotate(180deg)}
+.wtf-cast-list{max-height:0;overflow:hidden;transition:max-height .25s ease}
+.wtf-cast-list.open{max-height:700px}
+.wtf-cast-list-inner{padding:8px 0 6px;border-bottom:.5px solid #e8e0d0;display:flex;flex-direction:column;gap:6px}
+.wtf-cast-list a{font-size:13px;color:#1a1a1a;text-decoration:none;transition:color .15s}
+.wtf-cast-list a:hover{color:#C9A84C;text-decoration:underline}
 .wtf-criterion-btn{display:block;text-align:center;background:#1a1a1a;color:#C9A84C;text-decoration:none;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:10px;border-radius:4px;margin-top:.75rem;transition:background .15s}
 .wtf-criterion-btn:hover{background:#2e2e2e}
 .wtf-episodes-list{display:flex;flex-direction:column}
@@ -165,7 +175,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
       <div class="wtf-guest-card">
         <div class="wtf-guest-avatar">CT</div>
         <div class="wtf-guest-info">
-          <h3>Caleb Tyson</h3>
+          <h3><a href="https://www.youtube.com/channel/UCJkOY_7ESpXq9jQj_x0Z00w" target="_blank" style="color:inherit;text-decoration:none;">Caleb Tyson</a></h3>
           <div class="role">Editor &amp; Multi-Award Winner</div>
           <p>A multi-award winning editor and longtime del Toro fan, Caleb's work spans editorial storytelling and animation. His YouTube channel Super Ammo has garnered over 10 million views, and he most recently edited three episodes of <em>Great Battles for Boys</em> for Angel Studios.</p>
           <div class="wtf-guest-links">
@@ -183,11 +193,6 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
       </div>
       <p class="wtf-toggle-note" id="toggle-note">Spoiler-free context and starting points.</p>
       <div class="wtf-resources-grid">
-        <a href="https://www.rogerebert.com/reviews/guillermo-del-toros-pinocchio-2022" target="_blank" class="wtf-resource-item" data-tab="before">
-          <div class="wtf-resource-type">Review</div>
-          <div class="wtf-resource-title">Guillermo del Toro&rsquo;s Pinocchio &mdash; Roger Ebert</div>
-          <div class="wtf-resource-source">Roger Ebert</div>
-        </a>
         <a href="https://www.rogerebert.com/reviews/guillermo-del-toros-pinocchio-2022" target="_blank" class="wtf-resource-item" data-tab="before">
           <div class="wtf-resource-type">Review</div>
           <div class="wtf-resource-title">Guillermo del Toro&rsquo;s Pinocchio &mdash; Roger Ebert</div>
@@ -218,11 +223,6 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
           <div class="wtf-resource-title">Stop-Motion Animation Legend Mark Gustafson</div>
           <div class="wtf-resource-source">Criterion Collection</div>
         </a>
-        <a href="https://www.britannica.com/biography/Francisco-Franco" target="_blank" class="wtf-resource-item hidden" data-tab="after">
-          <div class="wtf-resource-type">Context</div>
-          <div class="wtf-resource-title">Francisco Franco and Fascist Spain</div>
-          <div class="wtf-resource-source">Britannica</div>
-        </a>
       </div>
     </div>
 
@@ -238,6 +238,23 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
         <div class="wtf-film-detail"><span class="label">Country</span><span class="value">USA / UK</span></div>
         <div class="wtf-film-detail"><span class="label">Criterion Spine</span><span class="value">#1201</span></div>
         <div class="wtf-film-detail"><span class="label">Academy Award</span><span class="value">Best Animated Feature</span></div>
+        <button type="button" class="wtf-cast-toggle" id="wtf-cast-toggle" aria-expanded="false">
+          <span class="label">Starring</span>
+          <span class="value"><strong>Click to Expand</strong> <span class="wtf-cast-arrow">&#9662;</span></span>
+        </button>
+        <div class="wtf-cast-list" id="wtf-cast-list">
+          <div class="wtf-cast-list-inner">
+            <a href="https://www.imdb.com/name/nm0000191/" target="_blank">Ewan McGregor</a>
+            <a href="https://www.imdb.com/name/nm0103195/" target="_blank">David Bradley</a>
+            <a href="https://www.imdb.com/name/nm9640481/" target="_blank">Gregory Mann</a>
+            <a href="https://www.imdb.com/name/nm0000579/" target="_blank">Ron Perlman</a>
+            <a href="https://www.imdb.com/name/nm6016511/" target="_blank">Finn Wolfhard</a>
+            <a href="https://www.imdb.com/name/nm0000949/" target="_blank">Cate Blanchett</a>
+            <a href="https://www.imdb.com/name/nm0910607/" target="_blank">Christoph Waltz</a>
+            <a href="https://www.imdb.com/name/nm0842770/" target="_blank">Tilda Swinton</a>
+            <a href="https://www.imdb.com/name/nm0001806/" target="_blank">John Turturro</a>
+          </div>
+        </div>
         <a href="https://www.criterion.com/films/33828-guillermo-del-toro-s-pinocchio" class="wtf-criterion-btn" target="_blank">Buy on Criterion.com &rarr;</a>
       </div>
     </div>
@@ -300,6 +317,16 @@ function setTab(tab) {
     else el.textContent = target;
   }
   requestAnimationFrame(step);
+})();
+(function castToggle() {
+  const btn = document.getElementById('wtf-cast-toggle');
+  const list = document.getElementById('wtf-cast-list');
+  if (!btn || !list) return;
+  btn.addEventListener('click', () => {
+    const open = list.classList.toggle('open');
+    btn.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
 })();
 </script>
 </body>
