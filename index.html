@@ -59,6 +59,12 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 .wtf-ep-card-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#F5F0E8;line-height:1.25;margin-top:.25rem}
 .wtf-ep-card-dir{font-size:12px;color:#d8d0c0;margin-top:.1rem}
 .wtf-ep-card-guest{font-size:11px;color:#C9A84C;margin-top:auto;padding-top:.75rem;letter-spacing:.03em}
+.wtf-cover-reveal{position:fixed;z-index:999;pointer-events:none;opacity:0;border-radius:6px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.65);filter:brightness(.45) saturate(.3);transform:scale(1) translateY(0) rotate(0deg);transform-origin:center center}
+.wtf-cover-reveal img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.wtf-cover-reveal.is-rising{transition:opacity .3s ease, filter .55s ease, transform .55s cubic-bezier(.22,1,.36,1)}
+.wtf-cover-reveal.is-dropping{transition:left .7s cubic-bezier(.4,0,.2,1), top .7s cubic-bezier(.4,0,.2,1), width .7s cubic-bezier(.4,0,.2,1), height .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1), filter .3s ease, box-shadow .7s ease}
+.wtf-cover-dim{position:fixed;inset:0;background:rgba(10,9,7,0);z-index:998;pointer-events:none;transition:background .5s ease}
+.wtf-cover-dim.is-active{background:rgba(10,9,7,.6)}
 
 /* FOOTER */
 .wtf-footer{background:#1a1a1a;padding:2rem;text-align:center;margin-top:2rem}
@@ -104,7 +110,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 
   <div class="wtf-ep-grid">
 
-    <a href="episodes/la-ceremonie.html" class="wtf-ep-card">
+    <a href="episodes/la-ceremonie.html" class="wtf-ep-card wtf-ep-card-anim" data-cover="images/la ceremonie.jpg">
       <div class="wtf-ep-card-bg" style="background-image:url('images/la ceremonie.jpg')"></div>
       <div class="wtf-ep-card-overlay"></div>
       <div class="wtf-ep-card-content">
@@ -254,6 +260,69 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 <div class="wtf-footer">
   <p>© 2026 Why This Film? &nbsp;·&nbsp; <a href="#">Instagram</a> &nbsp;·&nbsp; <a href="#">YouTube</a> &nbsp;·&nbsp; <a href="https://www.buzzsprout.com/2528877/support" target="_blank">Support the Show</a></p>
 </div>
+
+<div class="wtf-cover-dim" id="coverDim"></div>
+<div class="wtf-cover-reveal" id="coverReveal"><img id="coverRevealImg" src="" alt=""></div>
+
+<script>
+  document.querySelectorAll('.wtf-ep-card-anim').forEach(function(card){
+    card.addEventListener('click', function(e){
+      e.preventDefault();
+      if (this.dataset.animating === 'true') return;
+      this.dataset.animating = 'true';
+
+      var href = this.getAttribute('href');
+      var coverUrl = this.getAttribute('data-cover');
+      var rect = this.getBoundingClientRect();
+      var reveal = document.getElementById('coverReveal');
+      var img = document.getElementById('coverRevealImg');
+      var dim = document.getElementById('coverDim');
+
+      img.src = coverUrl;
+
+      // Phase 0: place the cover exactly over the card art, dim & desaturated (as if tucked in its sleeve)
+      reveal.className = 'wtf-cover-reveal';
+      reveal.style.transition = 'none';
+      reveal.style.left = rect.left + 'px';
+      reveal.style.top = rect.top + 'px';
+      reveal.style.width = rect.width + 'px';
+      reveal.style.height = rect.height + 'px';
+      reveal.style.transform = 'scale(1) translateY(0) rotate(0deg)';
+      reveal.style.boxShadow = '0 4px 16px rgba(0,0,0,.35)';
+      reveal.style.opacity = '1';
+
+      void reveal.offsetWidth; // force reflow
+
+      // Phase 1: rise up out of the sleeve, color blooms in
+      requestAnimationFrame(function(){
+        reveal.classList.add('is-rising');
+        reveal.style.transform = 'scale(1.06) translateY(-22px) rotate(0deg)';
+        reveal.style.filter = 'brightness(1) saturate(1)';
+      });
+
+      // Phase 2: lift free, drop down and lay flat in the open, full color, like setting it on top of a folder
+      setTimeout(function(){
+        dim.classList.add('is-active');
+        reveal.classList.remove('is-rising');
+        reveal.classList.add('is-dropping');
+
+        var targetW = Math.min(320, window.innerWidth * 0.62);
+        var targetH = targetW * 1.46;
+        reveal.style.left = (window.innerWidth / 2 - targetW / 2) + 'px';
+        reveal.style.top = (window.innerHeight / 2 - targetH / 2) + 'px';
+        reveal.style.width = targetW + 'px';
+        reveal.style.height = targetH + 'px';
+        reveal.style.transform = 'scale(1) translateY(0) rotate(-2deg)';
+        reveal.style.boxShadow = '0 35px 80px rgba(0,0,0,.7)';
+      }, 360);
+
+      // Phase 3: hold on the full-color cover for a beat, then continue to the episode
+      setTimeout(function(){
+        window.location.href = href;
+      }, 1700);
+    });
+  });
+</script>
 
 </body>
 </html>
