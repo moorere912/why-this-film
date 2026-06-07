@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Collection — Why This Film?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#4a4540;line-height:1.6}
+a{color:inherit}
+
+/* Nav (matches site) */
+.wtf-nav{background:#1a1a1a;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:56px;position:sticky;top:0;z-index:10}
+.wtf-nav-logo{display:flex;align-items:center;gap:10px;color:#F5F0E8;font-family:'Playfair Display',serif;font-size:15px;letter-spacing:.03em;text-decoration:none}
+.wtf-nav-logo img{width:32px;height:32px;object-fit:contain;border-radius:4px}
+.wtf-nav-links{display:flex;gap:1.5rem;list-style:none;margin:0;padding:0}
+.wtf-nav-links a{color:#b8b0a0;text-decoration:none;font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;transition:color .2s}
+.wtf-nav-links a:hover{color:#C9A84C}
+
+/* Header */
+.wtf-collection-header{max-width:880px;margin:0 auto;padding:3.5rem 1.5rem 1rem;text-align:center}
+.wtf-collection-header h1{font-family:'Playfair Display',serif;font-size:46px;font-weight:700;color:#1a1a1a;margin:0 0 .5rem;letter-spacing:-.01em}
+.wtf-collection-count{color:#C9A84C;font-size:15px;font-weight:500;letter-spacing:.04em}
+
+/* Shelf (desktop) */
+.wtf-shelf-wrap{max-width:880px;margin:2.5rem auto 4rem;padding:0 1.5rem}
+.wtf-shelf{display:flex;flex-wrap:wrap;align-items:flex-end;gap:3px;padding-bottom:1rem;position:relative}
+.wtf-shelf::after{content:"";display:block;position:absolute;bottom:0;left:0;right:0;height:2px;background:#6a6560;opacity:.35;box-shadow:0 6px 14px rgba(0,0,0,.12)}
+.wtf-spine{height:190px;border-radius:2px 2px 0 0;cursor:default;position:relative;flex:0 0 auto;transition:transform .18s ease,box-shadow .18s ease}
+.wtf-spine.uncovered{background:#6a6560;opacity:.4}
+.wtf-spine.covered{background:#C9A84C;cursor:pointer;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.wtf-spine.covered:hover{transform:translateY(-10px);box-shadow:0 10px 20px rgba(0,0,0,.18)}
+.wtf-spine-title{writing-mode:vertical-rl;transform:rotate(180deg);color:#1a1a1a;font-family:'Playfair Display',serif;font-weight:700;font-size:13px;white-space:nowrap;letter-spacing:.01em;padding:10px 0}
+
+/* Tooltip */
+.wtf-spine-tip{position:absolute;bottom:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(6px);background:#1a1a1a;color:#F5F0E8;border-radius:6px;padding:.85rem 1rem;width:220px;text-align:left;opacity:0;pointer-events:none;transition:opacity .15s ease,transform .15s ease;z-index:20;box-shadow:0 12px 28px rgba(0,0,0,.3)}
+.wtf-spine-tip::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:7px solid transparent;border-top-color:#1a1a1a}
+.wtf-spine.covered:hover .wtf-spine-tip{opacity:1;transform:translateX(-50%) translateY(0)}
+.wtf-spine-tip .tip-title{font-family:'Playfair Display',serif;font-weight:700;font-size:15px;color:#F5F0E8;margin-bottom:.3rem;line-height:1.2}
+.wtf-spine-tip .tip-meta{font-size:12px;color:#b8b0a0;margin-bottom:.15rem}
+.wtf-spine-tip .tip-listen{display:inline-block;margin-top:.4rem;font-size:12px;color:#C9A84C;font-weight:500;letter-spacing:.03em;text-decoration:none}
+.wtf-spine-tip .tip-listen:hover{text-decoration:underline}
+
+/* Mobile card list */
+.wtf-collection-cards{display:none;max-width:640px;margin:2.5rem auto 4rem;padding:0 1.25rem;flex-direction:column;gap:14px}
+.wtf-cc-card{display:block;background:#fff;border:1px solid #e8e0d0;border-radius:8px;padding:1.1rem 1.25rem;text-decoration:none;color:inherit;transition:border-color .15s ease,box-shadow .15s ease}
+.wtf-cc-card:hover{border-color:#C9A84C;box-shadow:0 6px 16px rgba(0,0,0,.06)}
+.wtf-cc-spine{font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:#C9A84C;margin-bottom:.2rem}
+.wtf-cc-title{font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:#1a1a1a;margin-bottom:.15rem}
+.wtf-cc-meta{font-size:13px;color:#8a8070;margin-bottom:.1rem}
+.wtf-cc-guest{font-size:13px;color:#6a6560;margin-bottom:.4rem}
+.wtf-cc-listen{font-size:13px;color:#C9A84C;font-weight:500;letter-spacing:.03em}
+
+/* Footer (matches site) */
+.wtf-footer{background:#1a1a1a;color:#b8b0a0;text-align:center;padding:2.5rem 1.5rem;font-size:13px}
+.wtf-footer a{color:#C9A84C;text-decoration:none}
+.wtf-footer a:hover{text-decoration:underline}
+
+@media(max-width:768px){
+  .wtf-shelf-wrap{display:none}
+  .wtf-collection-cards{display:flex}
+  .wtf-collection-header h1{font-size:34px}
+}
+</style>
+</head>
+<body>
+
+<nav class="wtf-nav">
+  <a class="wtf-nav-logo" href="index.html">
+    <img src="https://www.buzzsprout.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTUyNDk1MzI1LCJwdXIiOiJibG9iX2lkIn19--86e5f21fbc3e628cef3721928333b70df501eb3e/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZmlsbCI6WzI1MCwyNTAseyJjcm9wIjoiY2VudHJlIn1dLCJzYXZlciI6eyJxdWFsaXR5Ijo2MH0sImNvbG91cnNwYWNlIjoic3JnYiJ9LCJwdXIiOiJ2YXJpYXRpb24ifX0=--21f3793904e6ce1806a5a794a691217fceef82c7/Logo.png" alt="Why This Film?"/>
+    Why This Film?
+  </a>
+  <ul class="wtf-nav-links">
+    <li><a href="index.html#all-episodes">Episodes</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="https://www.buzzsprout.com/2528877/support" target="_blank">Support</a></li>
+    <li><a href="https://www.buzzsprout.com/2528877/fan_mail/new" target="_blank" title="whythisfilmpod@gmail.com - send a text or leave a voicemail">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="wtf-collection-header">
+  <h1>The Collection</h1>
+  <div class="wtf-collection-count">12 of 1220 explored</div>
+</div>
+
+<!-- Desktop shelf -->
+<div class="wtf-shelf-wrap">
+  <div class="wtf-shelf" id="wtf-shelf"></div>
+</div>
+
+<!-- Mobile card list -->
+<div class="wtf-collection-cards" id="wtf-cards"></div>
+
+<footer class="wtf-footer">
+  <p>&copy; 2026 Why This Film? &nbsp;&middot;&nbsp; <a href="https://www.instagram.com/whythisfilmpod/" target="_blank">Instagram</a> &nbsp;&middot;&nbsp; <a href="https://www.youtube.com/@WhyThisFilm" target="_blank">YouTube</a> &nbsp;&middot;&nbsp; <a href="https://www.buzzsprout.com/2528877/support" target="_blank">Support the Show</a></p>
+</footer>
+
+<script>
+(function buildCollection() {
+  var TOTAL = 1220;
+  var episodes = [
+    { spine: 387,  title: "La Jetée",                         dir: "Chris Marker",        year: 1962, guest: "Dr. Dennis Weiss",  link: "episodes/la-jetee.html" },
+    { spine: 271,  title: "Touchez pas au grisbi",            dir: "Jacques Becker",      year: 1954, guest: "Ginette Vincendeau", link: "episodes/touchez-pas-au-grisbi.html" },
+    { spine: 905,  title: "The Breakfast Club",               dir: "John Hughes",         year: 1985, guest: "Ciara Moloney",     link: "episodes/the-breakfast-club.html" },
+    { spine: 1185, title: "After Hours",                      dir: "Martin Scorsese",     year: 1985, guest: "Sheila O'Malley",   link: "episodes/after-hours.html" },
+    { spine: 1248, title: "Winchester '73",                   dir: "Anthony Mann",        year: 1950, guest: "Brady Crytzer",     link: "episodes/winchester-73.html" },
+    { spine: 654,  title: "Repo Man",                         dir: "Alex Cox",            year: 1984, guest: "James Chestnut",    link: "episodes/repo-man.html" },
+    { spine: 1293, title: "Pee-wee's Big Adventure",          dir: "Tim Burton",          year: 1985, guest: "Jesse Thorn",       link: "episodes/pee-wees-big-adventure.html" },
+    { spine: 536,  title: "The Thin Red Line",                dir: "Terrence Malick",     year: 1998, guest: "Jared Frederick",   link: "episodes/thin-red-line.html" },
+    { spine: 157,  title: "The Royal Tenenbaums",             dir: "Wes Anderson",        year: 2001, guest: "Chris Cook",        link: "episodes/royal-tenenbaums.html" },
+    { spine: 267,  title: "Kagemusha",                        dir: "Akira Kurosawa",      year: 1980, guest: "Michael Repsch",    link: "episodes/kagemusha.html" },
+    { spine: 1201, title: "Guillermo del Toro's Pinocchio",   dir: "del Toro & Gustafson",year: 2022, guest: "Caleb Tyson",       link: "episodes/guillermo-del-toro-pinocchio.html" },
+    { spine: 1199, title: "La cérémonie",                     dir: "Claude Chabrol",      year: 1995, guest: "Girish Shambu",     link: "episodes/la-ceremonie.html" }
+  ];
+
+  var bySpine = {};
+  episodes.forEach(function (e) { bySpine[e.spine] = e; });
+
+  var shelf = document.getElementById('wtf-shelf');
+  var cards = document.getElementById('wtf-cards');
+  var widths = [10, 13, 16, 11, 14, 18, 12];
+
+  for (var i = 1; i <= TOTAL; i++) {
+    var ep = bySpine[i];
+    var w = widths[i % widths.length];
+
+    if (ep) {
+      var a = document.createElement('a');
+      a.className = 'wtf-spine covered';
+      a.style.width = w + 'px';
+      a.href = ep.link;
+
+      var titleSpan = document.createElement('span');
+      titleSpan.className = 'wtf-spine-title';
+      titleSpan.textContent = '#' + ep.spine + '  ' + ep.title;
+      a.appendChild(titleSpan);
+
+      var tip = document.createElement('div');
+      tip.className = 'wtf-spine-tip';
+      tip.innerHTML =
+        '<div class="tip-title">' + ep.title + '</div>' +
+        '<div class="tip-meta">' + ep.dir + ' &middot; ' + ep.year + '</div>' +
+        '<div class="tip-meta">with ' + ep.guest + '</div>' +
+        '<a class="tip-listen" href="' + ep.link + '">Listen &rarr;</a>';
+      a.appendChild(tip);
+
+      shelf.appendChild(a);
+    } else {
+      var d = document.createElement('div');
+      d.className = 'wtf-spine uncovered';
+      d.style.width = w + 'px';
+      shelf.appendChild(d);
+    }
+  }
+
+  // Mobile cards — sorted by episode order (latest first, matches homepage feel) but
+  // here we list by spine number ascending for easy scanning.
+  var sorted = episodes.slice().sort(function (a, b) { return a.spine - b.spine; });
+  sorted.forEach(function (ep) {
+    var a = document.createElement('a');
+    a.className = 'wtf-cc-card';
+    a.href = ep.link;
+    a.innerHTML =
+      '<div class="wtf-cc-spine">#' + ep.spine + '</div>' +
+      '<div class="wtf-cc-title">' + ep.title + '</div>' +
+      '<div class="wtf-cc-meta">' + ep.dir + ' &middot; ' + ep.year + '</div>' +
+      '<div class="wtf-cc-guest">with ' + ep.guest + '</div>' +
+      '<div class="wtf-cc-listen">Listen &rarr;</div>';
+    cards.appendChild(a);
+  });
+})();
+</script>
+</body>
+</html>
