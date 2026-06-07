@@ -23,7 +23,15 @@ a{color:inherit}
 /* Header */
 .wtf-collection-header{max-width:880px;margin:0 auto;padding:3.5rem 1.5rem 1rem;text-align:center}
 .wtf-collection-header h1{font-family:'Playfair Display',serif;font-size:46px;font-weight:700;color:#1a1a1a;margin:0 0 .5rem;letter-spacing:-.01em}
+.wtf-collection-desc{max-width:560px;margin:0 auto .9rem;font-size:15px;line-height:1.7;color:#6a6560}
 .wtf-collection-count{color:#C9A84C;font-size:15px;font-weight:500;letter-spacing:.04em}
+
+/* Mini shelf (mobile) */
+.wtf-mini-shelf-wrap{display:none;max-width:640px;margin:1.75rem auto 0;padding:0 1.25rem}
+.wtf-mini-shelf{display:flex;align-items:flex-end;gap:1px;overflow-x:auto;padding-bottom:.6rem;border-bottom:2px solid rgba(106,101,96,.25);-webkit-overflow-scrolling:touch}
+.wtf-mini-spine{flex:0 0 auto;width:3px;height:46px;background:#6a6560;opacity:.35;border-radius:1px 1px 0 0}
+.wtf-mini-spine.covered{background:#C9A84C;opacity:1;height:56px;width:5px}
+.wtf-mini-shelf-hint{font-size:11px;color:#8a8070;text-align:center;margin-top:.5rem;letter-spacing:.04em}
 
 /* Shelf (desktop) */
 .wtf-shelf-wrap{max-width:880px;margin:2.5rem auto 4rem;padding:0 1.5rem}
@@ -65,8 +73,10 @@ a{color:inherit}
 
 @media(max-width:768px){
   .wtf-shelf-wrap{display:none}
+  .wtf-mini-shelf-wrap{display:block}
   .wtf-collection-cards{display:flex}
   .wtf-collection-header h1{font-size:34px}
+  .wtf-collection-desc{font-size:14px}
 }
 </style>
 </head>
@@ -87,12 +97,19 @@ a{color:inherit}
 
 <div class="wtf-collection-header">
   <h1>The Collection</h1>
+  <p class="wtf-collection-desc">Every spine below represents a film in the Criterion Collection &mdash; over 1,300 of them and counting. The gold spines are the ones we've explored together on the show. Hover (or tap) any gold spine to see who joined us and listen to the conversation.</p>
   <div class="wtf-collection-count">12 of 1324 explored</div>
 </div>
 
 <!-- Desktop shelf -->
 <div class="wtf-shelf-wrap">
   <div class="wtf-shelf" id="wtf-shelf"></div>
+</div>
+
+<!-- Mobile mini-shelf -->
+<div class="wtf-mini-shelf-wrap">
+  <div class="wtf-mini-shelf" id="wtf-mini-shelf"></div>
+  <div class="wtf-mini-shelf-hint">Scroll to see the whole collection &rarr;</div>
 </div>
 
 <!-- Mobile card list -->
@@ -125,11 +142,21 @@ a{color:inherit}
 
   var shelf = document.getElementById('wtf-shelf');
   var cards = document.getElementById('wtf-cards');
+  var miniShelf = document.getElementById('wtf-mini-shelf');
   var widths = [16, 20, 25, 18, 22, 28, 19];
 
   for (var i = 1; i <= TOTAL; i++) {
     var ep = bySpine[i];
     var w = widths[i % widths.length];
+
+    // Mini shelf (mobile) — simple tick marks, gold for covered spines
+    var mini = document.createElement(ep ? 'a' : 'div');
+    mini.className = ep ? 'wtf-mini-spine covered' : 'wtf-mini-spine';
+    if (ep) {
+      mini.href = ep.link;
+      mini.title = '#' + ep.spine + ' — ' + ep.title;
+    }
+    miniShelf.appendChild(mini);
 
     if (ep) {
       var a = document.createElement('a');
