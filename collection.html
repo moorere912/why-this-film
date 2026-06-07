@@ -30,10 +30,14 @@ a{color:inherit}
 .wtf-shelf{display:flex;flex-wrap:wrap;align-items:flex-end;gap:3px;padding-bottom:1rem;position:relative}
 .wtf-shelf::after{content:"";display:block;position:absolute;bottom:0;left:0;right:0;height:2px;background:#6a6560;opacity:.35;box-shadow:0 6px 14px rgba(0,0,0,.12)}
 .wtf-spine{height:190px;border-radius:2px 2px 0 0;cursor:default;position:relative;flex:0 0 auto;transition:transform .18s ease,box-shadow .18s ease}
-.wtf-spine.uncovered{background:#6a6560;opacity:.4}
+.wtf-spine.uncovered{background:#6a6560;opacity:.55}
 .wtf-spine.covered{background:#C9A84C;cursor:pointer;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 2px 6px rgba(0,0,0,.08)}
 .wtf-spine.covered:hover{transform:translateY(-10px);box-shadow:0 10px 20px rgba(0,0,0,.18)}
 .wtf-spine-title{writing-mode:vertical-rl;transform:rotate(180deg);color:#1a1a1a;font-family:'Playfair Display',serif;font-weight:700;font-size:13px;white-space:nowrap;letter-spacing:.01em;padding:10px 0}
+.wtf-spine-num{writing-mode:vertical-rl;transform:rotate(180deg);font-family:'Playfair Display',serif;font-weight:700;font-size:11px;white-space:nowrap;letter-spacing:.04em;padding:8px 0}
+.wtf-spine.uncovered .wtf-spine-num{color:#F5F0E8;opacity:.85}
+.wtf-spine.covered .wtf-spine-num{color:#1a1a1a;opacity:.55;margin-bottom:4px}
+.wtf-spine.covered{flex-direction:column;gap:2px}
 
 /* Tooltip */
 .wtf-spine-tip{position:absolute;bottom:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(6px);background:#1a1a1a;color:#F5F0E8;border-radius:6px;padding:.85rem 1rem;width:220px;text-align:left;opacity:0;pointer-events:none;transition:opacity .15s ease,transform .15s ease;z-index:20;box-shadow:0 12px 28px rgba(0,0,0,.3)}
@@ -121,7 +125,7 @@ a{color:inherit}
 
   var shelf = document.getElementById('wtf-shelf');
   var cards = document.getElementById('wtf-cards');
-  var widths = [10, 13, 16, 11, 14, 18, 12];
+  var widths = [16, 20, 25, 18, 22, 28, 19];
 
   for (var i = 1; i <= TOTAL; i++) {
     var ep = bySpine[i];
@@ -133,9 +137,14 @@ a{color:inherit}
       a.style.width = w + 'px';
       a.href = ep.link;
 
+      var numSpan = document.createElement('span');
+      numSpan.className = 'wtf-spine-num';
+      numSpan.textContent = '#' + ep.spine;
+      a.appendChild(numSpan);
+
       var titleSpan = document.createElement('span');
       titleSpan.className = 'wtf-spine-title';
-      titleSpan.textContent = '#' + ep.spine + '  ' + ep.title;
+      titleSpan.textContent = ep.title;
       a.appendChild(titleSpan);
 
       var tip = document.createElement('div');
@@ -152,6 +161,15 @@ a{color:inherit}
       var d = document.createElement('div');
       d.className = 'wtf-spine uncovered';
       d.style.width = w + 'px';
+      d.style.display = 'flex';
+      d.style.alignItems = 'center';
+      d.style.justifyContent = 'center';
+
+      var n = document.createElement('span');
+      n.className = 'wtf-spine-num';
+      n.textContent = '#' + i;
+      d.appendChild(n);
+
       shelf.appendChild(d);
     }
   }
