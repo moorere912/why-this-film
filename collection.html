@@ -36,7 +36,7 @@ a{color:inherit}
 .wtf-spine-title{writing-mode:vertical-rl;transform:rotate(180deg);color:#1a1a1a;font-family:'Playfair Display',serif;font-weight:700;font-size:13px;white-space:nowrap;letter-spacing:.01em;padding:10px 0}
 .wtf-spine-num{writing-mode:vertical-rl;transform:rotate(180deg);font-family:'Playfair Display',serif;font-weight:700;font-size:11px;white-space:nowrap;letter-spacing:.04em;padding:8px 0}
 .wtf-spine.uncovered .wtf-spine-num{color:#F5F0E8;opacity:.85}
-.wtf-spine.covered .wtf-spine-num{color:#1a1a1a;opacity:.55;margin-bottom:4px}
+.wtf-spine.covered .wtf-spine-num{color:#1a1a1a;opacity:.85;margin-bottom:4px}
 .wtf-spine.covered{flex-direction:column;gap:2px}
 
 /* Tooltip */
@@ -112,11 +112,11 @@ a{color:inherit}
     { spine: 1185, title: "After Hours",                      dir: "Martin Scorsese",     year: 1985, guest: "Sheila O'Malley",   link: "episodes/after-hours.html" },
     { spine: 1248, title: "Winchester '73",                   dir: "Anthony Mann",        year: 1950, guest: "Brady Crytzer",     link: "episodes/winchester-73.html" },
     { spine: 654,  title: "Repo Man",                         dir: "Alex Cox",            year: 1984, guest: "James Chestnut",    link: "episodes/repo-man.html" },
-    { spine: 1293, title: "Pee-wee's Big Adventure",          dir: "Tim Burton",          year: 1985, guest: "Jesse Thorn",       link: "episodes/pee-wees-big-adventure.html" },
+    { spine: 1293, title: "Pee-wee's Big Adventure",          display: "Pee-wee's",        dir: "Tim Burton",          year: 1985, guest: "Jesse Thorn",       link: "episodes/pee-wees-big-adventure.html", wide: true },
     { spine: 536,  title: "The Thin Red Line",                dir: "Terrence Malick",     year: 1998, guest: "Jared Frederick",   link: "episodes/thin-red-line.html" },
-    { spine: 157,  title: "The Royal Tenenbaums",             dir: "Wes Anderson",        year: 2001, guest: "Chris Cook",        link: "episodes/royal-tenenbaums.html" },
+    { spine: 157,  title: "The Royal Tenenbaums",             display: "Tenenbaums",       dir: "Wes Anderson",        year: 2001, guest: "Chris Cook",        link: "episodes/royal-tenenbaums.html", wide: true },
     { spine: 267,  title: "Kagemusha",                        dir: "Akira Kurosawa",      year: 1980, guest: "Michael Repsch",    link: "episodes/kagemusha.html" },
-    { spine: 1201, title: "Guillermo del Toro's Pinocchio",   dir: "del Toro & Gustafson",year: 2022, guest: "Caleb Tyson",       link: "episodes/guillermo-del-toro-pinocchio.html" },
+    { spine: 1201, title: "Guillermo del Toro's Pinocchio",   display: "Pinocchio",        dir: "del Toro & Gustafson",year: 2022, guest: "Caleb Tyson",       link: "episodes/guillermo-del-toro-pinocchio.html", wide: true },
     { spine: 1199, title: "La cérémonie",                     dir: "Claude Chabrol",      year: 1995, guest: "Girish Shambu",     link: "episodes/la-ceremonie.html" }
   ];
 
@@ -134,7 +134,7 @@ a{color:inherit}
     if (ep) {
       var a = document.createElement('a');
       a.className = 'wtf-spine covered';
-      a.style.width = w + 'px';
+      a.style.width = (ep.wide ? w + 12 : w) + 'px';
       a.href = ep.link;
 
       var numSpan = document.createElement('span');
@@ -144,7 +144,7 @@ a{color:inherit}
 
       var titleSpan = document.createElement('span');
       titleSpan.className = 'wtf-spine-title';
-      titleSpan.textContent = ep.title;
+      titleSpan.textContent = ep.display || ep.title;
       a.appendChild(titleSpan);
 
       var tip = document.createElement('div');
