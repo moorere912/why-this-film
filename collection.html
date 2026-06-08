@@ -79,6 +79,12 @@ a{color:inherit}
 .wtf-spine.covered:hover .wtf-flip,
 .wtf-spine.covered:focus-within .wtf-flip,
 .wtf-spine.covered.flipped .wtf-flip{transform:translateX(52px) translateZ(46px) rotateY(180deg);z-index:30}
+/* Spines near the right edge of the viewport flip toward the left instead, so the cover never drifts off-screen */
+.wtf-spine.covered.flip-left .wtf-flip{transform-origin:right center}
+.wtf-spine.covered.flip-left:hover .wtf-flip,
+.wtf-spine.covered.flip-left:focus-within .wtf-flip,
+.wtf-spine.covered.flip-left.flipped .wtf-flip{transform:translateX(-52px) translateZ(46px) rotateY(-180deg)}
+.wtf-spine.covered.flip-left .wtf-flip-back{left:auto;right:0;transform:rotateY(-180deg)}
 .wtf-flip-face{position:absolute;left:0;bottom:0;height:100%;backface-visibility:hidden;border-radius:2px 2px 0 0;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.08)}
 .wtf-flip-front{width:100%;background:#C9A84C;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
 .wtf-flip-back{width:166px;height:328px;bottom:0;background:#1a1a1a;transform:rotateY(180deg);box-shadow:0 18px 44px rgba(0,0,0,.4);display:flex;flex-direction:column;text-align:left}
@@ -364,6 +370,28 @@ a{color:inherit}
     });
   });
   document.addEventListener('click', function () { closeAll(null); });
+})();
+
+// Shelf spines: spines sitting near the right edge of the viewport would push
+// their flipped-out cover off-screen, so check each spine's position and have
+// it flip toward the left instead, keeping the cover fully visible.
+(function spineFlipDirection() {
+  var spines = document.querySelectorAll('.wtf-spine.covered');
+  var CARD_WIDTH = 166;   // matches .wtf-flip-back width
+  var REACH = 52;         // matches the translateX distance in CSS
+  var BUFFER = 24;        // a little breathing room
+
+  function updateDirection(spine) {
+    var rect = spine.getBoundingClientRect();
+    var wouldOverflowRight = rect.right + REACH + CARD_WIDTH + BUFFER > window.innerWidth;
+    spine.classList.toggle('flip-left', wouldOverflowRight);
+  }
+
+  spines.forEach(function (spine) {
+    spine.addEventListener('mouseenter', function () { updateDirection(spine); });
+    spine.addEventListener('focus', function () { updateDirection(spine); });
+    spine.addEventListener('touchstart', function () { updateDirection(spine); }, { passive: true });
+  });
 })();
 
 // Shelf spines: on touch devices, tap once to "pull the spine out" and reveal

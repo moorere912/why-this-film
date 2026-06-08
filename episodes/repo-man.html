@@ -128,7 +128,12 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
   .wtf-hero{padding:2.5rem 1.25rem 3rem}
   .wtf-hero h1{font-size:32px}
   .wtf-resources-grid{grid-template-columns:1fr}
-}</style>
+}
+/* 3D tilted cover art — like viewing the case from a slight angle on a table */
+.wtf-cover-3d{position:relative;perspective:1100px;margin-bottom:.9rem}
+.wtf-cover-3d::before{content:"";position:absolute;left:10%;right:10%;bottom:-14px;height:26px;background:radial-gradient(ellipse at center, rgba(0,0,0,.4) 0%, rgba(201,168,76,.12) 45%, transparent 75%);filter:blur(4px);border-radius:50%;z-index:0}
+.wtf-cover-3d img{position:relative;z-index:1;display:block;width:100%;border-radius:6px;margin:0;transform:rotateX(6deg) rotateY(-9deg);transform-origin:center bottom;box-shadow:-16px 26px 40px rgba(0,0,0,.5),0 0 0 1px rgba(201,168,76,.2)}
+</style>
 </head>
 <body>
 
@@ -166,7 +171,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
       </div>
     </div>
     <div>
-      <img src="../images/repo-man.jpg" style="width:100%;border-radius:6px;display:block;margin-bottom:.75rem;box-shadow:0 4px 20px rgba(0,0,0,.5)" alt="Repo Man Criterion cover">
+      <div class="wtf-cover-3d"><img src="../images/repo-man.jpg" alt="Repo Man Criterion cover"></div>
       <div class="wtf-player-card">
         <div class="wtf-player-top">
         <p>Listen On</p>
