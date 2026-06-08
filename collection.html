@@ -43,7 +43,12 @@ a{color:inherit}
 .wtf-coverage-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
 .wtf-coverage-block h3{font-family:'Playfair Display',serif;font-size:15px;color:#6a6560;margin:0 0 .35rem;text-transform:uppercase;letter-spacing:.08em;text-align:center}
 .wtf-coverage-note{font-size:11px;color:#a89a7d;text-align:center;margin:0 0 1rem;letter-spacing:.03em}
-.wtf-decade-row{display:flex;align-items:center;gap:.6rem;margin-bottom:.45rem}
+.wtf-decade-row{position:relative;display:flex;align-items:center;gap:.6rem;margin-bottom:.45rem;cursor:default}
+.wtf-decade-tip{position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%) translateY(6px);background:#1a1a1a;color:#F5F0E8;border-radius:6px;padding:.65rem .85rem;min-width:185px;text-align:left;opacity:0;pointer-events:none;transition:opacity .15s ease,transform .15s ease;z-index:25;box-shadow:0 12px 28px rgba(0,0,0,.3);font-size:11.5px;line-height:1.7;white-space:nowrap}
+.wtf-decade-tip::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:#1a1a1a}
+.wtf-decade-row:hover .wtf-decade-tip{opacity:1;transform:translateX(-50%) translateY(0)}
+.wtf-decade-tip .tip-ttl{display:block;color:#C9A84C;font-weight:600;margin-bottom:.3rem;font-family:'Playfair Display',serif;font-size:12.5px;letter-spacing:.02em}
+.wtf-decade-tip .tip-film{display:block;color:#d8d2c5}
 .wtf-decade-label{flex:0 0 42px;font-size:12px;color:#6a6560;text-align:right}
 .wtf-decade-track{flex:1;display:block;background:rgba(106,101,96,.12);border-radius:3px;height:14px;overflow:hidden}
 .wtf-decade-bar{display:block;height:100%;background:#C9A84C;border-radius:3px}
@@ -180,31 +185,61 @@ a{color:inherit}
         <span class="wtf-decade-label">1950s</span>
         <span class="wtf-decade-track"><span class="wtf-decade-bar" style="width:16.7%"></span></span>
         <span class="wtf-decade-count">2</span>
+        <div class="wtf-decade-tip">
+          <span class="tip-ttl">1950s</span>
+          <span class="tip-film">Winchester &#39;73 (1950)</span>
+          <span class="tip-film">Touchez pas au grisbi (1954)</span>
+        </div>
       </div>
       <div class="wtf-decade-row">
         <span class="wtf-decade-label">1960s</span>
         <span class="wtf-decade-track"><span class="wtf-decade-bar" style="width:8.3%"></span></span>
         <span class="wtf-decade-count">1</span>
+        <div class="wtf-decade-tip">
+          <span class="tip-ttl">1960s</span>
+          <span class="tip-film">La Jet&eacute;e (1962)</span>
+        </div>
       </div>
       <div class="wtf-decade-row">
         <span class="wtf-decade-label">1980s</span>
         <span class="wtf-decade-track"><span class="wtf-decade-bar" style="width:41.7%"></span></span>
         <span class="wtf-decade-count">5</span>
+        <div class="wtf-decade-tip">
+          <span class="tip-ttl">1980s</span>
+          <span class="tip-film">Kagemusha (1980)</span>
+          <span class="tip-film">Repo Man (1984)</span>
+          <span class="tip-film">After Hours (1985)</span>
+          <span class="tip-film">The Breakfast Club (1985)</span>
+          <span class="tip-film">Pee-wee&#39;s Big Adventure (1985)</span>
+        </div>
       </div>
       <div class="wtf-decade-row">
         <span class="wtf-decade-label">1990s</span>
         <span class="wtf-decade-track"><span class="wtf-decade-bar" style="width:16.7%"></span></span>
         <span class="wtf-decade-count">2</span>
+        <div class="wtf-decade-tip">
+          <span class="tip-ttl">1990s</span>
+          <span class="tip-film">La c&eacute;r&eacute;monie (1995)</span>
+          <span class="tip-film">The Thin Red Line (1998)</span>
+        </div>
       </div>
       <div class="wtf-decade-row">
         <span class="wtf-decade-label">2000s</span>
         <span class="wtf-decade-track"><span class="wtf-decade-bar" style="width:8.3%"></span></span>
         <span class="wtf-decade-count">1</span>
+        <div class="wtf-decade-tip">
+          <span class="tip-ttl">2000s</span>
+          <span class="tip-film">The Royal Tenenbaums (2001)</span>
+        </div>
       </div>
       <div class="wtf-decade-row">
         <span class="wtf-decade-label">2020s</span>
         <span class="wtf-decade-track"><span class="wtf-decade-bar" style="width:8.3%"></span></span>
         <span class="wtf-decade-count">1</span>
+        <div class="wtf-decade-tip">
+          <span class="tip-ttl">2020s</span>
+          <span class="tip-film">Guillermo del Toro&#39;s Pinocchio (2022)</span>
+        </div>
       </div>
     </div>
     <div class="wtf-coverage-block">
