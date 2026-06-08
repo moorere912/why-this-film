@@ -76,10 +76,12 @@ a{color:inherit}
 .wtf-shelf-wrap{max-width:880px;margin:2.5rem auto 4rem;padding:0 1.5rem}
 .wtf-shelf{display:flex;flex-wrap:wrap;align-items:flex-end;gap:3px;padding-bottom:1rem;position:relative}
 .wtf-shelf::after{content:"";display:block;position:absolute;bottom:0;left:0;right:0;height:2px;background:#6a6560;opacity:.35;box-shadow:0 6px 14px rgba(0,0,0,.12)}
-.wtf-spine{height:190px;border-radius:2px 2px 0 0;cursor:default;position:relative;flex:0 0 auto;transition:transform .18s ease,box-shadow .18s ease,width .35s ease,opacity .3s ease,margin .35s ease}
-/* "Show episodes only" mode — collapse uncovered spines so the gold ones pack tightly together */
-.wtf-shelf.episodes-only .wtf-spine.uncovered,
-.wtf-mini-shelf.episodes-only .wtf-mini-spine:not(.covered){width:0!important;min-width:0;opacity:0;margin:0;border:0;overflow:hidden;pointer-events:none}
+.wtf-spine{height:190px;border-radius:2px 2px 0 0;cursor:default;position:relative;flex:0 0 auto;transition:transform .18s ease,box-shadow .18s ease}
+/* "Show episodes only" mode — fade uncovered spines out, then remove them from the
+   layout entirely (display:none) so the gold ones actually pack together in one row,
+   like a real shelf, instead of leaving gaps that scatter everything across lines */
+.wtf-spine.wtf-fading,
+.wtf-mini-spine.wtf-fading{opacity:0;transition:opacity .25s ease}
 .wtf-spine.uncovered{background:#6a6560;opacity:.55}
 .wtf-spine.covered:hover,
 .wtf-spine.covered:focus-within,
@@ -447,19 +449,41 @@ a{color:inherit}
   });
 })();
 
-// "Show episodes only" toggle — collapses every uncovered spine (gray) so the
-// 12 gold ones pack tightly together, like a real shelf of just the discs you own.
-// The "12 of 1324 explored" counter is untouched — it always reflects the full collection.
+// "Show episodes only" toggle — fades the uncovered (gray) spines out, then removes
+// them from the layout entirely so the 12 gold ones actually flow together and pack
+// tightly, like a real shelf holding just the discs you own. (Just hiding them with
+// width:0 leaves them in the flex flow — their gaps/heights still scatter the gold
+// spines across multiple wrapped rows instead of packing them.) Reversing the toggle
+// puts them back and fades them in. The "explored" counter never changes either way.
 (function episodesOnlyToggle() {
   var checkbox = document.getElementById('wtf-episodes-only');
   var shelf = document.getElementById('wtf-shelf');
   var miniShelf = document.getElementById('wtf-mini-shelf');
   if (!checkbox) return;
 
+  var FADE_MS = 250;
+
+  function setHidden(container, selector, hide) {
+    if (!container) return;
+    var els = container.querySelectorAll(selector);
+    if (hide) {
+      els.forEach(function (el) { el.classList.add('wtf-fading'); });
+      setTimeout(function () {
+        els.forEach(function (el) { el.style.display = 'none'; });
+      }, FADE_MS);
+    } else {
+      els.forEach(function (el) { el.style.display = ''; });
+      // Force a reflow so the browser registers the display change before we
+      // remove the fading class — otherwise the fade-in transition won't run.
+      void container.offsetHeight;
+      els.forEach(function (el) { el.classList.remove('wtf-fading'); });
+    }
+  }
+
   checkbox.addEventListener('change', function () {
     var on = checkbox.checked;
-    if (shelf) shelf.classList.toggle('episodes-only', on);
-    if (miniShelf) miniShelf.classList.toggle('episodes-only', on);
+    setHidden(shelf, '.wtf-spine.uncovered', on);
+    setHidden(miniShelf, '.wtf-mini-spine:not(.covered)', on);
   });
 })();
 </script>
