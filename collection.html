@@ -87,13 +87,14 @@ a{color:inherit}
 .wtf-spine.covered.flip-left .wtf-flip-back{left:auto;right:0;transform:rotateY(-180deg)}
 .wtf-flip-face{position:absolute;left:0;bottom:0;height:100%;backface-visibility:hidden;border-radius:2px 2px 0 0;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.08)}
 .wtf-flip-front{width:100%;background:#C9A84C;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
-.wtf-flip-back{width:166px;height:328px;bottom:0;background:#1a1a1a;transform:rotateY(180deg);box-shadow:0 18px 44px rgba(0,0,0,.4);display:flex;flex-direction:column;text-align:left}
-.wtf-flip-cover{width:100%;height:165px;object-fit:cover;display:block;flex:0 0 auto}
-.wtf-flip-info{padding:.7rem .8rem;color:#F5F0E8;flex:1;display:flex;flex-direction:column;min-height:0}
+.wtf-flip-back{width:166px;height:auto;bottom:0;background:#1a1a1a;transform:rotateY(180deg);box-shadow:0 18px 44px rgba(0,0,0,.4);display:flex;flex-direction:column;text-align:left}
+/* Every Criterion cover here is the same shape (portrait, ~1288x1600), so size the
+   image box to that exact ratio — nothing gets cropped or cut off, on any cover */
+.wtf-flip-cover{width:100%;aspect-ratio:1288/1600;height:auto;object-fit:cover;display:block;flex:0 0 auto}
+.wtf-flip-info{padding:.7rem .8rem;color:#F5F0E8;display:flex;flex-direction:column}
 .wtf-flip-info .ttl{font-family:'Playfair Display',serif;font-weight:700;font-size:14px;line-height:1.25;margin-bottom:.4rem;color:#F5F0E8}
 .wtf-flip-info .meta{font-size:11px;color:#b8b0a0;line-height:1.6;letter-spacing:.01em}
-.wtf-flip-info .listen{margin-top:auto;padding-top:.5rem}
-.wtf-flip-info .listen{display:inline-block;margin-top:.35rem;font-size:11px;color:#C9A84C;font-weight:600;letter-spacing:.03em}
+.wtf-flip-info .listen{display:inline-block;margin-top:.5rem;font-size:11px;color:#C9A84C;font-weight:600;letter-spacing:.03em}
 .wtf-spine.covered:hover .wtf-flip-info .listen,
 .wtf-spine.covered.flipped .wtf-flip-info .listen{text-decoration:underline}
 
