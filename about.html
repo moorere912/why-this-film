@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why This Film? &mdash; About</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
+.wtf-nav{background:#1a1a1a;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:56px;position:sticky;top:0;z-index:10}
+.wtf-nav-logo{display:flex;align-items:center;gap:10px;color:#F5F0E8;font-family:'Playfair Display',serif;font-size:15px;letter-spacing:.03em;text-decoration:none}
+.wtf-nav-logo img{width:32px;height:32px;object-fit:contain}
+.wtf-nav-links{display:flex;gap:1.5rem;list-style:none}
+.wtf-nav-links a{color:#b8b0a0;text-decoration:none;font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;transition:color .2s}
+.wtf-nav-links a:hover{color:#C9A84C}
+.wtf-nav-links a.active{color:#C9A84C}
+.wtf-hero{background:#1a1a1a;padding:4rem 2rem 4.5rem;position:relative;overflow:hidden;text-align:center}
+.grain-overlay{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px}
+.wtf-hero-inner{max-width:680px;margin:0 auto;position:relative;z-index:1}
+.wtf-hero-inner img{width:72px;height:72px;border-radius:14px;object-fit:contain;margin:0 auto 1.5rem;display:block;background:#F5F0E8;padding:10px}
+.wtf-hero h1{font-family:'Playfair Display',serif;font-size:44px;font-weight:700;color:#F5F0E8;line-height:1.12;margin-bottom:.6rem}
+.wtf-hero-sub{font-family:'Playfair Display',serif;font-size:17px;font-style:italic;color:#8a8070}
+.wtf-body{max-width:660px;margin:0 auto;padding:3.5rem 2rem}
+.wtf-body p{font-size:15px;line-height:1.8;color:#4a4540;margin-bottom:1.4rem}
+.wtf-section-label{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#C9A84C;margin-bottom:.9rem}
+.wtf-section{margin-bottom:3rem}
+.wtf-section h2{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#1a1a1a;margin-bottom:1rem}
+.wtf-spine-strip{display:flex;flex-wrap:wrap;gap:8px;margin-top:.5rem}
+.wtf-spine-chip{display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;color:#F5F0E8;text-decoration:none;font-size:12px;letter-spacing:.04em;padding:7px 12px;border-radius:20px;border:1px solid #C9A84C;transition:background .15s}
+.wtf-spine-chip:hover{background:#2e2e2e}
+.wtf-spine-chip .num{color:#C9A84C;font-family:'Playfair Display',serif;font-weight:700}
+.wtf-mailto-card{background:#1a1a1a;border-radius:8px;padding:1.75rem;text-align:center}
+.wtf-mailto-card p{color:#c0b8a8;margin-bottom:1.1rem}
+.wtf-mailto-btn{display:inline-block;background:#C9A84C;color:#1a1a1a;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:12px 24px;border-radius:4px;transition:background .15s}
+.wtf-mailto-btn:hover{background:#ddc070}
+.wtf-find-grid{display:flex;flex-direction:column;gap:10px;margin-top:.5rem}
+.wtf-find-link{display:flex;align-items:center;justify-content:space-between;border:.5px solid #d8d0c0;border-radius:6px;padding:14px 18px;text-decoration:none;color:#1a1a1a;font-size:14px;font-weight:500;transition:border-color .15s,background .15s}
+.wtf-find-link:hover{border-color:#C9A84C;background:white}
+.wtf-find-link .arrow{color:#C9A84C}
+.wtf-footer{background:#1a1a1a;padding:2rem;text-align:center;margin-top:2rem}
+.wtf-footer p{font-size:12px;color:#5a5248;letter-spacing:.04em}
+.wtf-footer a{color:#C9A84C;text-decoration:none}
+.wtf-footer a:hover{text-decoration:underline}
+@media(max-width:760px){
+  .wtf-hero{padding:3rem 1.25rem 3.5rem}
+  .wtf-hero h1{font-size:32px}
+  .wtf-body{padding:2.5rem 1.25rem}
+}
+</style>
+</head>
+<body>
+
+<nav class="wtf-nav">
+  <a class="wtf-nav-logo" href="index.html">
+    <img src="https://www.buzzsprout.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTUyNDk1MzI1LCJwdXIiOiJibG9iX2lkIn19--86e5f21fbc3e628cef3721928333b70df501eb3e/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZmlsbCI6WzI1MCwyNTAseyJjcm9wIjoiY2VudHJlIn1dLCJzYXZlciI6eyJxdWFsaXR5Ijo2MH0sImNvbG91cnNwYWNlIjoic3JnYiJ9LCJwdXIiOiJ2YXJpYXRpb24ifX0=--21f3793904e6ce1806a5a794a691217fceef82c7/Logo.png" alt="Why This Film?"/>
+    Why This Film?
+  </a>
+  <ul class="wtf-nav-links">
+    <li><a href="index.html#all-episodes">Episodes</a></li>
+    <li><a href="collection.html">Collection</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="https://www.buzzsprout.com/2528877/support" target="_blank">Support</a></li>
+    <li><a href="https://www.buzzsprout.com/2528877/fan_mail/new" target="_blank" title="whythisfilmpod@gmail.com - send a text or leave a voicemail">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="wtf-hero">
+  <div class="grain-overlay"></div>
+  <div class="wtf-hero-inner">
+    <img src="https://www.buzzsprout.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTUyNDk1MzI1LCJwdXIiOiJibG9iX2lkIn19--86e5f21fbc3e628cef3721928333b70df501eb3e/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZmlsbCI6WzI1MCwyNTAseyJjcm9wIjoiY2VudHJlIn1dLCJzYXZlciI6eyJxdWFsaXR5Ijo2MH0sImNvbG91cnNwYWNlIjoic3JnYiJ9LCJwdXIiOiJ2YXJpYXRpb24ifX0=--21f3793904e6ce1806a5a794a691217fceef82c7/Logo.png" alt="Why This Film?"/>
+    <h1>Why This Film?</h1>
+    <div class="wtf-hero-sub">Conversations about the movies that shaped us</div>
+  </div>
+</div>
+
+<div class="wtf-body">
+
+  <div class="wtf-section">
+    <div class="wtf-section-label">The Show</div>
+    <h2>Why This Film?</h2>
+    <p>Why This Film? is a podcast where we sit down with a guest, pick a movie that means something to them, and talk about why. Sometimes that means digging into the history of the Criterion Collection. Sometimes it's a film that shaped how someone sees the world. Either way, the goal is the same: a real conversation about a film worth talking about.</p>
+    <p>Each episode pairs a film with a guest who has something genuine to say about it &mdash; a critic, a filmmaker, a teacher, a fan. We talk about what the film does, why it still matters, and what it was like encountering it for the first time (or the fifth).</p>
+  </div>
+
+  <div class="wtf-section">
+    <div class="wtf-section-label">Browse the Collection</div>
+    <h2>All 12 Episodes</h2>
+    <div class="wtf-spine-strip">
+      <a class="wtf-spine-chip" href="episodes/la-jetee.html"><span class="num">01</span> La Jet&eacute;e</a>
+      <a class="wtf-spine-chip" href="episodes/touchez-pas-au-grisbi.html"><span class="num">02</span> Touchez pas au grisbi</a>
+      <a class="wtf-spine-chip" href="episodes/the-breakfast-club.html"><span class="num">03</span> The Breakfast Club</a>
+      <a class="wtf-spine-chip" href="episodes/after-hours.html"><span class="num">04</span> After Hours</a>
+      <a class="wtf-spine-chip" href="episodes/winchester-73.html"><span class="num">05</span> Winchester '73</a>
+      <a class="wtf-spine-chip" href="episodes/repo-man.html"><span class="num">06</span> Repo Man</a>
+      <a class="wtf-spine-chip" href="episodes/pee-wees-big-adventure.html"><span class="num">07</span> Pee-wee's Big Adventure</a>
+      <a class="wtf-spine-chip" href="episodes/thin-red-line.html"><span class="num">08</span> The Thin Red Line</a>
+      <a class="wtf-spine-chip" href="episodes/royal-tenenbaums.html"><span class="num">09</span> The Royal Tenenbaums</a>
+      <a class="wtf-spine-chip" href="episodes/kagemusha.html"><span class="num">10</span> Kagemusha</a>
+      <a class="wtf-spine-chip" href="episodes/guillermo-del-toro-pinocchio.html"><span class="num">11</span> Guillermo del Toro's Pinocchio</a>
+      <a class="wtf-spine-chip" href="episodes/la-ceremonie.html"><span class="num">12</span> La c&eacute;r&eacute;monie</a>
+    </div>
+  </div>
+
+  <div class="wtf-section">
+    <div class="wtf-section-label">Get Involved</div>
+    <h2>Want To Be On The Show?</h2>
+    <div class="wtf-mailto-card">
+      <p>If you've got a film you'd love to talk about &mdash; and a reason why it matters to you &mdash; we want to hear from you.</p>
+      <a class="wtf-mailto-btn" href="mailto:whythisfilmpod@gmail.com">Email Us &rarr;</a>
+    </div>
+  </div>
+
+  <div class="wtf-section">
+    <div class="wtf-section-label">Stay Connected</div>
+    <h2>Find Us Everywhere</h2>
+    <div class="wtf-find-grid">
+      <a class="wtf-find-link" href="https://www.instagram.com/whythisfilmpod/" target="_blank">Instagram <span class="arrow">&rarr;</span></a>
+      <a class="wtf-find-link" href="https://www.youtube.com/@WhyThisFilm" target="_blank">YouTube <span class="arrow">&rarr;</span></a>
+      <a class="wtf-find-link" href="https://www.buzzsprout.com/2528877/support" target="_blank">Support the Show <span class="arrow">&rarr;</span></a>
+    </div>
+  </div>
+
+</div>
+
+<div class="wtf-footer">
+  <p>&copy; 2026 Why This Film? &nbsp;&middot;&nbsp; <a href="https://www.instagram.com/whythisfilmpod/" target="_blank">Instagram</a> &nbsp;&middot;&nbsp; <a href="https://www.youtube.com/@WhyThisFilm" target="_blank">YouTube</a> &nbsp;&middot;&nbsp; <a href="https://www.buzzsprout.com/2528877/support" target="_blank">Support the Show</a></p>
+</div>
+
+</body>
+</html>
