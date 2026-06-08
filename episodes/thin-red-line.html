@@ -338,7 +338,7 @@ function setTab(tab) {
   document.getElementById('btn-after').classList.toggle('active', tab === 'after');
   document.getElementById('toggle-note').textContent = tab === 'before'
     ? 'Spoiler-free context and starting points.'
-    : 'Essays, deeper reads, and where to go next &mdash; best after seeing the film.';
+    : 'Essays, deeper reads, and where to go next \u2014 best after seeing the film.';
   document.querySelectorAll('.wtf-resource-item').forEach(el => {
     el.classList.toggle('hidden', el.dataset.tab !== tab);
   });
