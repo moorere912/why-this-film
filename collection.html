@@ -48,6 +48,8 @@ a{color:inherit}
 .wtf-country-popup-title{display:block;color:#C9A84C;font-weight:600;letter-spacing:.04em;margin-bottom:.35rem;font-family:'Playfair Display',serif;font-size:13px}
 .wtf-country-popup ul{margin:0;padding:0;list-style:none}
 .wtf-country-popup li{padding:1px 0}
+.wtf-country-popup li a{color:#F5F0E8;text-decoration:none;border-bottom:1px solid rgba(201,168,76,.35);transition:color .15s ease,border-color .15s ease}
+.wtf-country-popup li a:hover{color:#C9A84C;border-color:#C9A84C}
 @media(max-width:600px){
   .wtf-coverage-grid{grid-template-columns:1fr;gap:1.75rem}
 }
@@ -188,28 +190,28 @@ a{color:inherit}
       <div class="wtf-country-row">
         <span class="wtf-country-name">United States</span>
         <span class="wtf-country-wrap">
-          <button type="button" class="wtf-country-count" data-country="United States" data-films="The Breakfast Club (1985)|After Hours (1985)|Winchester &#39;73 (1950)|Repo Man (1984)|Pee-wee&#39;s Big Adventure (1985)|The Thin Red Line (1998)|The Royal Tenenbaums (2001)">7</button>
+          <button type="button" class="wtf-country-count" data-country="United States" data-films="The Breakfast Club (1985)|After Hours (1985)|Winchester &#39;73 (1950)|Repo Man (1984)|Pee-wee&#39;s Big Adventure (1985)|The Thin Red Line (1998)|The Royal Tenenbaums (2001)" data-links="episodes/the-breakfast-club.html|episodes/after-hours.html|episodes/winchester-73.html|episodes/repo-man.html|episodes/pee-wees-big-adventure.html|episodes/thin-red-line.html|episodes/royal-tenenbaums.html">7</button>
           <span class="wtf-country-popup"></span>
         </span>
       </div>
       <div class="wtf-country-row">
         <span class="wtf-country-name">France</span>
         <span class="wtf-country-wrap">
-          <button type="button" class="wtf-country-count" data-country="France" data-films="La Jet&eacute;e (1962)|Touchez pas au grisbi (1954)|La c&eacute;r&eacute;monie (1995)">3</button>
+          <button type="button" class="wtf-country-count" data-country="France" data-films="La Jet&eacute;e (1962)|Touchez pas au grisbi (1954)|La c&eacute;r&eacute;monie (1995)" data-links="episodes/la-jetee.html|episodes/touchez-pas-au-grisbi.html|episodes/la-ceremonie.html">3</button>
           <span class="wtf-country-popup"></span>
         </span>
       </div>
       <div class="wtf-country-row">
         <span class="wtf-country-name">Japan</span>
         <span class="wtf-country-wrap">
-          <button type="button" class="wtf-country-count" data-country="Japan" data-films="Kagemusha (1980)">1</button>
+          <button type="button" class="wtf-country-count" data-country="Japan" data-films="Kagemusha (1980)" data-links="episodes/kagemusha.html">1</button>
           <span class="wtf-country-popup"></span>
         </span>
       </div>
       <div class="wtf-country-row">
         <span class="wtf-country-name">Mexico</span>
         <span class="wtf-country-wrap">
-          <button type="button" class="wtf-country-count" data-country="Mexico" data-films="Guillermo del Toro&#39;s Pinocchio (2022)">1</button>
+          <button type="button" class="wtf-country-count" data-country="Mexico" data-films="Guillermo del Toro&#39;s Pinocchio (2022)" data-links="episodes/guillermo-del-toro-pinocchio.html">1</button>
           <span class="wtf-country-popup"></span>
         </span>
       </div>
@@ -362,8 +364,13 @@ a{color:inherit}
         return;
       }
       var films = btn.getAttribute('data-films').split('|');
+      var links = (btn.getAttribute('data-links') || '').split('|');
       var html = '<span class="wtf-country-popup-title">' + btn.getAttribute('data-country') + '</span><ul>';
-      films.forEach(function (f) { html += '<li>' + f + '</li>'; });
+      films.forEach(function (f, idx) {
+        var href = links[idx];
+        if (href) html += '<li><a href="' + href + '">' + f + '</a></li>';
+        else html += '<li>' + f + '</li>';
+      });
       html += '</ul>';
       popup.innerHTML = html;
       popup.classList.add('open');
