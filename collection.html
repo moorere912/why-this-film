@@ -65,22 +65,30 @@ a{color:inherit}
 .wtf-shelf::after{content:"";display:block;position:absolute;bottom:0;left:0;right:0;height:2px;background:#6a6560;opacity:.35;box-shadow:0 6px 14px rgba(0,0,0,.12)}
 .wtf-spine{height:190px;border-radius:2px 2px 0 0;cursor:default;position:relative;flex:0 0 auto;transition:transform .18s ease,box-shadow .18s ease}
 .wtf-spine.uncovered{background:#6a6560;opacity:.55}
-.wtf-spine.covered{background:#C9A84C;cursor:pointer;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 2px 6px rgba(0,0,0,.08)}
-.wtf-spine.covered:hover{transform:translateY(-10px);box-shadow:0 10px 20px rgba(0,0,0,.18)}
+.wtf-spine.covered:hover,
+.wtf-spine.covered:focus-within,
+.wtf-spine.covered.flipped{z-index:30}
+.wtf-spine.covered{background:transparent;cursor:pointer;display:block;text-decoration:none;box-shadow:none;perspective:1100px}
 .wtf-spine-title{writing-mode:vertical-rl;transform:rotate(180deg);color:#1a1a1a;font-family:'Playfair Display',serif;font-weight:700;font-size:13px;white-space:nowrap;letter-spacing:.01em;padding:10px 0}
 .wtf-spine-num{writing-mode:vertical-rl;transform:rotate(180deg);font-family:'Playfair Display',serif;font-weight:700;font-size:11px;white-space:nowrap;letter-spacing:.04em;padding:8px 0}
 .wtf-spine.uncovered .wtf-spine-num{color:#F5F0E8;opacity:.85}
 .wtf-spine.covered .wtf-spine-num{color:#1a1a1a;opacity:.85;margin-bottom:4px}
-.wtf-spine.covered{flex-direction:column;gap:2px}
 
-/* Tooltip */
-.wtf-spine-tip{position:absolute;bottom:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(6px);background:#1a1a1a;color:#F5F0E8;border-radius:6px;padding:.85rem 1rem;width:220px;text-align:left;opacity:0;pointer-events:none;transition:opacity .15s ease,transform .15s ease;z-index:20;box-shadow:0 12px 28px rgba(0,0,0,.3)}
-.wtf-spine-tip::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:7px solid transparent;border-top-color:#1a1a1a}
-.wtf-spine.covered:hover .wtf-spine-tip{opacity:1;transform:translateX(-50%) translateY(0)}
-.wtf-spine-tip .tip-title{font-family:'Playfair Display',serif;font-weight:700;font-size:15px;color:#F5F0E8;margin-bottom:.3rem;line-height:1.2}
-.wtf-spine-tip .tip-meta{font-size:12px;color:#b8b0a0;margin-bottom:.15rem}
-.wtf-spine-tip .tip-listen{display:inline-block;margin-top:.4rem;font-size:12px;color:#C9A84C;font-weight:500;letter-spacing:.03em;text-decoration:none}
-.wtf-spine-tip .tip-listen:hover{text-decoration:underline}
+/* Pull-from-shelf 3D flip */
+.wtf-flip{position:absolute;bottom:0;left:0;width:100%;height:100%;transform-style:preserve-3d;transform-origin:left center;transition:transform .55s ease-out;z-index:2}
+.wtf-spine.covered:hover .wtf-flip,
+.wtf-spine.covered:focus-within .wtf-flip,
+.wtf-spine.covered.flipped .wtf-flip{transform:translateX(52px) translateZ(46px) rotateY(180deg);z-index:30}
+.wtf-flip-face{position:absolute;left:0;bottom:0;height:100%;backface-visibility:hidden;border-radius:2px 2px 0 0;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.wtf-flip-front{width:100%;background:#C9A84C;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.wtf-flip-back{width:152px;height:264px;bottom:0;background:#1a1a1a;transform:rotateY(180deg);box-shadow:0 18px 44px rgba(0,0,0,.4);display:flex;flex-direction:column;text-align:left}
+.wtf-flip-cover{width:100%;height:172px;object-fit:cover;display:block;flex:0 0 auto}
+.wtf-flip-info{padding:.65rem .75rem;color:#F5F0E8;flex:1;display:flex;flex-direction:column}
+.wtf-flip-info .ttl{font-family:'Playfair Display',serif;font-weight:700;font-size:13.5px;line-height:1.25;margin-bottom:.3rem;color:#F5F0E8}
+.wtf-flip-info .meta{font-size:10.5px;color:#b8b0a0;line-height:1.55;letter-spacing:.01em}
+.wtf-flip-info .listen{display:inline-block;margin-top:.35rem;font-size:11px;color:#C9A84C;font-weight:600;letter-spacing:.03em}
+.wtf-spine.covered:hover .wtf-flip-info .listen,
+.wtf-spine.covered.flipped .wtf-flip-info .listen{text-decoration:underline}
 
 /* Mobile card list */
 .wtf-collection-cards{display:none;max-width:640px;margin:2.5rem auto 4rem;padding:0 1.25rem;flex-direction:column;gap:14px}
@@ -223,18 +231,18 @@ a{color:inherit}
 (function buildCollection() {
   var TOTAL = 1324;
   var episodes = [
-    { spine: 387,  title: "La Jetée",                         dir: "Chris Marker",        year: 1962, guest: "Dr. Dennis Weiss",  link: "episodes/la-jetee.html" },
-    { spine: 271,  title: "Touchez pas au grisbi",            dir: "Jacques Becker",      year: 1954, guest: "Ginette Vincendeau", link: "episodes/touchez-pas-au-grisbi.html" },
-    { spine: 905,  title: "The Breakfast Club",               dir: "John Hughes",         year: 1985, guest: "Ciara Moloney",     link: "episodes/the-breakfast-club.html" },
-    { spine: 1185, title: "After Hours",                      dir: "Martin Scorsese",     year: 1985, guest: "Sheila O'Malley",   link: "episodes/after-hours.html" },
-    { spine: 1248, title: "Winchester '73",                   dir: "Anthony Mann",        year: 1950, guest: "Brady Crytzer",     link: "episodes/winchester-73.html" },
-    { spine: 654,  title: "Repo Man",                         dir: "Alex Cox",            year: 1984, guest: "James Chestnut",    link: "episodes/repo-man.html" },
-    { spine: 1293, title: "Pee-wee's Big Adventure",          dir: "Tim Burton",          year: 1985, guest: "Jesse Thorn",       link: "episodes/pee-wees-big-adventure.html" },
-    { spine: 536,  title: "The Thin Red Line",                dir: "Terrence Malick",     year: 1998, guest: "Jared Frederick",   link: "episodes/thin-red-line.html" },
-    { spine: 157,  title: "The Royal Tenenbaums",             dir: "Wes Anderson",        year: 2001, guest: "Chris Cook",        link: "episodes/royal-tenenbaums.html" },
-    { spine: 267,  title: "Kagemusha",                        dir: "Akira Kurosawa",      year: 1980, guest: "Michael Repsch",    link: "episodes/kagemusha.html" },
-    { spine: 1201, title: "Guillermo del Toro's Pinocchio",   dir: "del Toro & Gustafson",year: 2022, guest: "Caleb Tyson",       link: "episodes/guillermo-del-toro-pinocchio.html" },
-    { spine: 1199, title: "La cérémonie",                     dir: "Claude Chabrol",      year: 1995, guest: "Girish Shambu",     link: "episodes/la-ceremonie.html" }
+    { spine: 387,  title: "La Jetée",                         dir: "Chris Marker",        year: 1962, guest: "Dr. Dennis Weiss",  runtime: "28m",     cover: "images/la-jetee.jpg",                  link: "episodes/la-jetee.html" },
+    { spine: 271,  title: "Touchez pas au grisbi",            dir: "Jacques Becker",      year: 1954, guest: "Ginette Vincendeau", runtime: "1h 34m", cover: "images/touchez-pas-au-grisbi.jpg",     link: "episodes/touchez-pas-au-grisbi.html" },
+    { spine: 905,  title: "The Breakfast Club",               dir: "John Hughes",         year: 1985, guest: "Ciara Moloney",     runtime: "1h 37m", cover: "images/the-breakfast-club.jpg",        link: "episodes/the-breakfast-club.html" },
+    { spine: 1185, title: "After Hours",                      dir: "Martin Scorsese",     year: 1985, guest: "Sheila O'Malley",   runtime: "1h 37m", cover: "images/after-hours.jpg",               link: "episodes/after-hours.html" },
+    { spine: 1248, title: "Winchester '73",                   dir: "Anthony Mann",        year: 1950, guest: "Brady Crytzer",     runtime: "1h 32m", cover: "images/winchester-73.jpg",             link: "episodes/winchester-73.html" },
+    { spine: 654,  title: "Repo Man",                         dir: "Alex Cox",            year: 1984, guest: "James Chestnut",    runtime: "1h 32m", cover: "images/repo-man.jpg",                  link: "episodes/repo-man.html" },
+    { spine: 1293, title: "Pee-wee's Big Adventure",          dir: "Tim Burton",          year: 1985, guest: "Jesse Thorn",       runtime: "1h 31m", cover: "images/pee-wees-big-adventure.jpg",    link: "episodes/pee-wees-big-adventure.html" },
+    { spine: 536,  title: "The Thin Red Line",                dir: "Terrence Malick",     year: 1998, guest: "Jared Frederick",   runtime: "2h 51m", cover: "images/the-thin-red-line.jpg",         link: "episodes/thin-red-line.html" },
+    { spine: 157,  title: "The Royal Tenenbaums",             dir: "Wes Anderson",        year: 2001, guest: "Chris Cook",        runtime: "1h 50m", cover: "images/the-royal-tenenbaums.jpg",      link: "episodes/royal-tenenbaums.html" },
+    { spine: 267,  title: "Kagemusha",                        dir: "Akira Kurosawa",      year: 1980, guest: "Michael Repsch",    runtime: "2h 42m", cover: "images/Kagemusha.jpg",                 link: "episodes/kagemusha.html" },
+    { spine: 1201, title: "Guillermo del Toro's Pinocchio",   dir: "del Toro & Gustafson",year: 2022, guest: "Caleb Tyson",       runtime: "1h 57m", cover: "images/guillermo-del-toros-pinocchio.jpg", link: "episodes/guillermo-del-toro-pinocchio.html" },
+    { spine: 1199, title: "La cérémonie",                     dir: "Claude Chabrol",      year: 1995, guest: "Girish Shambu",     runtime: "1h 53m", cover: "images/la ceremonie.jpg",              link: "episodes/la-ceremonie.html" }
   ];
 
   var bySpine = {};
@@ -263,28 +271,28 @@ a{color:inherit}
       a.style.width = SPINE_WIDTH + 'px';
       a.href = ep.link;
 
-      var numSpan = document.createElement('span');
-      numSpan.className = 'wtf-spine-num';
-      numSpan.textContent = '#' + ep.spine;
-      a.appendChild(numSpan);
-
-      var titleSpan = document.createElement('span');
-      titleSpan.className = 'wtf-spine-title';
-      titleSpan.textContent = ep.title;
       // Shrink the title text (not the spine number) if it's long, so it fits the fixed spine width
       var len = ep.title.length;
-      if (len > 26) titleSpan.style.fontSize = '9px';
-      else if (len > 18) titleSpan.style.fontSize = '11px';
-      a.appendChild(titleSpan);
+      var titleSize = len > 26 ? '9px' : (len > 18 ? '11px' : '13px');
 
-      var tip = document.createElement('div');
-      tip.className = 'wtf-spine-tip';
-      tip.innerHTML =
-        '<div class="tip-title">' + ep.title + '</div>' +
-        '<div class="tip-meta">' + ep.dir + ' &middot; ' + ep.year + '</div>' +
-        '<div class="tip-meta">with ' + ep.guest + '</div>' +
-        '<a class="tip-listen" href="' + ep.link + '">Listen &rarr;</a>';
-      a.appendChild(tip);
+      var flip = document.createElement('div');
+      flip.className = 'wtf-flip';
+      flip.innerHTML =
+        '<div class="wtf-flip-face wtf-flip-front">' +
+          '<span class="wtf-spine-num">#' + ep.spine + '</span>' +
+          '<span class="wtf-spine-title" style="font-size:' + titleSize + '">' + ep.title + '</span>' +
+        '</div>' +
+        '<div class="wtf-flip-face wtf-flip-back">' +
+          '<img class="wtf-flip-cover" src="' + ep.cover + '" alt="' + ep.title + ' cover art" loading="lazy">' +
+          '<div class="wtf-flip-info">' +
+            '<div class="ttl">' + ep.title + '</div>' +
+            '<div class="meta">' + ep.dir + ' &middot; ' + ep.year + '</div>' +
+            '<div class="meta">with ' + ep.guest + '</div>' +
+            '<div class="meta">' + ep.runtime + '</div>' +
+            '<span class="listen">Listen &rarr;</span>' +
+          '</div>' +
+        '</div>';
+      a.appendChild(flip);
 
       shelf.appendChild(a);
     } else {
@@ -355,6 +363,30 @@ a{color:inherit}
     });
   });
   document.addEventListener('click', function () { closeAll(null); });
+})();
+
+// Shelf spines: on touch devices, tap once to "pull the spine out" and reveal
+// the cover (since there's no hover); tap again (or the cover/listen link) to go through
+(function spineFlipForTouch() {
+  var hasHover = window.matchMedia && window.matchMedia('(hover: hover)').matches;
+  if (hasHover) return; // desktop/mouse: the CSS :hover flip is enough
+
+  var spines = document.querySelectorAll('.wtf-spine.covered');
+  spines.forEach(function (spine) {
+    spine.addEventListener('click', function (e) {
+      if (!spine.classList.contains('flipped')) {
+        e.preventDefault();
+        spines.forEach(function (s) { if (s !== spine) s.classList.remove('flipped'); });
+        spine.classList.add('flipped');
+      }
+      // already flipped — let the tap through to the episode page
+    });
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.wtf-spine.covered')) {
+      spines.forEach(function (s) { s.classList.remove('flipped'); });
+    }
+  });
 })();
 </script>
 </body>
