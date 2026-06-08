@@ -17,6 +17,15 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 .wtf-nav-links{display:flex;gap:1.5rem;list-style:none}
 .wtf-nav-links a{color:#b8b0a0;text-decoration:none;font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;transition:color .2s}
 .wtf-nav-links a:hover{color:#C9A84C}
+.wtf-nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;justify-content:center;gap:4px}
+.wtf-nav-toggle span{display:block;width:22px;height:2px;background:#F5F0E8;border-radius:2px}
+@media(max-width:760px){
+  .wtf-nav-toggle{display:flex}
+  .wtf-nav-links{position:absolute;top:56px;left:0;right:0;background:#1a1a1a;flex-direction:column;align-items:stretch;gap:0;max-height:0;overflow:hidden;transition:max-height .25s ease;z-index:20}
+  .wtf-nav-links.open{max-height:400px}
+  .wtf-nav-links li{width:100%}
+  .wtf-nav-links a{display:block;padding:14px 2rem;border-top:.5px solid #2e2e2e}
+}
 
 /* HERO */
 .wtf-hero{background:#1a1a1a;padding:3rem 2rem 4rem;position:relative;overflow:hidden}
@@ -141,6 +150,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
     <img src="https://www.buzzsprout.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTUyNDk1MzI1LCJwdXIiOiJibG9iX2lkIn19--86e5f21fbc3e628cef3721928333b70df501eb3e/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZmlsbCI6WzI1MCwyNTAseyJjcm9wIjoiY2VudHJlIn1dLCJzYXZlciI6eyJxdWFsaXR5Ijo2MH0sImNvbG91cnNwYWNlIjoic3JnYiJ9LCJwdXIiOiJ2YXJpYXRpb24ifX0=--21f3793904e6ce1806a5a794a691217fceef82c7/Logo.png" alt="Why This Film?"/>
     Why This Film?
   </a>
+  <button class="wtf-nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Toggle navigation menu"><span></span><span></span><span></span></button>
   <ul class="wtf-nav-links">
     <li><a href="../index.html">Episodes</a></li>
     <li><a href="../collection.html">Collection</a></li>

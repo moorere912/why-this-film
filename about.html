@@ -16,6 +16,15 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 .wtf-nav-links a{color:#b8b0a0;text-decoration:none;font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;transition:color .2s}
 .wtf-nav-links a:hover{color:#C9A84C}
 .wtf-nav-links a.active{color:#C9A84C}
+.wtf-nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;justify-content:center;gap:4px}
+.wtf-nav-toggle span{display:block;width:22px;height:2px;background:#F5F0E8;border-radius:2px}
+@media(max-width:760px){
+  .wtf-nav-toggle{display:flex}
+  .wtf-nav-links{position:absolute;top:56px;left:0;right:0;background:#1a1a1a;flex-direction:column;align-items:stretch;gap:0;max-height:0;overflow:hidden;transition:max-height .25s ease;z-index:20}
+  .wtf-nav-links.open{max-height:400px}
+  .wtf-nav-links li{width:100%}
+  .wtf-nav-links a{display:block;padding:14px 2rem;border-top:.5px solid #2e2e2e}
+}
 .wtf-hero{background:#1a1a1a;padding:4rem 2rem 4.5rem;position:relative;overflow:hidden;text-align:center}
 .grain-overlay{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px}
 .wtf-hero-inner{max-width:680px;margin:0 auto;position:relative;z-index:1}
@@ -33,8 +42,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 .wtf-spine-chip .num{color:#C9A84C;font-family:'Playfair Display',serif;font-weight:700}
 .wtf-mailto-card{background:#1a1a1a;border-radius:8px;padding:1.75rem;text-align:center}
 .wtf-mailto-card p{color:#c0b8a8;margin-bottom:1.1rem}
-.wtf-mailto-card p strong{color:#F5F0E8}
-.wtf-mailto-btn{display:inline-block;background:#C9A84C;color:#1a1a1a;text-decoration:none;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:12px 24px;border:none;border-radius:4px;cursor:pointer;transition:background .15s}
+.wtf-mailto-btn{display:inline-block;background:#C9A84C;color:#1a1a1a;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:12px 24px;border-radius:4px;transition:background .15s}
 .wtf-mailto-btn:hover{background:#ddc070}
 .wtf-find-grid{display:flex;flex-direction:column;gap:10px;margin-top:.5rem}
 .wtf-find-link{display:flex;align-items:center;justify-content:space-between;border:.5px solid #d8d0c0;border-radius:6px;padding:14px 18px;text-decoration:none;color:#1a1a1a;font-size:14px;font-weight:500;transition:border-color .15s,background .15s}
@@ -58,6 +66,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
     <img src="https://www.buzzsprout.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTUyNDk1MzI1LCJwdXIiOiJibG9iX2lkIn19--86e5f21fbc3e628cef3721928333b70df501eb3e/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZmlsbCI6WzI1MCwyNTAseyJjcm9wIjoiY2VudHJlIn1dLCJzYXZlciI6eyJxdWFsaXR5Ijo2MH0sImNvbG91cnNwYWNlIjoic3JnYiJ9LCJwdXIiOiJ2YXJpYXRpb24ifX0=--21f3793904e6ce1806a5a794a691217fceef82c7/Logo.png" alt="Why This Film?"/>
     Why This Film?
   </a>
+  <button class="wtf-nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Toggle navigation menu"><span></span><span></span><span></span></button>
   <ul class="wtf-nav-links">
     <li><a href="about.html" class="active">About</a></li>
     <li><a href="index.html#all-episodes">Episodes</a></li>
@@ -91,8 +100,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
     <h2>Want To Be On The Show?</h2>
     <div class="wtf-mailto-card">
       <p>If you've got a film you'd love to talk about &mdash; and a reason why it matters to you &mdash; we want to hear from you.</p>
-      <p>Email us at <strong>whythisfilmpod@gmail.com</strong></p>
-      <button class="wtf-mailto-btn" id="copyEmailBtn" onclick="copyEmail()" type="button">Copy Email Address</button>
+      <a class="wtf-mailto-btn" href="mailto:whythisfilmpod@gmail.com">Email Us &rarr;</a>
     </div>
   </div>
 
@@ -111,27 +119,6 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 <div class="wtf-footer">
   <p>&copy; 2026 Why This Film? &nbsp;&middot;&nbsp; <a href="https://www.instagram.com/whythisfilmpod/" target="_blank">Instagram</a> &nbsp;&middot;&nbsp; <a href="https://www.youtube.com/@WhyThisFilm" target="_blank">YouTube</a> &nbsp;&middot;&nbsp; <a href="https://www.buzzsprout.com/2528877/support" target="_blank">Support the Show</a></p>
 </div>
-
-<script>
-function copyEmail() {
-  const email = 'whythisfilmpod@gmail.com';
-  const btn = document.getElementById('copyEmailBtn');
-  const reset = () => { btn.textContent = 'Copy Email Address'; };
-  navigator.clipboard.writeText(email).then(() => {
-    btn.textContent = 'Copied!';
-    setTimeout(reset, 1800);
-  }).catch(() => {
-    const ta = document.createElement('textarea');
-    ta.value = email;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
-    btn.textContent = 'Copied!';
-    setTimeout(reset, 1800);
-  });
-}
-</script>
 
 </body>
 </html>
