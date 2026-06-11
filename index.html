@@ -77,22 +77,28 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 .wtf-ep-card-content{transition:opacity .25s ease}
 
 /* LATEST EPISODE FEATURE CARD */
-.wtf-featured-wrap{max-width:880px;margin:0 auto;padding:3rem 2rem 0}
-.wtf-featured-card{background:white;border:.5px solid #C9A84C;border-radius:10px;padding:2.25rem 2.5rem;display:flex;align-items:center;gap:2.5rem;text-decoration:none;transition:box-shadow .2s}
-.wtf-featured-card:hover{box-shadow:0 4px 24px rgba(201,168,76,.18)}
-.wtf-featured-spine{font-family:'Playfair Display',serif;font-size:64px;font-weight:700;color:#C9A84C;line-height:1;letter-spacing:-.03em;flex-shrink:0;min-width:5rem;text-align:center}
-.wtf-featured-body{flex:1;min-width:0}
-.wtf-featured-label{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#C9A84C;margin-bottom:.55rem}
-.wtf-featured-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#1a1a1a;line-height:1.15;margin-bottom:.35rem}
-.wtf-featured-dir{font-family:'Playfair Display',serif;font-style:italic;font-size:15px;color:#8a8070;margin-bottom:.75rem}
-.wtf-featured-guest{font-size:14px;color:#4a4540;margin-bottom:1.25rem}
+.wtf-featured-wrap{max-width:880px;margin:0 auto;padding:3.5rem 2rem 0}
+.wtf-featured-card{background:white;border:.5px solid #d8d0c0;border-left:3px solid #C9A84C;border-radius:8px;padding:0;display:flex;align-items:stretch;text-decoration:none;overflow:hidden;box-shadow:0 1px 3px rgba(26,26,26,.06);transition:box-shadow .25s ease,transform .25s ease}
+.wtf-featured-card:hover{box-shadow:0 12px 32px rgba(26,26,26,.12);transform:translateY(-2px)}
+.wtf-featured-cover{flex:0 0 168px;background-size:cover;background-position:center;min-height:200px}
+.wtf-featured-body{flex:1;min-width:0;padding:2rem 2.5rem;display:flex;flex-direction:column;justify-content:center}
+.wtf-featured-label{font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#C9A84C;margin-bottom:.7rem;display:flex;align-items:center;gap:10px}
+.wtf-featured-label::after{content:"";height:.5px;background:#e8e0d0;flex:1}
+.wtf-featured-title{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:#1a1a1a;line-height:1.12;margin-bottom:.3rem}
+.wtf-featured-dir{font-family:'Playfair Display',serif;font-style:italic;font-size:15px;color:#8a8070;margin-bottom:.85rem}
+.wtf-featured-guest{font-size:13.5px;color:#4a4540;margin-bottom:1.4rem;letter-spacing:.01em}
 .wtf-featured-guest strong{color:#1a1a1a;font-weight:500}
-.wtf-featured-listen{display:inline-block;color:#C9A84C;font-size:14px;font-weight:500;letter-spacing:.04em;border-bottom:1px solid rgba(201,168,76,.4);padding-bottom:1px;transition:border-color .15s}
-.wtf-featured-card:hover .wtf-featured-listen{border-color:#C9A84C}
+.wtf-featured-meta{display:flex;align-items:center;gap:1.25rem}
+.wtf-featured-spine-tag{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:#8a8070;letter-spacing:.02em}
+.wtf-featured-listen{display:inline-flex;align-items:center;gap:7px;background:#1a1a1a;color:#C9A84C;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:10px 20px;border-radius:4px;transition:background .2s}
+.wtf-featured-card:hover .wtf-featured-listen{background:#2e2e2e}
+.wtf-featured-listen .arr{transition:transform .2s ease}
+.wtf-featured-card:hover .wtf-featured-listen .arr{transform:translateX(3px)}
 @media(max-width:600px){
-  .wtf-featured-card{flex-direction:column;align-items:flex-start;gap:1rem;padding:1.75rem}
-  .wtf-featured-spine{font-size:48px;min-width:auto}
-  .wtf-featured-title{font-size:22px}
+  .wtf-featured-card{flex-direction:column}
+  .wtf-featured-cover{flex:none;height:150px;min-height:0}
+  .wtf-featured-body{padding:1.5rem 1.5rem 1.75rem}
+  .wtf-featured-title{font-size:23px}
 }
 
 /* FOOTER */
@@ -129,8 +135,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
     <div class="wtf-home-tagline">Exploring the Criterion Collection, one spine at a time.</div>
     <p class="wtf-home-about">In each episode, I sit down with film historians, critics, filmmakers, and scholars for in-depth conversations about a single film from the Criterion Collection. From French New Wave masterpieces to American westerns, from experimental shorts to beloved classics, we unpack what makes these films essential viewing.</p>
     <div class="wtf-cta-group">
-      <a href="episodes/la-ceremonie.html" class="wtf-cta-primary">Latest Episode →</a>
-      <a href="#all-episodes" class="wtf-cta-secondary">All Episodes ↓</a>
+      <a href="#all-episodes" class="wtf-cta-primary">All Episodes ↓</a>
     </div>
   </div>
 </div>
@@ -142,13 +147,16 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
      ====================================================== -->
 <div class="wtf-featured-wrap">
   <a class="wtf-featured-card" href="episodes/la-ceremonie.html">
-    <div class="wtf-featured-spine">#1199</div>
+    <div class="wtf-featured-cover" style="background-image:url('images/la ceremonie.jpg')"></div>
     <div class="wtf-featured-body">
-      <div class="wtf-featured-label">Latest Episode &mdash; Ep. 12</div>
+      <div class="wtf-featured-label">Latest Episode &middot; Ep. 12</div>
       <div class="wtf-featured-title">La c&eacute;r&eacute;monie</div>
       <div class="wtf-featured-dir">Claude Chabrol &middot; 1995</div>
       <div class="wtf-featured-guest">with <strong>Girish Shambu</strong> &mdash; Author &amp; Critic</div>
-      <span class="wtf-featured-listen">Listen &rarr;</span>
+      <div class="wtf-featured-meta">
+        <span class="wtf-featured-listen">Listen <span class="arr">&rarr;</span></span>
+        <span class="wtf-featured-spine-tag">Criterion Spine #1199</span>
+      </div>
     </div>
   </a>
 </div>
