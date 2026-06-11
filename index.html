@@ -35,6 +35,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 .wtf-home-hero h1{font-family:'Playfair Display',serif;font-size:58px;font-weight:700;color:#F5F0E8;line-height:1.1;margin-bottom:.75rem;letter-spacing:-.01em}
 .wtf-home-tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:20px;color:#C9A84C;margin-bottom:2rem;line-height:1.5}
 .wtf-home-about{font-size:15px;line-height:1.9;color:#a0988a;max-width:560px;margin:0 auto 2.5rem}
+.wtf-expert-hook{display:block;font-family:'Playfair Display',serif;font-style:italic;font-weight:400;font-size:18px;color:#C9A84C;margin-bottom:.5rem}
 .wtf-cta-group{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 .wtf-cta-primary{background:#C9A84C;color:#1a1a1a;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:13px 28px;border-radius:4px;transition:opacity .15s}
 .wtf-cta-primary:hover{opacity:.85}
@@ -69,8 +70,10 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 .wtf-ep-card-num{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#F5F0E8}
 .wtf-ep-card-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#F5F0E8;line-height:1.25;margin-top:.25rem}
 .wtf-ep-card-dir{font-size:14px;color:#d8d0c0;margin-top:.1rem}
-.wtf-ep-card-guest{font-size:13px;color:#C9A84C;margin-top:auto;padding-top:.75rem;letter-spacing:.03em}
-.wtf-ep-card-guest .role{color:#a89a7d;font-weight:400;letter-spacing:normal}
+.wtf-ep-card-guest{margin-top:auto;padding-top:.85rem;display:flex;flex-direction:column;gap:2px;border-top:.5px solid rgba(201,168,76,.25)}
+.wtf-ep-card-guest .g-label{font-size:9px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#C9A84C;margin-bottom:2px}
+.wtf-ep-card-guest .g-name{font-size:15px;font-weight:500;color:#F5F0E8;line-height:1.3}
+.wtf-ep-card-guest .g-role{font-size:12px;color:#a89a7d;line-height:1.35}
 .wtf-ep-card:hover .wtf-ep-card-overlay{opacity:0}
 .wtf-ep-card:hover .wtf-ep-card-content{opacity:0}
 .wtf-ep-card-overlay{transition:opacity .35s ease}
@@ -86,8 +89,8 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 .wtf-featured-label::after{content:"";height:.5px;background:#e8e0d0;flex:1}
 .wtf-featured-title{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:#1a1a1a;line-height:1.12;margin-bottom:.3rem}
 .wtf-featured-dir{font-family:'Playfair Display',serif;font-style:italic;font-size:15px;color:#8a8070;margin-bottom:.85rem}
-.wtf-featured-guest{font-size:13.5px;color:#4a4540;margin-bottom:1.4rem;letter-spacing:.01em}
-.wtf-featured-guest strong{color:#1a1a1a;font-weight:500}
+.wtf-featured-guest{font-size:14px;color:#8a8070;margin-bottom:1.4rem;letter-spacing:.01em}
+.wtf-featured-guest strong{color:#1a1a1a;font-weight:500;font-size:16px}
 .wtf-featured-meta{display:flex;align-items:center;gap:1.25rem}
 .wtf-featured-spine-tag{font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:#8a8070;letter-spacing:.02em}
 .wtf-featured-listen{display:inline-flex;align-items:center;gap:7px;background:#1a1a1a;color:#C9A84C;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:10px 20px;border-radius:4px;transition:background .2s}
@@ -133,7 +136,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
       alt="Why This Film? podcast artwork"/>
     <h1>Why This Film?</h1>
     <div class="wtf-home-tagline">Exploring the Criterion Collection, one spine at a time.</div>
-    <p class="wtf-home-about">In each episode, I sit down with film historians, critics, filmmakers, and scholars for in-depth conversations about a single film from the Criterion Collection. From French New Wave masterpieces to American westerns, from experimental shorts to beloved classics, we unpack what makes these films essential viewing.</p>
+    <p class="wtf-home-about"><strong class="wtf-expert-hook">Every episode, a different expert.</strong> I sit down with film historians, critics, authors, programmers, and industry insiders &mdash; a new guest each show &mdash; for an in-depth conversation about a single film from the Criterion Collection and why it matters.</p>
     <div class="wtf-cta-group">
       <a href="#all-episodes" class="wtf-cta-primary">All Episodes ↓</a>
     </div>
@@ -176,7 +179,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
         <div class="wtf-ep-card-spine"><span class="hash">#</span>1199</div>
         <div class="wtf-ep-card-title">La cérémonie</div>
         <div class="wtf-ep-card-dir">Claude Chabrol · 1995</div>
-        <div class="wtf-ep-card-guest">with Girish Shambu <span class="role">— Author &amp; Critic</span></div>
+        <div class="wtf-ep-card-guest"><span class="g-label">Guest</span><span class="g-name">Girish Shambu</span><span class="g-role">Author &amp; Critic</span></div>
       </div>
     </a>
 
@@ -189,7 +192,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
         <div class="wtf-ep-card-spine"><span class="hash">#</span>1201</div>
         <div class="wtf-ep-card-title">Guillermo del Toro's Pinocchio</div>
         <div class="wtf-ep-card-dir">del Toro &amp; Gustafson · 2022</div>
-        <div class="wtf-ep-card-guest">with Caleb Tyson <span class="role">— Editor</span></div>
+        <div class="wtf-ep-card-guest"><span class="g-label">Guest</span><span class="g-name">Caleb Tyson</span><span class="g-role">Editor</span></div>
       </div>
     </a>
 
@@ -202,7 +205,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
         <div class="wtf-ep-card-spine"><span class="hash">#</span>267</div>
         <div class="wtf-ep-card-title">Kagemusha</div>
         <div class="wtf-ep-card-dir">Akira Kurosawa · 1980</div>
-        <div class="wtf-ep-card-guest">with Michael Repsch <span class="role">— President, Dark Star Pictures</span></div>
+        <div class="wtf-ep-card-guest"><span class="g-label">Guest</span><span class="g-name">Michael Repsch</span><span class="g-role">President, Dark Star Pictures</span></div>
       </div>
     </a>
 
@@ -215,7 +218,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
         <div class="wtf-ep-card-spine"><span class="hash">#</span>157</div>
         <div class="wtf-ep-card-title">The Royal Tenenbaums</div>
         <div class="wtf-ep-card-dir">Wes Anderson · 2001</div>
-        <div class="wtf-ep-card-guest">with Chris Cook <span class="role">— Assistant AD</span></div>
+        <div class="wtf-ep-card-guest"><span class="g-label">Guest</span><span class="g-name">Chris Cook</span><span class="g-role">Assistant AD</span></div>
       </div>
     </a>
 
@@ -228,7 +231,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
         <div class="wtf-ep-card-spine"><span class="hash">#</span>536</div>
         <div class="wtf-ep-card-title">The Thin Red Line</div>
         <div class="wtf-ep-card-dir">Terrence Malick · 1998</div>
-        <div class="wtf-ep-card-guest">with Jared Frederick <span class="role">— Historian &amp; Author</span></div>
+        <div class="wtf-ep-card-guest"><span class="g-label">Guest</span><span class="g-name">Jared Frederick</span><span class="g-role">Historian &amp; Author</span></div>
       </div>
     </a>
 
@@ -241,7 +244,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
         <div class="wtf-ep-card-spine"><span class="hash">#</span>1293</div>
         <div class="wtf-ep-card-title">Pee-wee's Big Adventure</div>
         <div class="wtf-ep-card-dir">Tim Burton · 1985</div>
-        <div class="wtf-ep-card-guest">with Jesse Thorn <span class="role">— Podcaster &amp; Comedian</span></div>
+        <div class="wtf-ep-card-guest"><span class="g-label">Guest</span><span class="g-name">Jesse Thorn</span><span class="g-role">Podcaster &amp; Comedian</span></div>
       </div>
     </a>
 
@@ -254,7 +257,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
         <div class="wtf-ep-card-spine"><span class="hash">#</span>654</div>
         <div class="wtf-ep-card-title">Repo Man</div>
         <div class="wtf-ep-card-dir">Alex Cox · 1984</div>
-        <div class="wtf-ep-card-guest">with James Chestnut <span class="role">— Assistant Director</span></div>
+        <div class="wtf-ep-card-guest"><span class="g-label">Guest</span><span class="g-name">James Chestnut</span><span class="g-role">Assistant Director</span></div>
       </div>
     </a>
 
@@ -267,7 +270,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
         <div class="wtf-ep-card-spine"><span class="hash">#</span>1248</div>
         <div class="wtf-ep-card-title">Winchester '73</div>
         <div class="wtf-ep-card-dir">Anthony Mann · 1950</div>
-        <div class="wtf-ep-card-guest">with Brady Crytzer <span class="role">— Historian &amp; Author</span></div>
+        <div class="wtf-ep-card-guest"><span class="g-label">Guest</span><span class="g-name">Brady Crytzer</span><span class="g-role">Historian &amp; Author</span></div>
       </div>
     </a>
 
@@ -280,7 +283,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
         <div class="wtf-ep-card-spine"><span class="hash">#</span>1185</div>
         <div class="wtf-ep-card-title">After Hours</div>
         <div class="wtf-ep-card-dir">Martin Scorsese · 1985</div>
-        <div class="wtf-ep-card-guest">with Sheila O'Malley <span class="role">— Film Critic &amp; Author</span></div>
+        <div class="wtf-ep-card-guest"><span class="g-label">Guest</span><span class="g-name">Sheila O'Malley</span><span class="g-role">Film Critic &amp; Author</span></div>
       </div>
     </a>
 
@@ -293,7 +296,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
         <div class="wtf-ep-card-spine"><span class="hash">#</span>905</div>
         <div class="wtf-ep-card-title">The Breakfast Club</div>
         <div class="wtf-ep-card-dir">John Hughes · 1985</div>
-        <div class="wtf-ep-card-guest">with Ciara Moloney <span class="role">— Podcaster &amp; Film Critic</span></div>
+        <div class="wtf-ep-card-guest"><span class="g-label">Guest</span><span class="g-name">Ciara Moloney</span><span class="g-role">Podcaster &amp; Film Critic</span></div>
       </div>
     </a>
 
@@ -306,7 +309,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
         <div class="wtf-ep-card-spine"><span class="hash">#</span>271</div>
         <div class="wtf-ep-card-title">Touchez pas au grisbi</div>
         <div class="wtf-ep-card-dir">Jacques Becker · 1954</div>
-        <div class="wtf-ep-card-guest">with Ginette Vincendeau <span class="role">— Author &amp; Film Critic</span></div>
+        <div class="wtf-ep-card-guest"><span class="g-label">Guest</span><span class="g-name">Ginette Vincendeau</span><span class="g-role">Author &amp; Film Critic</span></div>
       </div>
     </a>
 
@@ -319,7 +322,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
         <div class="wtf-ep-card-spine"><span class="hash">#</span>387</div>
         <div class="wtf-ep-card-title">La Jetée</div>
         <div class="wtf-ep-card-dir">Chris Marker · 1962</div>
-        <div class="wtf-ep-card-guest">with Dr. Dennis Weiss <span class="role">— Film Programmer &amp; Professor</span></div>
+        <div class="wtf-ep-card-guest"><span class="g-label">Guest</span><span class="g-name">Dr. Dennis Weiss</span><span class="g-role">Film Programmer &amp; Professor</span></div>
       </div>
     </a>
 
