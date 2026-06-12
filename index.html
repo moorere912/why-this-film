@@ -141,7 +141,6 @@ html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0
   .wtf-show-art,.wtf-featured-card{animation:none}
   html.wtf-anim .wtf-ep-card{opacity:1;transform:none}
   .wtf-ep-card:hover{transform:none}
-  .grain-overlay{animation:none}
   html{scroll-behavior:auto}
 }
 
@@ -171,7 +170,6 @@ html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0
 
 <div class="wtf-home-hero">
   <div class="grain-overlay"></div>
-  <canvas id="wtf-particles" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0"></canvas>
   <div class="wtf-hero-inner">
     <img class="wtf-show-art"
       src="https://www.buzzsprout.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTUyNDk1MzI1LCJwdXIiOiJibG9iX2lkIn19--86e5f21fbc3e628cef3721928333b70df501eb3e/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZmlsbCI6WzI1MCwyNTAseyJjcm9wIjoiY2VudHJlIn1dLCJzYXZlciI6eyJxdWFsaXR5Ijo2MH0sImNvbG91cnNwYWNlIjoic3JnYiJ9LCJwdXIiOiJ2YXJpYXRpb24ifX0=--21f3793904e6ce1806a5a794a691217fceef82c7/Logo.png"
@@ -381,60 +379,6 @@ html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0
 <div class="wtf-footer">
   <p>© 2026 Why This Film? &nbsp;·&nbsp; <a href="https://www.instagram.com/whythisfilmpod/" target="_blank">Instagram</a> &nbsp;·&nbsp; <a href="https://www.youtube.com/@WhyThisFilm" target="_blank">YouTube</a> &nbsp;·&nbsp; <a href="https://www.buzzsprout.com/2528877/support" target="_blank">Support the Show</a></p>
 </div>
-
-<script>
-// Floating gold particles in hero background — projector dust aesthetic
-(function(){
-  var canvas=document.getElementById('wtf-particles');
-  if(!canvas||window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-  var ctx=canvas.getContext('2d');
-  var hero=canvas.closest('.wtf-home-hero');
-  function resize(){canvas.width=hero.offsetWidth;canvas.height=hero.offsetHeight}
-  resize();
-  window.addEventListener('resize',resize);
-  var pts=Array.from({length:50},function(){
-    var angle=Math.random()*Math.PI*2;
-    var spd=(Math.random()*.18+.04)/60;
-    return{
-      x:Math.random(),y:Math.random(),
-      r:Math.random()*1.5+.5,
-      vx:Math.cos(angle)*spd,
-      vy:Math.sin(angle)*spd,
-      wobbleOffset:Math.random()*Math.PI*2,
-      wobbleSpeed:(Math.random()*.4+.2)/60,
-      opacity:Math.random()*.3+.08,
-      age:0
-    };
-  });
-  function draw(){
-    var W=canvas.width,H=canvas.height;
-    ctx.clearRect(0,0,W,H);
-    pts.forEach(function(p){
-      ctx.beginPath();
-      ctx.arc(p.x*W,p.y*H,p.r,0,Math.PI*2);
-      ctx.fillStyle='rgba(201,168,76,'+p.opacity+')';
-      ctx.fill();
-      p.age+=1;
-      // gentle wobble — direction slowly wanders
-      p.wobbleOffset+=p.wobbleSpeed;
-      p.vx+=(Math.cos(p.wobbleOffset)*.003-.002)*0.01;
-      p.vy+=(Math.sin(p.wobbleOffset)*.003)*0.01;
-      // clamp speed so no particle runs away
-      var spd=Math.sqrt(p.vx*p.vx+p.vy*p.vy);
-      var max=0.25/60;
-      if(spd>max){p.vx=p.vx/spd*max;p.vy=p.vy/spd*max}
-      p.x+=p.vx; p.y+=p.vy;
-      // wrap edges
-      if(p.x<-0.02)p.x=1.02;
-      if(p.x>1.02)p.x=-0.02;
-      if(p.y<-0.02)p.y=1.02;
-      if(p.y>1.02)p.y=-0.02;
-    });
-    requestAnimationFrame(draw);
-  }
-  draw();
-})();
-</script>
 
 <script>
 // Stagger episode cards in as they scroll into view (0.1s apart per batch)
