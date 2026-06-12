@@ -44,7 +44,8 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 
 /* HERO */
 .wtf-home-hero{background:#1a1a1a;padding:5rem 2rem 6rem;position:relative;overflow:hidden;text-align:center}
-.grain-overlay{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px}
+@keyframes wtf-grain-drift{0%{background-position:0 0}25%{background-position:40px 20px}50%{background-position:80px 0}75%{background-position:40px -20px}100%{background-position:0 0}}
+.grain-overlay{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px;animation:wtf-grain-drift 8s ease-in-out infinite}
 .wtf-hero-inner{max-width:680px;margin:0 auto;position:relative;z-index:1}
 .wtf-show-art{width:140px;height:140px;border-radius:16px;object-fit:cover;margin:0 auto 2rem;display:block;box-shadow:0 8px 40px rgba(0,0,0,.6)}
 .wtf-home-hero h1{font-family:'Playfair Display',serif;font-size:58px;font-weight:700;color:#F5F0E8;line-height:1.1;margin-bottom:.75rem;letter-spacing:-.01em}
@@ -141,6 +142,7 @@ html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0
   .wtf-show-art,.wtf-featured-card{animation:none}
   html.wtf-anim .wtf-ep-card{opacity:1;transform:none}
   .wtf-ep-card:hover{transform:none}
+  .grain-overlay{animation:none}
   html{scroll-behavior:auto}
 }
 
@@ -398,19 +400,9 @@ html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0
     opacity:Math.random()*.35+.08,
     drift:(Math.random()-.5)*.15/60
   }});
-  var beamX=-0.3;
   function draw(){
     var W=canvas.width,H=canvas.height;
     ctx.clearRect(0,0,W,H);
-    var cx=beamX*W;
-    var grd=ctx.createLinearGradient(cx-W*0.22,0,cx+W*0.22,0);
-    grd.addColorStop(0,'rgba(245,235,200,0)');
-    grd.addColorStop(0.5,'rgba(245,235,200,0.07)');
-    grd.addColorStop(1,'rgba(245,235,200,0)');
-    ctx.fillStyle=grd;
-    ctx.fillRect(0,0,W,H);
-    beamX+=1.6/(14*60);
-    if(beamX>1.3)beamX=-0.3;
     pts.forEach(function(p){
       ctx.beginPath();
       ctx.arc(p.x*W,p.y*H,p.r,0,Math.PI*2);
