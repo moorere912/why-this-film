@@ -137,17 +137,10 @@ html.wtf-anim .wtf-ep-card.in-view{opacity:1;transform:none}
 .wtf-ep-card:hover,
 html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(0,0,0,.28)}
 /* Divider draws itself from center outward as it scrolls into view.
-   The scale lives on a ::before so the divider's own box stays full-width —
-   scaling the div itself would shrink its rect to zero and the
-   IntersectionObserver would never fire. */
-html.wtf-anim .wtf-divider{background:none}
-html.wtf-anim .wtf-divider::before{content:"";display:block;height:100%;background:#C9A84C;transform:scaleX(0);transform-origin:center;transition:transform 1s ease}
-html.wtf-anim .wtf-divider.in-view::before{transform:scaleX(1)}
 @media(prefers-reduced-motion:reduce){
   .wtf-show-art,.wtf-featured-card{animation:none}
   html.wtf-anim .wtf-ep-card{opacity:1;transform:none}
   .wtf-ep-card:hover{transform:none}
-  html.wtf-anim .wtf-divider::before{transform:none}
   html{scroll-behavior:auto}
 }
 
@@ -177,6 +170,7 @@ html.wtf-anim .wtf-divider.in-view::before{transform:scaleX(1)}
 
 <div class="wtf-home-hero">
   <div class="grain-overlay"></div>
+  <canvas id="wtf-particles" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0"></canvas>
   <div class="wtf-hero-inner">
     <img class="wtf-show-art"
       src="https://www.buzzsprout.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTUyNDk1MzI1LCJwdXIiOiJibG9iX2lkIn19--86e5f21fbc3e628cef3721928333b70df501eb3e/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZmlsbCI6WzI1MCwyNTAseyJjcm9wIjoiY2VudHJlIn1dLCJzYXZlciI6eyJxdWFsaXR5Ijo2MH0sImNvbG91cnNwYWNlIjoic3JnYiJ9LCJwdXIiOiJ2YXJpYXRpb24ifX0=--21f3793904e6ce1806a5a794a691217fceef82c7/Logo.png"
@@ -388,11 +382,45 @@ html.wtf-anim .wtf-divider.in-view::before{transform:scaleX(1)}
 </div>
 
 <script>
+// Floating gold particles in hero background — projector dust aesthetic
+(function(){
+  var canvas=document.getElementById('wtf-particles');
+  if(!canvas||window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var ctx=canvas.getContext('2d');
+  var hero=canvas.closest('.wtf-home-hero');
+  function resize(){canvas.width=hero.offsetWidth;canvas.height=hero.offsetHeight}
+  resize();
+  window.addEventListener('resize',resize);
+  var pts=Array.from({length:45},function(){return{
+    x:Math.random(),y:Math.random(),
+    r:Math.random()*1.4+.6,
+    speed:(Math.random()*.3+.1)/60,
+    opacity:Math.random()*.35+.08,
+    drift:(Math.random()-.5)*.15/60
+  }});
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    pts.forEach(function(p){
+      ctx.beginPath();
+      ctx.arc(p.x*canvas.width,p.y*canvas.height,p.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(201,168,76,'+p.opacity+')';
+      ctx.fill();
+      p.y-=p.speed;p.x+=p.drift;
+      if(p.y<-0.02){p.y=1.02;p.x=Math.random()}
+      if(p.x<-0.02||p.x>1.02){p.x=Math.random()}
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+
+<script>
 // Stagger episode cards in as they scroll into view (0.1s apart per batch)
 (function(){
   if(!('IntersectionObserver' in window))return;
   document.documentElement.classList.add('wtf-anim');
-  var cards=document.querySelectorAll('.wtf-ep-card,.wtf-divider');
+  var cards=document.querySelectorAll('.wtf-ep-card');
   var obs=new IntersectionObserver(function(entries){
     var delay=0;
     entries.forEach(function(e){
