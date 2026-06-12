@@ -22,6 +22,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 
 /* NAV */
@@ -135,10 +136,19 @@ html.wtf-anim .wtf-ep-card{opacity:0;transform:translateY(24px)}
 html.wtf-anim .wtf-ep-card.in-view{opacity:1;transform:none}
 .wtf-ep-card:hover,
 html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(0,0,0,.28)}
+/* Divider draws itself from center outward as it scrolls into view.
+   The scale lives on a ::before so the divider's own box stays full-width —
+   scaling the div itself would shrink its rect to zero and the
+   IntersectionObserver would never fire. */
+html.wtf-anim .wtf-divider{background:none}
+html.wtf-anim .wtf-divider::before{content:"";display:block;height:100%;background:#C9A84C;transform:scaleX(0);transform-origin:center;transition:transform 1s ease}
+html.wtf-anim .wtf-divider.in-view::before{transform:scaleX(1)}
 @media(prefers-reduced-motion:reduce){
   .wtf-show-art,.wtf-featured-card{animation:none}
   html.wtf-anim .wtf-ep-card{opacity:1;transform:none}
   .wtf-ep-card:hover{transform:none}
+  html.wtf-anim .wtf-divider::before{transform:none}
+  html{scroll-behavior:auto}
 }
 
 /* FOOTER */
@@ -382,7 +392,7 @@ html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0
 (function(){
   if(!('IntersectionObserver' in window))return;
   document.documentElement.classList.add('wtf-anim');
-  var cards=document.querySelectorAll('.wtf-ep-card');
+  var cards=document.querySelectorAll('.wtf-ep-card,.wtf-divider');
   var obs=new IntersectionObserver(function(entries){
     var delay=0;
     entries.forEach(function(e){
