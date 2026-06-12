@@ -122,6 +122,25 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
   .wtf-featured-title{font-size:23px}
 }
 
+/* ANIMATIONS */
+@keyframes wtf-fade-in{from{opacity:0}to{opacity:1}}
+@keyframes wtf-rise-in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.wtf-show-art{animation:wtf-fade-in .5s ease both}
+.wtf-featured-card{animation:wtf-rise-in .6s ease .15s both}
+/* Scroll-reveal: cards start hidden ONLY when JS has tagged <html> with .wtf-anim,
+   so the page still works if JavaScript fails. Hover lift shares the same transform
+   transition, so reveal and lift never fight each other. */
+.wtf-ep-card{transition:border-color .2s,opacity .5s ease,transform .45s ease,box-shadow .45s ease}
+html.wtf-anim .wtf-ep-card{opacity:0;transform:translateY(24px)}
+html.wtf-anim .wtf-ep-card.in-view{opacity:1;transform:none}
+.wtf-ep-card:hover,
+html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(0,0,0,.28)}
+@media(prefers-reduced-motion:reduce){
+  .wtf-show-art,.wtf-featured-card{animation:none}
+  html.wtf-anim .wtf-ep-card{opacity:1;transform:none}
+  .wtf-ep-card:hover{transform:none}
+}
+
 /* FOOTER */
 .wtf-footer{background:#1a1a1a;padding:2rem;text-align:center;margin-top:2rem}
 .wtf-footer p{font-size:12px;color:#5a5248;letter-spacing:.04em}
@@ -357,6 +376,25 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 <div class="wtf-footer">
   <p>© 2026 Why This Film? &nbsp;·&nbsp; <a href="https://www.instagram.com/whythisfilmpod/" target="_blank">Instagram</a> &nbsp;·&nbsp; <a href="https://www.youtube.com/@WhyThisFilm" target="_blank">YouTube</a> &nbsp;·&nbsp; <a href="https://www.buzzsprout.com/2528877/support" target="_blank">Support the Show</a></p>
 </div>
+
+<script>
+// Stagger episode cards in as they scroll into view (0.1s apart per batch)
+(function(){
+  if(!('IntersectionObserver' in window))return;
+  document.documentElement.classList.add('wtf-anim');
+  var cards=document.querySelectorAll('.wtf-ep-card');
+  var obs=new IntersectionObserver(function(entries){
+    var delay=0;
+    entries.forEach(function(e){
+      if(!e.isIntersecting)return;
+      obs.unobserve(e.target);
+      (function(el,d){setTimeout(function(){el.classList.add('in-view')},d)})(e.target,delay);
+      delay+=100;
+    });
+  },{threshold:.15});
+  cards.forEach(function(c){obs.observe(c)});
+})();
+</script>
 
 </body>
 </html>
