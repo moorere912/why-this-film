@@ -44,8 +44,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 
 /* HERO */
 .wtf-home-hero{background:#1a1a1a;padding:5rem 2rem 6rem;position:relative;overflow:hidden;text-align:center}
-@keyframes wtf-grain-drift{0%{background-position:0 0}25%{background-position:40px 20px}50%{background-position:80px 0}75%{background-position:40px -20px}100%{background-position:0 0}}
-.grain-overlay{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px;animation:wtf-grain-drift 8s ease-in-out infinite}
+.grain-overlay{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px}
 .wtf-hero-inner{max-width:680px;margin:0 auto;position:relative;z-index:1}
 .wtf-show-art{width:140px;height:140px;border-radius:16px;object-fit:cover;margin:0 auto 2rem;display:block;box-shadow:0 8px 40px rgba(0,0,0,.6)}
 .wtf-home-hero h1{font-family:'Playfair Display',serif;font-size:58px;font-weight:700;color:#F5F0E8;line-height:1.1;margin-bottom:.75rem;letter-spacing:-.01em}
@@ -393,13 +392,20 @@ html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0
   function resize(){canvas.width=hero.offsetWidth;canvas.height=hero.offsetHeight}
   resize();
   window.addEventListener('resize',resize);
-  var pts=Array.from({length:45},function(){return{
-    x:Math.random(),y:Math.random(),
-    r:Math.random()*1.4+.6,
-    speed:(Math.random()*.3+.1)/60,
-    opacity:Math.random()*.35+.08,
-    drift:(Math.random()-.5)*.15/60
-  }});
+  var pts=Array.from({length:50},function(){
+    var angle=Math.random()*Math.PI*2;
+    var spd=(Math.random()*.18+.04)/60;
+    return{
+      x:Math.random(),y:Math.random(),
+      r:Math.random()*1.5+.5,
+      vx:Math.cos(angle)*spd,
+      vy:Math.sin(angle)*spd,
+      wobbleOffset:Math.random()*Math.PI*2,
+      wobbleSpeed:(Math.random()*.4+.2)/60,
+      opacity:Math.random()*.3+.08,
+      age:0
+    };
+  });
   function draw(){
     var W=canvas.width,H=canvas.height;
     ctx.clearRect(0,0,W,H);
@@ -408,9 +414,21 @@ html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0
       ctx.arc(p.x*W,p.y*H,p.r,0,Math.PI*2);
       ctx.fillStyle='rgba(201,168,76,'+p.opacity+')';
       ctx.fill();
-      p.y-=p.speed;p.x+=p.drift;
-      if(p.y<-0.02){p.y=1.02;p.x=Math.random()}
-      if(p.x<-0.02||p.x>1.02){p.x=Math.random()}
+      p.age+=1;
+      // gentle wobble — direction slowly wanders
+      p.wobbleOffset+=p.wobbleSpeed;
+      p.vx+=(Math.cos(p.wobbleOffset)*.003-.002)*0.01;
+      p.vy+=(Math.sin(p.wobbleOffset)*.003)*0.01;
+      // clamp speed so no particle runs away
+      var spd=Math.sqrt(p.vx*p.vx+p.vy*p.vy);
+      var max=0.25/60;
+      if(spd>max){p.vx=p.vx/spd*max;p.vy=p.vy/spd*max}
+      p.x+=p.vx; p.y+=p.vy;
+      // wrap edges
+      if(p.x<-0.02)p.x=1.02;
+      if(p.x>1.02)p.x=-0.02;
+      if(p.y<-0.02)p.y=1.02;
+      if(p.y>1.02)p.y=-0.02;
     });
     requestAnimationFrame(draw);
   }
