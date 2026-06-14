@@ -123,14 +123,16 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
   .wtf-featured-title{font-size:23px}
 }
 
-/* APERTURE IRIS */
-.wtf-home-hero{animation:wtf-iris-open 1.1s cubic-bezier(.22,1,.36,1) both}
-@keyframes wtf-iris-open{from{clip-path:circle(0% at 50% 50%)}to{clip-path:circle(150% at 50% 50%)}}
-
 /* ANIMATIONS */
 @keyframes wtf-fade-in{from{opacity:0}to{opacity:1}}
 @keyframes wtf-rise-in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
-.wtf-show-art{animation:wtf-fade-in .5s ease both}
+@keyframes wtf-reveal-up{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
+.wtf-show-art{animation:wtf-reveal-up .7s cubic-bezier(.22,1,.36,1) .1s both}
+.wtf-home-hero h1{animation:wtf-reveal-up .7s cubic-bezier(.22,1,.36,1) .28s both}
+.wtf-home-tagline{animation:wtf-reveal-up .7s cubic-bezier(.22,1,.36,1) .42s both}
+.wtf-home-about{animation:wtf-reveal-up .7s cubic-bezier(.22,1,.36,1) .54s both}
+.wtf-cta-group{animation:wtf-reveal-up .7s cubic-bezier(.22,1,.36,1) .66s both}
+.wtf-platform-bar{animation:wtf-reveal-up .7s cubic-bezier(.22,1,.36,1) .76s both}
 .wtf-featured-card{animation:wtf-rise-in .6s ease .15s both}
 /* Scroll-reveal: cards start hidden ONLY when JS has tagged <html> with .wtf-anim,
    so the page still works if JavaScript fails. Hover lift shares the same transform
@@ -142,8 +144,7 @@ html.wtf-anim .wtf-ep-card.in-view{opacity:1;transform:none}
 html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(0,0,0,.28)}
 /* Divider draws itself from center outward as it scrolls into view.
 @media(prefers-reduced-motion:reduce){
-  .wtf-home-hero{animation:none}
-  .wtf-show-art,.wtf-featured-card{animation:none}
+  .wtf-show-art,.wtf-home-hero h1,.wtf-home-tagline,.wtf-home-about,.wtf-cta-group,.wtf-platform-bar,.wtf-featured-card{animation:none}
   html.wtf-anim .wtf-ep-card{opacity:1;transform:none}
   .wtf-ep-card:hover{transform:none}
   html{scroll-behavior:auto}
