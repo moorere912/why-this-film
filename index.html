@@ -124,6 +124,9 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 }
 
 /* ANIMATIONS */
+.wtf-eq{position:absolute;left:0;right:0;bottom:0;height:90px;display:flex;align-items:flex-end;justify-content:center;gap:4px;padding:0 1rem;pointer-events:none;z-index:0;opacity:.55;-webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent)}
+.wtf-eq-bar{width:3px;border-radius:2px 2px 0 0;background:linear-gradient(to top,rgba(201,168,76,.15),#C9A84C);animation:wtf-eq-bounce 1s ease-in-out infinite alternate}
+@keyframes wtf-eq-bounce{from{height:8%}to{height:100%}}
 @keyframes wtf-fade-in{from{opacity:0}to{opacity:1}}
 @keyframes wtf-rise-in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .wtf-show-art{animation:wtf-fade-in .5s ease both}
@@ -170,6 +173,7 @@ html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0
 
 <div class="wtf-home-hero">
   <div class="grain-overlay"></div>
+  <div class="wtf-eq" aria-hidden="true"></div>
   <div class="wtf-hero-inner">
     <img class="wtf-show-art"
       src="https://www.buzzsprout.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTUyNDk1MzI1LCJwdXIiOiJibG9iX2lkIn19--86e5f21fbc3e628cef3721928333b70df501eb3e/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZmlsbCI6WzI1MCwyNTAseyJjcm9wIjoiY2VudHJlIn1dLCJzYXZlciI6eyJxdWFsaXR5Ijo2MH0sImNvbG91cnNwYWNlIjoic3JnYiJ9LCJwdXIiOiJ2YXJpYXRpb24ifX0=--21f3793904e6ce1806a5a794a691217fceef82c7/Logo.png"
@@ -379,6 +383,28 @@ html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0
 <div class="wtf-footer">
   <p>© 2026 Why This Film? &nbsp;·&nbsp; <a href="https://www.instagram.com/whythisfilmpod/" target="_blank">Instagram</a> &nbsp;·&nbsp; <a href="https://www.youtube.com/@WhyThisFilm" target="_blank">YouTube</a> &nbsp;·&nbsp; <a href="https://www.buzzsprout.com/2528877/support" target="_blank">Support the Show</a></p>
 </div>
+
+<script>
+// Hero waveform — generate gold equalizer bars with organic randomized bounce
+(function(){
+  var eq=document.querySelector('.wtf-eq');
+  if(!eq)return;
+  var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var N=60;
+  for(var i=0;i<N;i++){
+    var b=document.createElement('div');
+    b.className='wtf-eq-bar';
+    if(reduce){
+      b.style.height=(10+Math.random()*60)+'%';
+      b.style.animation='none';
+    }else{
+      b.style.animationDuration=(0.7+Math.random()*0.9).toFixed(2)+'s';
+      b.style.animationDelay=(-Math.random()*1.6).toFixed(2)+'s';
+    }
+    eq.appendChild(b);
+  }
+})();
+</script>
 
 <script>
 // Stagger episode cards in as they scroll into view (0.1s apart per batch)
