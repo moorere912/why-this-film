@@ -396,6 +396,18 @@ html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0
 </div>
 
 <script>
+// Hero parallax — inner content drifts up at 35% of scroll speed
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var inner=document.querySelector('.wtf-hero-inner');
+  if(!inner)return;
+  window.addEventListener('scroll',function(){
+    inner.style.transform='translateY('+Math.round(window.scrollY*0.35)+'px)';
+  },{passive:true});
+})();
+</script>
+
+<script>
 // Hero spotlight — soft gold glow tracks the cursor across the dark hero
 (function(){
   var hero=document.querySelector('.wtf-home-hero');
