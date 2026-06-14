@@ -44,6 +44,8 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 
 /* HERO */
 .wtf-home-hero{background:#1a1a1a;padding:5rem 2rem 6rem;position:relative;overflow:hidden;text-align:center}
+.wtf-spotlight{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:0;transition:opacity .4s ease;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(201,168,76,.18),rgba(201,168,76,.06) 40%,transparent 70%)}
+.wtf-home-hero:hover .wtf-spotlight{opacity:1}
 .grain-overlay{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px}
 .wtf-hero-inner{max-width:680px;margin:0 auto;position:relative;z-index:1}
 .wtf-show-art{width:140px;height:140px;border-radius:16px;object-fit:cover;margin:0 auto 2rem;display:block;box-shadow:0 8px 40px rgba(0,0,0,.6)}
@@ -176,6 +178,7 @@ html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0
 
 <div class="wtf-home-hero">
   <div class="grain-overlay"></div>
+  <div class="wtf-spotlight" aria-hidden="true"></div>
   <div class="wtf-hero-inner">
     <img class="wtf-show-art"
       src="https://www.buzzsprout.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTUyNDk1MzI1LCJwdXIiOiJibG9iX2lkIn19--86e5f21fbc3e628cef3721928333b70df501eb3e/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZmlsbCI6WzI1MCwyNTAseyJjcm9wIjoiY2VudHJlIn1dLCJzYXZlciI6eyJxdWFsaXR5Ijo2MH0sImNvbG91cnNwYWNlIjoic3JnYiJ9LCJwdXIiOiJ2YXJpYXRpb24ifX0=--21f3793904e6ce1806a5a794a691217fceef82c7/Logo.png"
@@ -385,6 +388,20 @@ html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0
 <div class="wtf-footer">
   <p>© 2026 Why This Film? &nbsp;·&nbsp; <a href="https://www.instagram.com/whythisfilmpod/" target="_blank">Instagram</a> &nbsp;·&nbsp; <a href="https://www.youtube.com/@WhyThisFilm" target="_blank">YouTube</a> &nbsp;·&nbsp; <a href="https://www.buzzsprout.com/2528877/support" target="_blank">Support the Show</a></p>
 </div>
+
+<script>
+// Hero spotlight — soft gold glow tracks the cursor across the dark hero
+(function(){
+  var hero=document.querySelector('.wtf-home-hero');
+  if(!hero||window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  if(window.matchMedia('(hover:none)').matches)return;
+  hero.addEventListener('pointermove',function(e){
+    var r=hero.getBoundingClientRect();
+    hero.style.setProperty('--mx',(e.clientX-r.left)+'px');
+    hero.style.setProperty('--my',(e.clientY-r.top)+'px');
+  });
+})();
+</script>
 
 <script>
 // Stagger episode cards in as they scroll into view (0.1s apart per batch)
