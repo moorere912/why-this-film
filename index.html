@@ -123,13 +123,9 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
   .wtf-featured-title{font-size:23px}
 }
 
-/* LETTERBOX BARS */
-.wtf-lb-top,.wtf-lb-bot{position:absolute;left:0;right:0;background:#000;z-index:10;pointer-events:none}
-.wtf-lb-top{top:0;animation:wtf-lb-in 0.6s cubic-bezier(.4,0,.2,1) forwards,wtf-lb-out-top 0.8s cubic-bezier(.4,0,.2,1) 1.4s forwards}
-.wtf-lb-bot{bottom:0;animation:wtf-lb-in 0.6s cubic-bezier(.4,0,.2,1) forwards,wtf-lb-out-bot 0.8s cubic-bezier(.4,0,.2,1) 1.4s forwards}
-@keyframes wtf-lb-in{from{height:0}to{height:18%}}
-@keyframes wtf-lb-out-top{from{height:18%}to{height:0}}
-@keyframes wtf-lb-out-bot{from{height:18%}to{height:0}}
+/* APERTURE IRIS */
+.wtf-home-hero{animation:wtf-iris-open 1.1s cubic-bezier(.22,1,.36,1) both}
+@keyframes wtf-iris-open{from{clip-path:circle(0% at 50% 50%)}to{clip-path:circle(150% at 50% 50%)}}
 
 /* ANIMATIONS */
 @keyframes wtf-fade-in{from{opacity:0}to{opacity:1}}
@@ -146,7 +142,7 @@ html.wtf-anim .wtf-ep-card.in-view{opacity:1;transform:none}
 html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(0,0,0,.28)}
 /* Divider draws itself from center outward as it scrolls into view.
 @media(prefers-reduced-motion:reduce){
-  .wtf-lb-top,.wtf-lb-bot{display:none}
+  .wtf-home-hero{animation:none}
   .wtf-show-art,.wtf-featured-card{animation:none}
   html.wtf-anim .wtf-ep-card{opacity:1;transform:none}
   .wtf-ep-card:hover{transform:none}
@@ -179,8 +175,6 @@ html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0
 
 <div class="wtf-home-hero">
   <div class="grain-overlay"></div>
-  <div class="wtf-lb-top" aria-hidden="true"></div>
-  <div class="wtf-lb-bot" aria-hidden="true"></div>
   <div class="wtf-hero-inner">
     <img class="wtf-show-art"
       src="https://www.buzzsprout.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTUyNDk1MzI1LCJwdXIiOiJibG9iX2lkIn19--86e5f21fbc3e628cef3721928333b70df501eb3e/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGciLCJyZXNpemVfdG9fZmlsbCI6WzI1MCwyNTAseyJjcm9wIjoiY2VudHJlIn1dLCJzYXZlciI6eyJxdWFsaXR5Ijo2MH0sImNvbG91cnNwYWNlIjoic3JnYiJ9LCJwdXIiOiJ2YXJpYXRpb24ifX0=--21f3793904e6ce1806a5a794a691217fceef82c7/Logo.png"
