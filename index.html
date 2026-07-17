@@ -65,11 +65,11 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 .wtf-platform-btn:hover{background:rgba(201,168,76,.1)}
 
 /* FILM STRIP MARQUEE */
-.wtf-filmstrip{background:#141414;overflow:hidden;padding:18px 0;position:relative}
-.wtf-filmstrip::before,.wtf-filmstrip::after{content:"";position:absolute;left:0;right:0;height:14px;z-index:2;background-image:repeating-linear-gradient(to right,transparent 0 14px,#2a2a2a 14px 24px,transparent 24px 38px);background-color:#141414}
-.wtf-filmstrip::before{top:0;border-bottom:.5px solid #262626}
-.wtf-filmstrip::after{bottom:0;border-top:.5px solid #262626}
-.wtf-strip-track{display:flex;gap:14px;width:max-content;padding:16px 0;animation:wtf-strip-scroll 60s linear infinite;will-change:transform}
+.wtf-filmstrip{background:#141414;overflow:hidden;position:relative}
+.wtf-strip-track{display:flex;gap:14px;width:max-content;padding:32px 0;position:relative;animation:wtf-strip-scroll 60s linear infinite;will-change:transform}
+.wtf-strip-track::before,.wtf-strip-track::after{content:"";position:absolute;left:0;right:0;height:10px;background-image:repeating-linear-gradient(to right,transparent 0 14px,#2e2e2e 14px 24px,transparent 24px 38px)}
+.wtf-strip-track::before{top:9px}
+.wtf-strip-track::after{bottom:9px}
 .wtf-filmstrip:hover .wtf-strip-track{animation-play-state:paused}
 @keyframes wtf-strip-scroll{to{transform:translateX(-50%)}}
 .wtf-strip-frame{display:block;flex:0 0 auto;border-radius:3px;overflow:hidden;border:.5px solid #2e2e2e;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
