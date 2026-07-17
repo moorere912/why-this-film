@@ -64,6 +64,23 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 .wtf-platform-btn{background:transparent;color:#C9A84C;text-decoration:none;font-size:12px;font-weight:500;letter-spacing:.04em;padding:8px 16px;border:.5px solid #C9A84C;border-radius:999px;transition:background .15s;min-width:130px;text-align:center}
 .wtf-platform-btn:hover{background:rgba(201,168,76,.1)}
 
+/* FILM STRIP MARQUEE */
+.wtf-filmstrip{background:#141414;overflow:hidden;padding:18px 0;position:relative}
+.wtf-filmstrip::before,.wtf-filmstrip::after{content:"";position:absolute;left:0;right:0;height:14px;z-index:2;background-image:repeating-linear-gradient(to right,transparent 0 14px,#2a2a2a 14px 24px,transparent 24px 38px);background-color:#141414}
+.wtf-filmstrip::before{top:0;border-bottom:.5px solid #262626}
+.wtf-filmstrip::after{bottom:0;border-top:.5px solid #262626}
+.wtf-strip-track{display:flex;gap:14px;width:max-content;padding:16px 0;animation:wtf-strip-scroll 60s linear infinite;will-change:transform}
+.wtf-filmstrip:hover .wtf-strip-track{animation-play-state:paused}
+@keyframes wtf-strip-scroll{to{transform:translateX(-50%)}}
+.wtf-strip-frame{display:block;flex:0 0 auto;border-radius:3px;overflow:hidden;border:.5px solid #2e2e2e;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.wtf-strip-frame img{display:block;height:140px;width:auto}
+.wtf-strip-frame:hover{transform:translateY(-4px) scale(1.04);border-color:#C9A84C;box-shadow:0 10px 26px rgba(0,0,0,.5)}
+@media(max-width:600px){.wtf-strip-frame img{height:104px}}
+@media(prefers-reduced-motion:reduce){
+  .wtf-filmstrip{overflow-x:auto}
+  .wtf-strip-track{animation:none}
+}
+
 /* DIVIDER */
 .wtf-divider{height:.5px;background:#d8d0c0;max-width:880px;margin:0 auto}
 
@@ -219,7 +236,37 @@ html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0
   </div>
 </div>
 
-<div class="wtf-divider"></div>
+<!-- FILM STRIP MARQUEE -->
+<section class="wtf-filmstrip" aria-label="Episode covers">
+  <div class="wtf-strip-track">
+    <a class="wtf-strip-frame" href="episodes/birth.html"><img src="images/birth.jpg" alt="Birth" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/la-ceremonie.html"><img src="images/la ceremonie.jpg" alt="La cérémonie" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/guillermo-del-toro-pinocchio.html"><img src="images/guillermo-del-toros-pinocchio.jpg" alt="Guillermo del Toro's Pinocchio" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/kagemusha.html"><img src="images/Kagemusha.jpg" alt="Kagemusha" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/royal-tenenbaums.html"><img src="images/the-royal-tenenbaums.jpg" alt="The Royal Tenenbaums" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/thin-red-line.html"><img src="images/the-thin-red-line.jpg" alt="The Thin Red Line" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/pee-wees-big-adventure.html"><img src="images/pee-wees-big-adventure.jpg" alt="Pee-wee's Big Adventure" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/repo-man.html"><img src="images/repo-man.jpg" alt="Repo Man" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/winchester-73.html"><img src="images/winchester-73.jpg" alt="Winchester '73" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/after-hours.html"><img src="images/after-hours.jpg" alt="After Hours" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/the-breakfast-club.html"><img src="images/the-breakfast-club.jpg" alt="The Breakfast Club" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/touchez-pas-au-grisbi.html"><img src="images/touchez-pas-au-grisbi.jpg" alt="Touchez pas au grisbi" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/la-jetee.html"><img src="images/la-jetee.jpg" alt="La Jetée" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/birth.html" aria-hidden="true" tabindex="-1"><img src="images/birth.jpg" alt="" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/la-ceremonie.html" aria-hidden="true" tabindex="-1"><img src="images/la ceremonie.jpg" alt="" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/guillermo-del-toro-pinocchio.html" aria-hidden="true" tabindex="-1"><img src="images/guillermo-del-toros-pinocchio.jpg" alt="" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/kagemusha.html" aria-hidden="true" tabindex="-1"><img src="images/Kagemusha.jpg" alt="" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/royal-tenenbaums.html" aria-hidden="true" tabindex="-1"><img src="images/the-royal-tenenbaums.jpg" alt="" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/thin-red-line.html" aria-hidden="true" tabindex="-1"><img src="images/the-thin-red-line.jpg" alt="" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/pee-wees-big-adventure.html" aria-hidden="true" tabindex="-1"><img src="images/pee-wees-big-adventure.jpg" alt="" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/repo-man.html" aria-hidden="true" tabindex="-1"><img src="images/repo-man.jpg" alt="" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/winchester-73.html" aria-hidden="true" tabindex="-1"><img src="images/winchester-73.jpg" alt="" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/after-hours.html" aria-hidden="true" tabindex="-1"><img src="images/after-hours.jpg" alt="" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/the-breakfast-club.html" aria-hidden="true" tabindex="-1"><img src="images/the-breakfast-club.jpg" alt="" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/touchez-pas-au-grisbi.html" aria-hidden="true" tabindex="-1"><img src="images/touchez-pas-au-grisbi.jpg" alt="" loading="lazy"></a>
+    <a class="wtf-strip-frame" href="episodes/la-jetee.html" aria-hidden="true" tabindex="-1"><img src="images/la-jetee.jpg" alt="" loading="lazy"></a>
+  </div>
+</section>
 
 <!-- ======================================================
      LATEST EPISODE — update these values when a new episode drops
