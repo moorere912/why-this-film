@@ -52,7 +52,15 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 .wtf-guests-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
 @media(max-width:760px){.wtf-guests-grid{grid-template-columns:1fr}}
 
-.wtf-guest-card{background:#1a1a1a;border-radius:8px;padding:1.75rem;display:flex;flex-direction:column;gap:1rem}
+.wtf-guest-card{background:#1a1a1a;border-radius:8px;padding:1.75rem;display:flex;flex-direction:column;gap:1rem;border:.5px solid #2e2e2e;transition:border-color .25s ease,transform .35s ease,box-shadow .35s ease,opacity .5s ease}
+.wtf-guest-card:hover{border-color:#C9A84C;transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.35)}
+html.wtf-anim .wtf-guest-card{opacity:0;transform:translateY(20px)}
+html.wtf-anim .wtf-guest-card.in-view{opacity:1;transform:none}
+html.wtf-anim .wtf-guest-card.in-view:hover{transform:translateY(-4px)}
+@media(prefers-reduced-motion:reduce){
+  html.wtf-anim .wtf-guest-card{opacity:1;transform:none}
+  .wtf-guest-card:hover{transform:none}
+}
 .wtf-guest-top{display:flex;gap:1rem;align-items:flex-start}
 .wtf-guest-avatar{width:52px;height:52px;border-radius:50%;background:#C9A84C;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-size:30px;font-weight:700;color:#1a1a1a;flex-shrink:0;line-height:1;padding-bottom:6px}
 .wtf-guest-info h2{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:#F5F0E8;margin-bottom:2px}
@@ -258,6 +266,25 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 <footer class="wtf-footer">
   <p>&copy; 2026 Why This Film? &nbsp;&middot;&nbsp; <a href="https://www.instagram.com/whythisfilmpod/" target="_blank">Instagram</a> &nbsp;&middot;&nbsp; <a href="https://www.youtube.com/@WhyThisFilm" target="_blank">YouTube</a> &nbsp;&middot;&nbsp; <a href="https://www.buzzsprout.com/2528877/support" target="_blank">Support the Show</a></p>
 </footer>
+
+<script>
+// Stagger guest cards in as they scroll into view (0.1s apart per batch)
+(function(){
+  if(!('IntersectionObserver' in window))return;
+  document.documentElement.classList.add('wtf-anim');
+  var cards=document.querySelectorAll('.wtf-guest-card');
+  var obs=new IntersectionObserver(function(entries){
+    var delay=0;
+    entries.forEach(function(e){
+      if(!e.isIntersecting)return;
+      obs.unobserve(e.target);
+      (function(el,d){setTimeout(function(){el.classList.add('in-view')},d)})(e.target,delay);
+      delay+=100;
+    });
+  },{threshold:.15});
+  cards.forEach(function(c){obs.observe(c)});
+})();
+</script>
 
 </body>
 </html>
