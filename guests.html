@@ -49,8 +49,15 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 .wtf-guests-wrap{max-width:1000px;margin:0 auto;padding:3.5rem 2rem 4rem}
 .wtf-guests-count{font-size:13px;color:#8a8070;letter-spacing:.02em;margin-bottom:2rem}
 .wtf-guests-count strong{color:#1a1a1a}
+.wtf-filter-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:2rem}
+.wtf-filter-chip{background:transparent;border:1px solid #C9A84C;color:#1a1a1a;font-size:12px;font-weight:500;letter-spacing:.04em;padding:8px 16px;border-radius:20px;cursor:pointer;transition:background .15s,color .15s}
+.wtf-filter-chip:hover{background:rgba(201,168,76,.12)}
+.wtf-filter-chip.active{background:#C9A84C;color:#1a1a1a}
+.wtf-filter-clear{background:none;border:none;color:#8a8070;font-size:12px;letter-spacing:.02em;text-decoration:underline;cursor:pointer;padding:8px 4px;display:none}
+.wtf-filter-clear.show{display:inline-block}
 .wtf-guests-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
 @media(max-width:760px){.wtf-guests-grid{grid-template-columns:1fr}}
+.wtf-guest-card.wtf-filtered-out{display:none}
 
 .wtf-guest-card{background:#1a1a1a;border-radius:8px;padding:1.75rem;display:flex;flex-direction:column;gap:1rem;border:.5px solid #2e2e2e;transition:border-color .25s ease,transform .35s ease,box-shadow .35s ease,opacity .5s ease}
 .wtf-guest-card:hover{border-color:#C9A84C;transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.35)}
@@ -120,9 +127,20 @@ html.wtf-anim .wtf-guest-card.in-view:hover{transform:translateY(-4px)}
 </div>
 
 <div class="wtf-guests-wrap">
+  <div class="wtf-filter-bar">
+    <button type="button" class="wtf-filter-chip" data-tag="critic">Film Critic</button>
+    <button type="button" class="wtf-filter-chip" data-tag="scholar">Scholar</button>
+    <button type="button" class="wtf-filter-chip" data-tag="historian">Historian</button>
+    <button type="button" class="wtf-filter-chip" data-tag="author">Author</button>
+    <button type="button" class="wtf-filter-chip" data-tag="podcaster">Podcaster</button>
+    <button type="button" class="wtf-filter-chip" data-tag="filmmaker">Filmmaker</button>
+    <button type="button" class="wtf-filter-chip" data-tag="industry">Industry Insider</button>
+    <button type="button" class="wtf-filter-chip" data-tag="essayist">Criterion Essayist</button>
+    <button type="button" class="wtf-filter-clear">Clear Filters</button>
+  </div>
   <div class="wtf-guests-grid">
 
-    <div class="wtf-guest-card">
+    <div class="wtf-guest-card" data-tags="critic">
       <div class="wtf-guest-top">        <div class="wtf-guest-info">
           <h2>Carlos Aguilar</h2>
           <div class="role">Film Critic &amp; Journalist</div>
@@ -132,7 +150,7 @@ html.wtf-anim .wtf-guest-card.in-view:hover{transform:translateY(-4px)}
       <a class="wtf-guest-episode" href="episodes/birth.html"><span class="num">#13</span> Birth <span class="arr">&rarr;</span></a>
     </div>
 
-    <div class="wtf-guest-card">
+    <div class="wtf-guest-card" data-tags="critic,scholar">
       <div class="wtf-guest-top">        <div class="wtf-guest-info">
           <h2><a href="https://girishshambu.net/" target="_blank">Girish Shambu</a></h2>
           <div class="role">Film Critic &amp; Scholar</div>
@@ -142,7 +160,7 @@ html.wtf-anim .wtf-guest-card.in-view:hover{transform:translateY(-4px)}
       <a class="wtf-guest-episode" href="episodes/la-ceremonie.html"><span class="num">#12</span> La c&eacute;r&eacute;monie <span class="arr">&rarr;</span></a>
     </div>
 
-    <div class="wtf-guest-card">
+    <div class="wtf-guest-card" data-tags="filmmaker">
       <div class="wtf-guest-top">        <div class="wtf-guest-info">
           <h2><a href="https://www.youtube.com/channel/UCJkOY_7ESpXq9jQj_x0Z00w" target="_blank">Caleb Tyson</a></h2>
           <div class="role">Editor &amp; Multi-Award Winner</div>
@@ -152,7 +170,7 @@ html.wtf-anim .wtf-guest-card.in-view:hover{transform:translateY(-4px)}
       <a class="wtf-guest-episode" href="episodes/guillermo-del-toro-pinocchio.html"><span class="num">#11</span> Guillermo del Toro's Pinocchio <span class="arr">&rarr;</span></a>
     </div>
 
-    <div class="wtf-guest-card">
+    <div class="wtf-guest-card" data-tags="industry">
       <div class="wtf-guest-top">        <div class="wtf-guest-info">
           <h2><a href="https://darkstarpics.com/" target="_blank">Michael Repsch</a></h2>
           <div class="role">President, Dark Star Pictures</div>
@@ -162,7 +180,7 @@ html.wtf-anim .wtf-guest-card.in-view:hover{transform:translateY(-4px)}
       <a class="wtf-guest-episode" href="episodes/kagemusha.html"><span class="num">#10</span> Kagemusha <span class="arr">&rarr;</span></a>
     </div>
 
-    <div class="wtf-guest-card">
+    <div class="wtf-guest-card" data-tags="industry">
       <div class="wtf-guest-top">        <div class="wtf-guest-info">
           <h2><a href="https://www.imdb.com/name/nm3114543/?ref_=fn_t_6" target="_blank">Chris Cook</a></h2>
           <div class="role">Guest, Episode 9</div>
@@ -172,7 +190,7 @@ html.wtf-anim .wtf-guest-card.in-view:hover{transform:translateY(-4px)}
       <a class="wtf-guest-episode" href="episodes/royal-tenenbaums.html"><span class="num">#9</span> The Royal Tenenbaums <span class="arr">&rarr;</span></a>
     </div>
 
-    <div class="wtf-guest-card">
+    <div class="wtf-guest-card" data-tags="historian,author">
       <div class="wtf-guest-top">        <div class="wtf-guest-info">
           <h2><a href="https://www.jaredfrederick.com/" target="_blank">Jared Frederick</a></h2>
           <div class="role">Guest, Episode 8</div>
@@ -182,7 +200,7 @@ html.wtf-anim .wtf-guest-card.in-view:hover{transform:translateY(-4px)}
       <a class="wtf-guest-episode" href="episodes/thin-red-line.html"><span class="num">#8</span> The Thin Red Line <span class="arr">&rarr;</span></a>
     </div>
 
-    <div class="wtf-guest-card">
+    <div class="wtf-guest-card" data-tags="podcaster">
       <div class="wtf-guest-top">        <div class="wtf-guest-info">
           <h2><a href="https://maximumfun.org/" target="_blank">Jesse Thorn</a></h2>
           <div class="role">Host, Bullseye with Jesse Thorn &middot; Maximum Fun</div>
@@ -192,7 +210,7 @@ html.wtf-anim .wtf-guest-card.in-view:hover{transform:translateY(-4px)}
       <a class="wtf-guest-episode" href="episodes/pee-wees-big-adventure.html"><span class="num">#7</span> Pee-wee's Big Adventure <span class="arr">&rarr;</span></a>
     </div>
 
-    <div class="wtf-guest-card">
+    <div class="wtf-guest-card" data-tags="industry,filmmaker">
       <div class="wtf-guest-top">        <div class="wtf-guest-info">
           <h2><a href="https://www.imdb.com/name/nm4008396/" target="_blank">James Chestnut</a></h2>
           <div class="role">Assistant Director</div>
@@ -202,7 +220,7 @@ html.wtf-anim .wtf-guest-card.in-view:hover{transform:translateY(-4px)}
       <a class="wtf-guest-episode" href="episodes/repo-man.html"><span class="num">#6</span> Repo Man <span class="arr">&rarr;</span></a>
     </div>
 
-    <div class="wtf-guest-card">
+    <div class="wtf-guest-card" data-tags="historian,author">
       <div class="wtf-guest-top">        <div class="wtf-guest-info">
           <h2><a href="https://www.bradycrytzer.com/" target="_blank">Brady Crytzer</a></h2>
           <div class="role">Historian &amp; Author</div>
@@ -212,7 +230,7 @@ html.wtf-anim .wtf-guest-card.in-view:hover{transform:translateY(-4px)}
       <a class="wtf-guest-episode" href="episodes/winchester-73.html"><span class="num">#5</span> Winchester '73 <span class="arr">&rarr;</span></a>
     </div>
 
-    <div class="wtf-guest-card">
+    <div class="wtf-guest-card" data-tags="critic">
       <div class="wtf-guest-top">        <div class="wtf-guest-info">
           <h2><a href="https://www.sheilaomalley.com/" target="_blank">Sheila O'Malley</a></h2>
           <div class="role">Film Critic, RogerEbert.com</div>
@@ -222,7 +240,7 @@ html.wtf-anim .wtf-guest-card.in-view:hover{transform:translateY(-4px)}
       <a class="wtf-guest-episode" href="episodes/after-hours.html"><span class="num">#4</span> After Hours <span class="arr">&rarr;</span></a>
     </div>
 
-    <div class="wtf-guest-card">
+    <div class="wtf-guest-card" data-tags="critic,podcaster">
       <div class="wtf-guest-top">        <div class="wtf-guest-info">
           <h2><a href="https://ciaramoloney.net/" target="_blank">Ciara Moloney</a></h2>
           <div class="role">Film Critic &amp; Podcaster</div>
@@ -232,7 +250,7 @@ html.wtf-anim .wtf-guest-card.in-view:hover{transform:translateY(-4px)}
       <a class="wtf-guest-episode" href="episodes/the-breakfast-club.html"><span class="num">#3</span> The Breakfast Club <span class="arr">&rarr;</span></a>
     </div>
 
-    <div class="wtf-guest-card">
+    <div class="wtf-guest-card" data-tags="scholar,essayist">
       <div class="wtf-guest-top">        <div class="wtf-guest-info">
           <h2><a href="https://www.criterion.com/current/author/191-ginette-vincendeau" target="_blank">Ginette Vincendeau</a></h2>
           <div class="role">French Cinema Scholar</div>
@@ -242,7 +260,7 @@ html.wtf-anim .wtf-guest-card.in-view:hover{transform:translateY(-4px)}
       <a class="wtf-guest-episode" href="episodes/touchez-pas-au-grisbi.html"><span class="num">#2</span> Touchez pas au grisbi <span class="arr">&rarr;</span></a>
     </div>
 
-    <div class="wtf-guest-card">
+    <div class="wtf-guest-card" data-tags="scholar">
       <div class="wtf-guest-top">        <div class="wtf-guest-info">
           <h2><a href="https://www.dennisweiss.net/" target="_blank">Dr. Dennis Weiss</a></h2>
           <div class="role">Philosophy Professor &amp; Curator, Philosophy, Drinks &amp; Film</div>
@@ -266,6 +284,50 @@ html.wtf-anim .wtf-guest-card.in-view:hover{transform:translateY(-4px)}
 <footer class="wtf-footer">
   <p>&copy; 2026 Why This Film? &nbsp;&middot;&nbsp; <a href="https://www.instagram.com/whythisfilmpod/" target="_blank">Instagram</a> &nbsp;&middot;&nbsp; <a href="https://www.youtube.com/@WhyThisFilm" target="_blank">YouTube</a> &nbsp;&middot;&nbsp; <a href="https://www.buzzsprout.com/2528877/support" target="_blank">Support the Show</a></p>
 </footer>
+
+<script>
+// Multi-select credential filters (OR logic across active tags)
+(function(){
+  var chips = document.querySelectorAll('.wtf-filter-chip');
+  var clearBtn = document.querySelector('.wtf-filter-clear');
+  var cards = document.querySelectorAll('.wtf-guest-card');
+  var active = new Set();
+
+  function apply(){
+    if(active.size === 0){
+      cards.forEach(function(c){ c.classList.remove('wtf-filtered-out'); });
+      clearBtn.classList.remove('show');
+      return;
+    }
+    clearBtn.classList.add('show');
+    cards.forEach(function(c){
+      var tags = (c.dataset.tags || '').split(',');
+      var match = tags.some(function(t){ return active.has(t); });
+      c.classList.toggle('wtf-filtered-out', !match);
+    });
+  }
+
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      var tag = chip.dataset.tag;
+      if(active.has(tag)){
+        active.delete(tag);
+        chip.classList.remove('active');
+      } else {
+        active.add(tag);
+        chip.classList.add('active');
+      }
+      apply();
+    });
+  });
+
+  clearBtn.addEventListener('click', function(){
+    active.clear();
+    chips.forEach(function(c){ c.classList.remove('active'); });
+    apply();
+  });
+})();
+</script>
 
 <script>
 // Stagger guest cards in as they scroll into view (0.1s apart per batch)
