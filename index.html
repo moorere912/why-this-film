@@ -75,7 +75,10 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 .wtf-strip-frame{display:block;flex:0 0 auto;border-radius:3px;overflow:hidden;border:.5px solid #2e2e2e;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
 .wtf-strip-frame img{display:block;height:140px;width:auto}
 .wtf-strip-frame:hover{transform:translateY(-4px) scale(1.04);border-color:#C9A84C;box-shadow:0 10px 26px rgba(0,0,0,.5)}
-@media(max-width:600px){.wtf-strip-frame img{height:104px}}
+@media(max-width:600px){
+  .wtf-strip-frame img{height:104px}
+  .wtf-strip-track{animation-duration:26s}
+}
 @media(prefers-reduced-motion:reduce){
   .wtf-filmstrip{overflow-x:auto}
   .wtf-strip-track{animation:none}
