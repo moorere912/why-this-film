@@ -51,7 +51,8 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 .wtf-art-sheen{position:absolute;inset:0;border-radius:16px;pointer-events:none;opacity:0;transition:opacity .2s ease;background:radial-gradient(circle at var(--sx,50%) var(--sy,50%),rgba(255,255,255,.35),transparent 45%);mix-blend-mode:screen}
 .wtf-art-3d:hover .wtf-art-sheen{opacity:1}
 .wtf-home-hero h1{font-family:'Playfair Display',serif;font-size:58px;font-weight:700;color:#F5F0E8;line-height:1.1;margin-bottom:.75rem;letter-spacing:-.01em}
-.wtf-home-tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:20px;color:#C9A84C;margin-bottom:2rem;line-height:1.5}
+.wtf-home-tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:20px;color:#C9A84C;margin-bottom:.5rem;line-height:1.5}
+.wtf-home-disclaimer{font-family:'Playfair Display',serif;font-style:italic;font-size:12px;color:#8a8070;margin-bottom:2rem}
 .wtf-home-about{font-size:15px;line-height:1.9;color:#a0988a;max-width:560px;margin:0 auto 2.5rem}
 .wtf-cta-group{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
 .wtf-cta-primary{background:#C9A84C;color:#1a1a1a;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:13px 28px;border-radius:4px;transition:opacity .15s}
@@ -154,6 +155,7 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 .wtf-show-art{animation:wtf-reveal-up .7s cubic-bezier(.22,1,.36,1) .1s both}
 .wtf-home-hero h1{animation:wtf-reveal-up .7s cubic-bezier(.22,1,.36,1) .28s both}
 .wtf-home-tagline{animation:wtf-reveal-up .7s cubic-bezier(.22,1,.36,1) .42s both}
+.wtf-home-disclaimer{animation:wtf-reveal-up .7s cubic-bezier(.22,1,.36,1) .48s both}
 .wtf-home-about{animation:wtf-reveal-up .7s cubic-bezier(.22,1,.36,1) .54s both}
 .wtf-cta-group{animation:wtf-reveal-up .7s cubic-bezier(.22,1,.36,1) .66s both}
 .wtf-platform-bar{animation:wtf-reveal-up .7s cubic-bezier(.22,1,.36,1) .76s both}
@@ -168,7 +170,7 @@ html.wtf-anim .wtf-ep-card.in-view{opacity:1;transform:none}
 html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(0,0,0,.28)}
 /* Divider draws itself from center outward as it scrolls into view.
 @media(prefers-reduced-motion:reduce){
-  .wtf-show-art,.wtf-home-hero h1,.wtf-home-tagline,.wtf-home-about,.wtf-cta-group,.wtf-platform-bar,.wtf-featured-card{animation:none}
+  .wtf-show-art,.wtf-home-hero h1,.wtf-home-tagline,.wtf-home-disclaimer,.wtf-home-about,.wtf-cta-group,.wtf-platform-bar,.wtf-featured-card{animation:none}
   html.wtf-anim .wtf-ep-card{opacity:1;transform:none}
   .wtf-ep-card:hover{transform:none}
   html{scroll-behavior:auto}
@@ -226,6 +228,7 @@ html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0
     </div>
     <h1>Why This Film?</h1>
     <div class="wtf-home-tagline">Exploring the Criterion Collection, one spine at a time.</div>
+    <div class="wtf-home-disclaimer">*A love of, but not affiliated with, the Criterion Collection.</div>
     <p class="wtf-home-about">In each episode, I sit down with film historians, critics, filmmakers, and scholars for in-depth conversations about a single film from the Criterion Collection. From French New Wave masterpieces to American westerns, from experimental shorts to beloved classics, we unpack what makes these films essential viewing.</p>
     <div class="wtf-cta-group">
       <a href="#all-episodes" class="wtf-cta-primary">All Episodes ↓</a>
