@@ -190,7 +190,7 @@ a{color:inherit}
   <h1>The Shelf</h1>
   <p class="wtf-collection-desc">Every spine below represents a film in the Criterion Collection &mdash; over 1,300 of them and counting. The gold spines are the ones we've explored together on the show. Hover (or tap) any gold spine to see who joined us and listen to the conversation.</p>
   <div class="wtf-collection-meta-row">
-    <div class="wtf-collection-count">13 of 1324 explored</div>
+    <div class="wtf-collection-count">14 of 1324 explored</div>
     <label class="wtf-collection-toggle">
       <input type="checkbox" id="wtf-episodes-only">
       <span class="wtf-toggle-switch"></span>
@@ -206,10 +206,19 @@ a{color:inherit}
   <div class="wtf-coverage-grid">
     <div class="wtf-coverage-block">
       <h3>By Decade</h3>
-      <p class="wtf-coverage-note">Each bar shows that decade's share of all 13 episodes</p>
+      <p class="wtf-coverage-note">Each bar shows that decade's share of all 14 episodes</p>
+      <div class="wtf-decade-row">
+        <span class="wtf-decade-label">1930s</span>
+        <span class="wtf-decade-track"><span class="wtf-decade-bar" style="width:7.1%"></span></span>
+        <span class="wtf-decade-count">1</span>
+        <div class="wtf-decade-tip">
+          <span class="tip-ttl">1930s</span>
+          <span class="tip-film">The 39 Steps (1935)</span>
+        </div>
+      </div>
       <div class="wtf-decade-row">
         <span class="wtf-decade-label">1950s</span>
-        <span class="wtf-decade-track"><span class="wtf-decade-bar" style="width:15.4%"></span></span>
+        <span class="wtf-decade-track"><span class="wtf-decade-bar" style="width:14.3%"></span></span>
         <span class="wtf-decade-count">2</span>
         <div class="wtf-decade-tip">
           <span class="tip-ttl">1950s</span>
@@ -219,7 +228,7 @@ a{color:inherit}
       </div>
       <div class="wtf-decade-row">
         <span class="wtf-decade-label">1960s</span>
-        <span class="wtf-decade-track"><span class="wtf-decade-bar" style="width:7.7%"></span></span>
+        <span class="wtf-decade-track"><span class="wtf-decade-bar" style="width:7.1%"></span></span>
         <span class="wtf-decade-count">1</span>
         <div class="wtf-decade-tip">
           <span class="tip-ttl">1960s</span>
@@ -228,7 +237,7 @@ a{color:inherit}
       </div>
       <div class="wtf-decade-row">
         <span class="wtf-decade-label">1980s</span>
-        <span class="wtf-decade-track"><span class="wtf-decade-bar" style="width:38.5%"></span></span>
+        <span class="wtf-decade-track"><span class="wtf-decade-bar" style="width:35.7%"></span></span>
         <span class="wtf-decade-count">5</span>
         <div class="wtf-decade-tip">
           <span class="tip-ttl">1980s</span>
@@ -241,7 +250,7 @@ a{color:inherit}
       </div>
       <div class="wtf-decade-row">
         <span class="wtf-decade-label">1990s</span>
-        <span class="wtf-decade-track"><span class="wtf-decade-bar" style="width:15.4%"></span></span>
+        <span class="wtf-decade-track"><span class="wtf-decade-bar" style="width:14.3%"></span></span>
         <span class="wtf-decade-count">2</span>
         <div class="wtf-decade-tip">
           <span class="tip-ttl">1990s</span>
@@ -251,7 +260,7 @@ a{color:inherit}
       </div>
       <div class="wtf-decade-row">
         <span class="wtf-decade-label">2000s</span>
-        <span class="wtf-decade-track"><span class="wtf-decade-bar" style="width:15.4%"></span></span>
+        <span class="wtf-decade-track"><span class="wtf-decade-bar" style="width:14.3%"></span></span>
         <span class="wtf-decade-count">2</span>
         <div class="wtf-decade-tip">
           <span class="tip-ttl">2000s</span>
@@ -261,7 +270,7 @@ a{color:inherit}
       </div>
       <div class="wtf-decade-row">
         <span class="wtf-decade-label">2020s</span>
-        <span class="wtf-decade-track"><span class="wtf-decade-bar" style="width:7.7%"></span></span>
+        <span class="wtf-decade-track"><span class="wtf-decade-bar" style="width:7.1%"></span></span>
         <span class="wtf-decade-count">1</span>
         <div class="wtf-decade-tip">
           <span class="tip-ttl">2020s</span>
@@ -297,6 +306,13 @@ a{color:inherit}
         <span class="wtf-country-name">Mexico</span>
         <span class="wtf-country-wrap">
           <button type="button" class="wtf-country-count" data-country="Mexico" data-films="Guillermo del Toro&#39;s Pinocchio (2022)" data-links="episodes/guillermo-del-toro-pinocchio.html">1</button>
+          <span class="wtf-country-popup"></span>
+        </span>
+      </div>
+      <div class="wtf-country-row">
+        <span class="wtf-country-name">United Kingdom</span>
+        <span class="wtf-country-wrap">
+          <button type="button" class="wtf-country-count" data-country="United Kingdom" data-films="The 39 Steps (1935)" data-links="episodes/the-39-steps.html">1</button>
           <span class="wtf-country-popup"></span>
         </span>
       </div>
@@ -338,7 +354,8 @@ a{color:inherit}
     { spine: 267,  title: "Kagemusha",                        dir: "Akira Kurosawa",      year: 1980, guest: "Michael Repsch",    runtime: "2h 42m", cover: "images/Kagemusha.jpg",                 link: "episodes/kagemusha.html" },
     { spine: 1201, title: "Guillermo del Toro's Pinocchio",   dir: "del Toro & Gustafson",year: 2022, guest: "Caleb Tyson",       runtime: "1h 57m", cover: "images/guillermo-del-toros-pinocchio.jpg", link: "episodes/guillermo-del-toro-pinocchio.html" },
     { spine: 1199, title: "La cérémonie",                     dir: "Claude Chabrol",      year: 1995, guest: "Girish Shambu",     runtime: "1h 53m", cover: "images/la ceremonie.jpg",              link: "episodes/la-ceremonie.html" },
-    { spine: 1298, title: "Birth",                             dir: "Jonathan Glazer",     year: 2004, guest: "Carlos Aguilar",    runtime: "1h 40m", cover: "images/birth.jpg",                     link: "episodes/birth.html" }
+    { spine: 1298, title: "Birth",                             dir: "Jonathan Glazer",     year: 2004, guest: "Carlos Aguilar",    runtime: "1h 40m", cover: "images/birth.jpg",                     link: "episodes/birth.html" },
+    { spine: 56,   title: "The 39 Steps",                      dir: "Alfred Hitchcock",    year: 1935, guest: "Sid Gottlieb",      runtime: "1h 26m", cover: "images/the-39-steps.jpg",              link: "episodes/the-39-steps.html" }
   ];
 
   var bySpine = {};
