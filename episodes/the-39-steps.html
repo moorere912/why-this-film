@@ -371,6 +371,13 @@ function setTab(tab) {
   });
 })();
 </script>
+<script>
+(function(){
+  var meta=document.querySelector('meta[property="og:image"]');
+  var hero=document.querySelector('.wtf-hero');
+  if(meta&&hero)hero.style.backgroundImage='url("'+meta.content+'")';
+})();
+</script>
 
 </body>
 </html>
