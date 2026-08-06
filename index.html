@@ -141,6 +141,28 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 .wtf-featured-card:hover .wtf-featured-listen{background:#2e2e2e}
 .wtf-featured-listen .arr{transition:transform .2s ease}
 .wtf-featured-card:hover .wtf-featured-listen .arr{transform:translateX(3px)}
+
+/* BEST PLACE TO START */
+.wtf-start-wrap{max-width:880px;margin:0 auto;padding:1.5rem 2rem 0}
+.wtf-start-card{background:#1a1a1a;border-radius:8px;border-left:3px solid #C9A84C;display:flex;align-items:stretch;text-decoration:none;overflow:hidden;transition:box-shadow .25s ease,transform .25s ease}
+.wtf-start-card:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.35)}
+.wtf-start-cover{flex:0 0 168px;background-size:cover;background-position:center;min-height:200px}
+.wtf-start-body{flex:1;min-width:0;padding:2rem 2.5rem;display:flex;flex-direction:column;justify-content:center}
+.wtf-start-label{font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#C9A84C;margin-bottom:.7rem;display:flex;align-items:center;gap:10px}
+.wtf-start-label::after{content:"";height:.5px;background:#3a3a3a;flex:1}
+.wtf-start-title{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:#F5F0E8;line-height:1.12;margin-bottom:.3rem}
+.wtf-start-dir{font-family:'Playfair Display',serif;font-style:italic;font-size:15px;color:#8a8070;margin-bottom:.85rem}
+.wtf-start-note{font-size:14px;color:#a0988a;line-height:1.65;margin-bottom:1.4rem}
+.wtf-start-listen{display:inline-flex;align-items:center;gap:7px;background:#C9A84C;color:#1a1a1a;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:10px 20px;border-radius:4px;transition:background .2s;width:fit-content}
+.wtf-start-card:hover .wtf-start-listen{background:#ddc070}
+.wtf-start-listen .arr{transition:transform .2s ease}
+.wtf-start-card:hover .wtf-start-listen .arr{transform:translateX(3px)}
+@media(max-width:600px){
+  .wtf-start-card{flex-direction:column}
+  .wtf-start-cover{flex:none;height:150px;min-height:0}
+  .wtf-start-body{padding:1.5rem 1.5rem 1.75rem}
+  .wtf-start-title{font-size:23px}
+}
 @media(max-width:600px){
   .wtf-featured-card{flex-direction:column}
   .wtf-featured-cover{flex:none;height:150px;min-height:0}
@@ -294,6 +316,19 @@ html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0
       <div class="wtf-featured-meta">
         <span class="wtf-featured-listen">Listen <span class="arr">&rarr;</span></span>
       </div>
+    </div>
+  </a>
+</div>
+
+<div class="wtf-start-wrap">
+  <a class="wtf-start-card" href="episodes/la-ceremonie.html">
+    <div class="wtf-start-cover" style="background-image:url('images/la ceremonie.jpg')"></div>
+    <div class="wtf-start-body">
+      <div class="wtf-start-label">Best Place to Start</div>
+      <div class="wtf-start-title">La c&eacute;r&eacute;monie</div>
+      <div class="wtf-start-dir">Claude Chabrol &middot; 1995 &middot; Criterion Spine #1199</div>
+      <p class="wtf-start-note">New to the show? This is the episode we point people to first &mdash; a tense, perfectly-paced thriller and one of our sharpest conversations, with guest Girish Shambu.</p>
+      <span class="wtf-start-listen">Listen <span class="arr">&rarr;</span></span>
     </div>
   </a>
 </div>
