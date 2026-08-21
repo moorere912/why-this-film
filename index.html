@@ -45,11 +45,15 @@ body{font-family:'DM Sans',sans-serif;background:#F5F0E8;color:#1a1a1a}
 /* HERO */
 .wtf-home-hero{background:#1a1a1a;padding:5rem 2rem 6rem;position:relative;overflow:hidden;text-align:center}
 .grain-overlay{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:160px 160px}
-.wtf-hero-inner{max-width:680px;margin:0 auto;position:relative;z-index:1}
-.wtf-art-3d{position:relative;width:140px;height:140px;margin:0 auto 2rem;perspective:600px}
-.wtf-show-art{width:140px;height:140px;border-radius:16px;object-fit:cover;margin:0;display:block;box-shadow:0 8px 40px rgba(0,0,0,.6);transition:transform .15s ease-out,box-shadow .2s ease-out;will-change:transform;transform-style:preserve-3d}
-.wtf-art-sheen{position:absolute;inset:0;border-radius:16px;pointer-events:none;opacity:0;transition:opacity .2s ease;background:radial-gradient(circle at var(--sx,50%) var(--sy,50%),rgba(255,255,255,.35),transparent 45%);mix-blend-mode:screen}
+.wtf-hero-inner{max-width:680px;margin:0 auto;position:relative;z-index:2}
+.wtf-art-3d{position:relative;width:190px;height:190px;margin:0 auto 2rem;perspective:600px;z-index:2}
+.wtf-show-art{width:190px;height:190px;border-radius:20px;object-fit:cover;margin:0;display:block;box-shadow:0 8px 40px rgba(0,0,0,.6);transition:transform .15s ease-out,box-shadow .2s ease-out;will-change:transform;transform-style:preserve-3d}
+.wtf-art-sheen{position:absolute;inset:0;border-radius:20px;pointer-events:none;opacity:0;transition:opacity .2s ease;background:radial-gradient(circle at var(--sx,50%) var(--sy,50%),rgba(255,255,255,.35),transparent 45%);mix-blend-mode:screen}
 .wtf-art-3d:hover .wtf-art-sheen{opacity:1}
+.wtf-hero-mosaic{position:absolute;inset:0;z-index:1;display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));grid-auto-rows:minmax(110px,1fr);opacity:0;transition:opacity .4s ease;pointer-events:none;-webkit-mask-image:radial-gradient(circle 280px at var(--mx,50%) var(--my,50%),#000 0%,#000 50%,transparent 78%);mask-image:radial-gradient(circle 280px at var(--mx,50%) var(--my,50%),#000 0%,#000 50%,transparent 78%)}
+.wtf-hero-mosaic img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(10%) brightness(.55) contrast(1.05)}
+.wtf-home-hero:hover .wtf-hero-mosaic{opacity:1}
+@media(prefers-reduced-motion:reduce),(hover:none){.wtf-hero-mosaic{display:none}}
 .wtf-home-hero h1{font-family:'Playfair Display',serif;font-size:58px;font-weight:700;color:#F5F0E8;line-height:1.1;margin-bottom:.75rem;letter-spacing:-.01em}
 .wtf-home-tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:20px;color:#C9A84C;margin-bottom:.5rem;line-height:1.5}
 .wtf-home-disclaimer{font-family:'Playfair Display',serif;font-style:italic;font-size:12px;color:#8a8070;margin-bottom:2rem}
@@ -241,6 +245,40 @@ html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0
 
 <div class="wtf-home-hero">
   <div class="grain-overlay"></div>
+  <div class="wtf-hero-mosaic" aria-hidden="true">
+    <img src="images/deep-cover.jpg" alt="" loading="lazy">
+    <img src="images/matewan.jpg" alt="" loading="lazy">
+    <img src="images/the-39-steps.jpg" alt="" loading="lazy">
+    <img src="images/birth.jpg" alt="" loading="lazy">
+    <img src="images/la ceremonie.jpg" alt="" loading="lazy">
+    <img src="images/guillermo-del-toros-pinocchio.jpg" alt="" loading="lazy">
+    <img src="images/Kagemusha.jpg" alt="" loading="lazy">
+    <img src="images/the-royal-tenenbaums.jpg" alt="" loading="lazy">
+    <img src="images/the-thin-red-line.jpg" alt="" loading="lazy">
+    <img src="images/pee-wees-big-adventure.jpg" alt="" loading="lazy">
+    <img src="images/repo-man.jpg" alt="" loading="lazy">
+    <img src="images/winchester-73.jpg" alt="" loading="lazy">
+    <img src="images/after-hours.jpg" alt="" loading="lazy">
+    <img src="images/the-breakfast-club.jpg" alt="" loading="lazy">
+    <img src="images/touchez-pas-au-grisbi.jpg" alt="" loading="lazy">
+    <img src="images/la-jetee.jpg" alt="" loading="lazy">
+    <img src="images/deep-cover.jpg" alt="" loading="lazy">
+    <img src="images/matewan.jpg" alt="" loading="lazy">
+    <img src="images/the-39-steps.jpg" alt="" loading="lazy">
+    <img src="images/birth.jpg" alt="" loading="lazy">
+    <img src="images/la ceremonie.jpg" alt="" loading="lazy">
+    <img src="images/guillermo-del-toros-pinocchio.jpg" alt="" loading="lazy">
+    <img src="images/Kagemusha.jpg" alt="" loading="lazy">
+    <img src="images/the-royal-tenenbaums.jpg" alt="" loading="lazy">
+    <img src="images/the-thin-red-line.jpg" alt="" loading="lazy">
+    <img src="images/pee-wees-big-adventure.jpg" alt="" loading="lazy">
+    <img src="images/repo-man.jpg" alt="" loading="lazy">
+    <img src="images/winchester-73.jpg" alt="" loading="lazy">
+    <img src="images/after-hours.jpg" alt="" loading="lazy">
+    <img src="images/the-breakfast-club.jpg" alt="" loading="lazy">
+    <img src="images/touchez-pas-au-grisbi.jpg" alt="" loading="lazy">
+    <img src="images/la-jetee.jpg" alt="" loading="lazy">
+  </div>
   <div class="wtf-hero-inner">
     <div class="wtf-art-3d">
       <img class="wtf-show-art"
@@ -595,6 +633,24 @@ html.wtf-anim .wtf-ep-card.in-view:hover{transform:translateY(-5px);box-shadow:0
   wrap.addEventListener('pointerleave',function(){
     art.style.transform='';
     art.style.boxShadow='';
+  });
+})();
+</script>
+
+<script>
+// Hero-wide spotlight — reveals a mosaic of episode covers wherever the cursor moves
+(function(){
+  var hero=document.querySelector('.wtf-home-hero');
+  var mosaic=document.querySelector('.wtf-hero-mosaic');
+  if(!hero||!mosaic)return;
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  if(window.matchMedia('(hover:none)').matches)return;
+  hero.addEventListener('pointermove',function(e){
+    var r=hero.getBoundingClientRect();
+    var x=e.clientX-r.left;
+    var y=e.clientY-r.top;
+    mosaic.style.setProperty('--mx',x+'px');
+    mosaic.style.setProperty('--my',y+'px');
   });
 })();
 </script>
